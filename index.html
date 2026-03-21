@@ -24,11 +24,13 @@ h1, h2 {
   text-align: center;
 }
 
+/* HERO */
 .hero {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; /* ✅ 讓按鈕不會變滿版 */
   text-align: center;
   background-image: url("https://images.unsplash.com/photo-1511379938547-c1f69419868d");
   background-size: cover;
@@ -57,7 +59,7 @@ h1, h2 {
   opacity: 0.8;
 }
 
-/* 精緻按鈕 */
+/* ✅ 精緻按鈕（不會再是白條） */
 .btn {
   display: inline-block;
   margin-top: 24px;
@@ -75,6 +77,7 @@ h1, h2 {
   opacity: 0.8;
 }
 
+/* GRID */
 .grid {
   display: grid;
   gap: 20px;
@@ -105,6 +108,7 @@ iframe {
 
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <h1>
     有些話 說不出口<br>
@@ -118,6 +122,7 @@ iframe {
   </a>
 </section>
 
+<!-- ABOUT -->
 <section>
   <h2>關於我們</h2>
 
@@ -134,6 +139,7 @@ iframe {
   </p>
 </section>
 
+<!-- WORK -->
 <section>
   <h2>這些故事 被寫成了歌</h2>
 
@@ -162,6 +168,7 @@ iframe {
   </div>
 </section>
 
+<!-- CTA -->
 <section style="text-align:center;">
   <h2>把你的故事交給我</h2>
   <p>下一首被記住的歌 可能就是你的故事</p>
