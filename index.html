@@ -20,7 +20,7 @@ section {
   margin: auto;
 }
 
-h1, h2, h3 {
+h1, h2 {
   text-align: center;
 }
 
@@ -31,7 +31,6 @@ h1, h2, h3 {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-
   background-image: url("https://images.unsplash.com/photo-1511379938547-c1f69419868d");
   background-size: cover;
   background-position: center;
@@ -52,13 +51,11 @@ h1, h2, h3 {
 
 .hero h1 {
   font-size: 42px;
-  line-height: 1.4;
 }
 
 .hero p {
   margin-top: 20px;
-  font-size: 18px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .btn {
@@ -72,30 +69,6 @@ h1, h2, h3 {
   font-weight: bold;
 }
 
-/* 卡片 */
-.card {
-  margin-top: 30px;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 16px;
-}
-
-.card p {
-  margin-top: 12px;
-  opacity: 0.8;
-  text-align: center;
-}
-
-.highlight {
-  text-align: center;
-  font-weight: bold;
-  margin-top: 30px;
-  font-size: 18px;
-}
-
-/* GRID */
 .grid {
   display: grid;
   gap: 20px;
@@ -105,6 +78,21 @@ h1, h2, h3 {
   .grid {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.card {
+  margin-top: 30px;
+}
+
+iframe {
+  width: 100%;
+  height: 220px;
+  border-radius: 12px;
+}
+
+.card p {
+  text-align: center;
+  opacity: 0.8;
 }
 </style>
 </head>
@@ -118,9 +106,7 @@ h1, h2, h3 {
     就讓一首歌替你說
   </h1>
 
-  <p>
-    把你的故事 變成一首只屬於你的歌
-  </p>
+  <p>把你的故事 變成一首只屬於你的歌</p>
 
   <a href="https://line.me/R/ti/p/@702snvsv" class="btn">
     旅程開始
@@ -138,77 +124,33 @@ h1, h2, h3 {
     都能被轉化成一首專屬於你的作品
   </p>
 
-  <p class="highlight">
+  <p style="text-align:center; font-weight:bold;">
     你負責說故事<br>
     我負責把它偷走 然後寫成一首歌
   </p>
 </section>
 
-<!-- ENVIRONMENT -->
-<section>
-  <h2>創作環境</h2>
-
-  <div class="grid">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d">
-      <p>打造情緒的聲音空間</p>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
-      <p>從靈感到成品的一站式製作</p>
-    </div>
-  </div>
-</section>
-
 <!-- WORK -->
 <section>
-  <h2>作品展示</h2>
+  <h2>這些故事 被寫成了歌</h2>
 
   <div class="grid">
+
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4">
-      <p>把愛寫成旋律 留給重要的人</p>
+      <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4"></iframe>
+      <p>這不只是音樂 是一段被留下的故事</p>
     </div>
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
-      <p>讓回憶被聽見 而不是消失</p>
+      <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw"></iframe>
+      <p>有些結局 不是遺憾 是成為回憶</p>
     </div>
-  </div>
-</section>
 
-<!-- WHY -->
-<section>
-  <h2>為什麼選擇我們</h2>
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/yyVXVirPXQo"></iframe>
+      <p>願你在世界的某個角落 好好生活</p>
+    </div>
 
-  <div class="card">
-    <p>每一首作品都是全新創作 不使用模板</p>
-  </div>
-
-  <div class="card">
-    <p>從你的故事出發 而不是從旋律開始</p>
-  </div>
-
-  <div class="card">
-    <p>幫你完成那些說不出口的情感</p>
-  </div>
-</section>
-
-<!-- ADVANTAGE -->
-<section>
-  <h2>我們的優勢</h2>
-
-  <div class="card">
-    <p>情感轉譯能力 將抽象情緒轉化為具體音樂</p>
-  </div>
-
-  <div class="card">
-    <p>高效率流程 清楚穩定的製作節奏</p>
-  </div>
-
-  <div class="card">
-    <p>高度客製 每一首歌只屬於一個人</p>
   </div>
 </section>
 
