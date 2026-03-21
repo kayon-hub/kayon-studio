@@ -6,109 +6,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #0f0f0f;
-  color: #fff;
-  line-height: 1.7;
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#0f0f0f;
+  color:#fff;
+  line-height:1.7;
 }
 
-section {
-  padding: 80px 20px;
-  max-width: 1000px;
-  margin: auto;
+section{
+  padding:80px 20px;
+  max-width:1000px;
+  margin:auto;
 }
 
-h1, h2 {
-  text-align: center;
+h1,h2{
+  text-align:center;
 }
 
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; /* ✅ 讓按鈕不會變滿版 */
-  text-align: center;
-  background-image: url("https://images.unsplash.com/photo-1511379938547-c1f69419868d");
-  background-size: cover;
-  background-position: center;
-  position: relative;
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background-image:url("https://images.unsplash.com/photo-1511379938547-c1f69419868d");
+  background-size:cover;
+  background-position:center;
+  position:relative;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.6);
 }
 
-.hero * {
-  position: relative;
-  z-index: 1;
+.hero *{
+  position:relative;
+  z-index:1;
 }
 
-.hero h1 {
-  font-size: 42px;
+.hero h1{
+  font-size:42px;
 }
 
-.hero p {
-  margin-top: 20px;
-  opacity: 0.8;
+.hero p{
+  margin-top:20px;
+  opacity:0.8;
 }
 
-/* ✅ 精緻按鈕（不會再是白條） */
-.btn {
-  display: inline-block;
-  margin-top: 24px;
-  padding: 10px 22px;
-  background: #fff;
-  color: #000;
-  text-decoration: none;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 500;
-  transition: 0.3s;
+.btn{
+  display:inline-block;
+  margin-top:24px;
+  padding:10px 22px;
+  background:#fff;
+  color:#000;
+  text-decoration:none;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:500;
 }
 
-.btn:hover {
-  opacity: 0.8;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  gap: 20px;
+.grid{
+  display:grid;
+  gap:20px;
 }
 
 @media(min-width:768px){
-  .grid {
-    grid-template-columns: 1fr 1fr;
+  .grid{
+    grid-template-columns:1fr 1fr;
   }
 }
 
-.card {
-  margin-top: 30px;
+.card{
+  margin-top:30px;
 }
 
-iframe {
-  width: 100%;
-  height: 220px;
-  border-radius: 12px;
+iframe{
+  width:100%;
+  height:220px;
+  border-radius:12px;
+  border:0;
 }
 
-.card p {
-  text-align: center;
-  opacity: 0.8;
+.card p{
+  text-align:center;
+  opacity:0.8;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <h1>
     有些話 說不出口<br>
@@ -117,12 +109,9 @@ iframe {
 
   <p>把你的故事 變成一首只屬於你的歌</p>
 
-  <a href="https://line.me/R/ti/p/@702snvsv" class="btn">
-    旅程開始
-  </a>
+  <a href="https://line.me/R/ti/p/@702snvsv" class="btn">旅程開始</a>
 </section>
 
-<!-- ABOUT -->
 <section>
   <h2>關於我們</h2>
 
@@ -133,13 +122,12 @@ iframe {
     都能被轉化成一首專屬於你的作品
   </p>
 
-  <p style="text-align:center; font-weight:bold;">
+  <p style="text-align:center;font-weight:bold;">
     你負責說故事<br>
     我負責把它偷走 然後寫成一首歌
   </p>
 </section>
 
-<!-- WORK -->
 <section>
   <h2>這些故事 被寫成了歌</h2>
 
@@ -168,14 +156,11 @@ iframe {
   </div>
 </section>
 
-<!-- CTA -->
 <section style="text-align:center;">
   <h2>把你的故事交給我</h2>
   <p>下一首被記住的歌 可能就是你的故事</p>
 
-  <a href="https://line.me/R/ti/p/@702snvsv" class="btn">
-    立即用LINE聯絡我
-  </a>
+  <a href="https://line.me/R/ti/p/@702snvsv" class="btn">立即用LINE聯絡我</a>
 </section>
 
 </body>
