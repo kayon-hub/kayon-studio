@@ -13,7 +13,7 @@ body{
   color:#fff;
 }
 
-/* 🔥 Navbar */
+/* Navbar */
 .navbar{
   position:fixed;
   top:0;
@@ -24,13 +24,7 @@ body{
   align-items:center;
   background:rgba(0,0,0,0.7);
   backdrop-filter:blur(6px);
-  transition:0.3s;
   z-index:9999;
-}
-
-.navbar.scrolled{
-  height:60px;
-  background:rgba(0,0,0,0.9);
 }
 
 .nav-group{
@@ -46,27 +40,19 @@ body{
   opacity:0.85;
 }
 
-.nav-group a:hover{
-  opacity:1;
-}
-
 .logo{
-  width:150px;
-  transition:0.3s;
+  width:140px;
 }
 
-.navbar.scrolled .logo{
-  width:110px;
-}
-
-/* 🔥 強制背景（重點） */
+/* Hero */
 .hero{
   height:100vh;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  background:url("https://images.unsplash.com/photo-1598488035139-bdbb2231ce04") no-repeat center/cover !important;
+  background:url("https://images.unsplash.com/photo-1598488035139-bdbb2231ce04") center/cover no-repeat;
   position:relative;
   padding-top:80px;
 }
@@ -103,13 +89,32 @@ section{
   margin:auto;
   text-align:center;
 }
+
+/* grid */
+.grid{
+  display:grid;
+  gap:20px;
+}
+
+@media(min-width:768px){
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+iframe{
+  width:100%;
+  height:220px;
+  border-radius:12px;
+  border:0;
+}
 </style>
 </head>
 
 <body>
 
 <!-- Navbar -->
-<div class="navbar" id="navbar">
+<div class="navbar">
   <div class="nav-group">
     <a href="#process">製作流程</a>
     <a href="#works">作品參考</a>
@@ -123,18 +128,18 @@ section{
 
 <!-- Hero -->
 <section class="hero">
-  <div>
-    <h1>
-      有些話 說不出口<br>
-      就讓一首歌替你說
-    </h1>
+  <h1>
+    有些話 說不出口<br>
+    就讓一首歌替你說
+  </h1>
 
-    <a href="https://lin.ee/uqYFa3X" class="btn">
-      開始你的專屬歌曲
-    </a>
-  </div>
+  <!-- 🔥 上面按鈕保留 -->
+  <a href="https://lin.ee/uqYFa3X" class="btn">
+    開始你的專屬歌曲
+  </a>
 </section>
 
+<!-- 流程 -->
 <section id="process">
   <h2>製作流程</h2>
   <p>STEP 1 告訴我你的故事</p>
@@ -142,27 +147,39 @@ section{
   <p>STEP 3 完成交付音樂作品</p>
 </section>
 
+<!-- 作品（4部保留） -->
 <section id="works">
   <h2>作品參考</h2>
-  <iframe width="100%" height="220" src="https://www.youtube.com/embed/sRC7AGxNMV4"></iframe>
+
+  <div class="grid">
+
+    <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4"></iframe>
+
+    <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw"></iframe>
+
+    <iframe src="https://www.youtube.com/embed/yyVXVirPXQo"></iframe>
+
+    <iframe src="https://www.youtube.com/embed/o-aIw9toVJs"></iframe>
+
+  </div>
 </section>
 
+<!-- FAQ -->
 <section id="faq">
   <h2>FAQ</h2>
   <p>製作時間：約21–30個工作天</p>
   <p>費用：依需求提供專屬報價</p>
 </section>
 
-<script>
-window.addEventListener("scroll", function(){
-  const navbar = document.getElementById("navbar");
-  if(window.scrollY > 50){
-    navbar.classList.add("scrolled");
-  }else{
-    navbar.classList.remove("scrolled");
-  }
-});
-</script>
+<!-- 🔥 底部CTA（你原本的） -->
+<section>
+  <h2>把你的故事交給我</h2>
+  <p>下一首被記住的歌 可能就是你的故事</p>
+
+  <a href="https://lin.ee/uqYFa3X" class="btn">
+    立即開始創作你的故事
+  </a>
+</section>
 
 </body>
 </html>
