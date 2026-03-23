@@ -90,7 +90,7 @@ section{
   text-align:center;
 }
 
-/* grid */
+/* 影片排版 */
 .grid{
   display:grid;
   gap:20px;
@@ -102,9 +102,18 @@ section{
   }
 }
 
-iframe{
+.video{
+  position:relative;
   width:100%;
-  height:220px;
+  padding-top:56.25%;
+}
+
+.video iframe{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   border-radius:12px;
   border:0;
 }
@@ -133,7 +142,7 @@ iframe{
     就讓一首歌替你說
   </h1>
 
-  <!-- 🔥 上面按鈕保留 -->
+  <!-- 上方按鈕 -->
   <a href="https://lin.ee/uqYFa3X" class="btn">
     開始你的專屬歌曲
   </a>
@@ -147,19 +156,27 @@ iframe{
   <p>STEP 3 完成交付音樂作品</p>
 </section>
 
-<!-- 作品（4部保留） -->
+<!-- 作品（4支正常顯示） -->
 <section id="works">
   <h2>作品參考</h2>
 
   <div class="grid">
 
-    <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4"></iframe>
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4" allowfullscreen></iframe>
+    </div>
 
-    <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw"></iframe>
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw" allowfullscreen></iframe>
+    </div>
 
-    <iframe src="https://www.youtube.com/embed/yyVXVirPXQo"></iframe>
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/yyVXVirPXQo" allowfullscreen></iframe>
+    </div>
 
-    <iframe src="https://www.youtube.com/embed/o-aIw9toVJs"></iframe>
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/o-aIw9toVJs" allowfullscreen></iframe>
+    </div>
 
   </div>
 </section>
@@ -171,11 +188,12 @@ iframe{
   <p>費用：依需求提供專屬報價</p>
 </section>
 
-<!-- 🔥 底部CTA（你原本的） -->
+<!-- 底部 CTA -->
 <section>
   <h2>把你的故事交給我</h2>
   <p>下一首被記住的歌 可能就是你的故事</p>
 
+  <!-- 下方按鈕 -->
   <a href="https://lin.ee/uqYFa3X" class="btn">
     立即開始創作你的故事
   </a>
