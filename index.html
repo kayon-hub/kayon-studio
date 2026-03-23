@@ -14,22 +14,24 @@ body{
   line-height:1.7;
 }
 
-/* 🔥 頂部Logo區 */
 .top-logo{
+  position:fixed;
+  top:0;
+  left:0;
   width:100%;
-  height:120px;
-  background:#0f0f0f;
+  height:100px;
   display:flex;
   justify-content:center;
   align-items:center;
-  border-bottom:1px solid #222;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);
+  z-index:9999;
 }
 
 .top-logo img{
-  width:260px;
+  width:280px;
 }
 
-/* 主內容 */
 section{
   padding:80px 20px;
   max-width:1000px;
@@ -40,7 +42,6 @@ h1,h2{
   text-align:center;
 }
 
-/* Hero */
 .hero{
   height:100vh;
   display:flex;
@@ -52,6 +53,7 @@ h1,h2{
   background-size:cover;
   background-position:center;
   position:relative;
+  padding-top:100px;
 }
 
 .hero::before{
@@ -75,7 +77,6 @@ h1,h2{
   opacity:0.85;
 }
 
-/* 按鈕 */
 .btn{
   display:inline-block;
   margin-top:24px;
@@ -85,14 +86,25 @@ h1,h2{
   text-decoration:none;
   border-radius:999px;
   font-size:14px;
-  font-weight:500;
 }
 
 .btn:hover{
   opacity:0.85;
 }
 
-/* 作品區 */
+/* 新增區塊 */
+.info-box{
+  text-align:center;
+  margin-top:40px;
+  line-height:2;
+}
+
+.price{
+  margin-top:20px;
+  font-weight:bold;
+  font-size:18px;
+}
+
 .grid{
   display:grid;
   gap:20px;
@@ -124,12 +136,10 @@ iframe{
 
 <body>
 
-<!-- 🔥 最上排Logo -->
 <div class="top-logo">
   <img src="logo.png" alt="KAYON STUDIO">
 </div>
 
-<!-- Hero -->
 <section class="hero">
   <h1>
     有些話 說不出口<br>
@@ -143,7 +153,30 @@ iframe{
   </a>
 </section>
 
-<!-- 關於 -->
+<!-- 🔥 新增：流程＋價格 -->
+<section>
+  <h2>製作流程</h2>
+
+  <div class="info-box">
+    STEP 1<br>
+    告訴我你的故事<br><br>
+
+    STEP 2<br>
+    為你創作專屬歌曲<br><br>
+
+    STEP 3<br>
+    完成交付音樂作品
+  </div>
+
+  <div class="price">
+    客製歌曲製作 NT$3000 起（依需求報價）
+  </div>
+
+  <p style="text-align:center;opacity:0.7;margin-top:10px;">
+    提供 2 次免費修改 讓作品更貼近你的想法
+  </p>
+</section>
+
 <section>
   <h2>關於我們</h2>
 
@@ -160,52 +193,34 @@ iframe{
   </p>
 </section>
 
-<!-- 作品 -->
 <section>
   <h2>這些故事 被寫成了歌</h2>
 
   <div class="grid">
 
     <div class="card">
-      <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4?rel=0&modestbranding=1" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4" allowfullscreen></iframe>
       <p>這不只是音樂 是一段被留下的故事</p>
     </div>
 
     <div class="card">
-      <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw?rel=0&modestbranding=1" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw" allowfullscreen></iframe>
       <p>有些結局 不是遺憾 是成為回憶</p>
-    </div>
-
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/yyVXVirPXQo?rel=0&modestbranding=1" allowfullscreen></iframe>
-      <p>願你在世界的某個角落 好好生活</p>
-    </div>
-
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/o-aIw9toVJs?rel=0&modestbranding=1" allowfullscreen></iframe>
-      <p>有些傷 來自最親近的人 卻最難說出口</p>
     </div>
 
   </div>
 </section>
 
-<!-- CTA -->
 <section style="text-align:center;">
   <h2>把你的故事交給我</h2>
-  <p>下一首被記住的歌 可能就是你的故事</p>
-
-  <p style="opacity:0.7;font-size:14px;">
-    無需任何音樂基礎 只要把故事告訴我就好
-  </p>
 
   <a href="https://lin.ee/uqYFa3X" class="btn">
     立即開始創作你的故事
   </a>
 </section>
 
-<!-- Footer -->
 <section style="text-align:center;padding:40px 20px;border-top:1px solid #222;">
-  <p style="opacity:0.5;font-size:12px;line-height:1.6;">
+  <p style="opacity:0.5;font-size:12px;">
     ©2026 KARBØN X GAIA ENTERTAINMENT ｜ All Rights Reserved<br>
     ©2026 KAYON STUDIO
   </p>
