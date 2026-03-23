@@ -11,37 +11,39 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   background:#0f0f0f;
   color:#fff;
-  line-height:1.7;
 }
 
-/* Top Logo */
-.top-logo{
+/* 🔥 Navbar */
+.navbar{
   position:fixed;
   top:0;
-  left:0;
   width:100%;
-  height:100px;
+  height:60px;
   display:flex;
-  justify-content:center;
+  justify-content:space-between;
   align-items:center;
-  background:rgba(0,0,0,0.6);
+  padding:0 20px;
+  background:rgba(0,0,0,0.7);
   backdrop-filter:blur(6px);
   z-index:9999;
 }
 
-.top-logo img{
-  width:280px;
+.navbar img{
+  width:120px;
+}
+
+.nav-links a{
+  margin-left:20px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
 }
 
 /* Section */
 section{
-  padding:80px 20px;
+  padding:100px 20px;
   max-width:1000px;
   margin:auto;
-}
-
-h1,h2{
-  text-align:center;
 }
 
 /* Hero */
@@ -56,7 +58,6 @@ h1,h2{
   background-size:cover;
   background-position:center;
   position:relative;
-  padding-top:100px;
 }
 
 .hero::before{
@@ -71,36 +72,17 @@ h1,h2{
   z-index:1;
 }
 
-.hero h1{
-  font-size:42px;
+h1{
+  font-size:40px;
 }
 
-.hero p{
-  margin-top:20px;
-  opacity:0.85;
-}
-
-/* Button */
 .btn{
-  display:inline-block;
-  margin-top:24px;
-  padding:12px 26px;
+  margin-top:20px;
+  padding:12px 24px;
   background:#fff;
   color:#000;
   text-decoration:none;
   border-radius:999px;
-  font-size:14px;
-}
-
-.btn:hover{
-  opacity:0.85;
-}
-
-/* Info */
-.info-box{
-  text-align:center;
-  margin-top:40px;
-  line-height:2;
 }
 
 /* Grid */
@@ -114,30 +96,20 @@ h1,h2{
     grid-template-columns:1fr 1fr;
   }
 }
-
-.card{
-  margin-top:30px;
-}
-
-iframe{
-  width:100%;
-  height:220px;
-  border-radius:12px;
-  border:0;
-}
-
-.card p{
-  text-align:center;
-  opacity:0.8;
-}
 </style>
 </head>
 
 <body>
 
-<!-- Logo -->
-<div class="top-logo">
-  <img src="logo.png" alt="KAYON STUDIO">
+<!-- 🔥 Navbar -->
+<div class="navbar">
+  <img src="logo.png">
+  <div class="nav-links">
+    <a href="#process">流程</a>
+    <a href="#works">作品</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://lin.ee/uqYFa3X">聯絡我</a>
+  </div>
 </div>
 
 <!-- Hero -->
@@ -147,96 +119,33 @@ iframe{
     就讓一首歌替你說
   </h1>
 
-  <p>把你的故事 變成一首只屬於你的歌</p>
-
   <a href="https://lin.ee/uqYFa3X" class="btn">
     開始你的專屬歌曲
   </a>
 </section>
 
 <!-- 流程 -->
-<section>
+<section id="process">
   <h2>製作流程</h2>
-
-  <div class="info-box">
-    STEP 1<br>
-    告訴我你的故事<br><br>
-
-    STEP 2<br>
-    為你創作專屬歌曲<br><br>
-
-    STEP 3<br>
-    完成交付音樂作品
-  </div>
-
-  <p style="text-align:center;margin-top:30px;font-weight:500;">
-    每一首作品皆為客製創作<br>
-    依內容與需求提供專屬報價
-  </p>
-</section>
-
-<!-- 關於 -->
-<section>
-  <h2>關於我們</h2>
-
-  <p style="text-align:center;">
-    KAYON STUDIO 專注於情感型音樂創作<br>
-    我們相信 每一段故事 都值得被聽見<br>
-    不論是愛 回憶 或告別<br>
-    都能被轉化成一首專屬於你的作品
-  </p>
-
-  <p style="text-align:center;font-weight:bold;">
-    你負責說故事<br>
-    我負責把它偷走 然後寫成一首歌
-  </p>
+  <p>STEP 1 告訴我你的故事</p>
+  <p>STEP 2 為你創作專屬歌曲</p>
+  <p>STEP 3 完成交付音樂作品</p>
 </section>
 
 <!-- 作品 -->
-<section>
-  <h2>這些故事 被寫成了歌</h2>
-
+<section id="works">
+  <h2>作品</h2>
   <div class="grid">
-
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4" allowfullscreen></iframe>
-      <p>這不只是音樂 是一段被留下的故事</p>
-    </div>
-
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw" allowfullscreen></iframe>
-      <p>有些結局 不是遺憾 是成為回憶</p>
-    </div>
-
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/yyVXVirPXQo" allowfullscreen></iframe>
-      <p>願你在世界的某個角落 好好生活</p>
-    </div>
-
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/o-aIw9toVJs" allowfullscreen></iframe>
-      <p>有些傷 來自最親近的人 卻最難說出口</p>
-    </div>
-
+    <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4"></iframe>
+    <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw"></iframe>
   </div>
 </section>
 
-<!-- CTA -->
-<section style="text-align:center;">
-  <h2>把你的故事交給我</h2>
-  <p>下一首被記住的歌 可能就是你的故事</p>
-
-  <a href="https://lin.ee/uqYFa3X" class="btn">
-    立即開始創作你的故事
-  </a>
-</section>
-
-<!-- Footer -->
-<section style="text-align:center;padding:40px 20px;border-top:1px solid #222;">
-  <p style="opacity:0.5;font-size:12px;">
-    ©2026 KARBØN X GAIA ENTERTAINMENT ｜ All Rights Reserved<br>
-    ©2026 KAYON STUDIO
-  </p>
+<!-- FAQ -->
+<section id="faq">
+  <h2>FAQ</h2>
+  <p>製作時間：約21-30天</p>
+  <p>費用：依需求報價</p>
 </section>
 
 </body>
