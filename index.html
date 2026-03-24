@@ -70,7 +70,8 @@ body{
 }
 
 h1{
-  font-size:40px;
+  font-size:42px;
+  line-height:1.4;
 }
 
 .subtitle{
@@ -95,28 +96,19 @@ section{
   text-align:center;
 }
 
-/* 圖片（防撐爆） */
 img{
   width:100%;
-  max-width:100%;
   border-radius:12px;
   margin-top:20px;
-  display:block;
 }
 
-/* grid */
+/* 🔥 修正 YouTube版面 */
 .grid{
   display:grid;
   gap:20px;
+  grid-template-columns:1fr 1fr;
 }
 
-@media(min-width:768px){
-  .grid{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-/* 🔥 修正影片比例（重點） */
 .video{
   width:100%;
   aspect-ratio:16/9;
@@ -129,17 +121,10 @@ img{
   border:0;
 }
 
-/* 作品連結 */
-.work-item{
-  display:block;
-  text-decoration:none;
-  color:#fff;
-  padding:12px 0;
-  border-bottom:1px solid rgba(255,255,255,0.1);
-}
-
-.work-item:hover{
+/* hover */
+a:hover{
   opacity:0.6;
+  transition:0.3s;
 }
 
 /* Footer */
@@ -193,39 +178,56 @@ img{
 <section>
   <h2>製作流程</h2>
   <p>STEP 1 告訴我你的故事</p>
-  <p>STEP 2 為你創作專屬歌曲</p>
-  <p>STEP 3 完成交付音樂作品</p>
+  <p>STEP 2 創作專屬歌曲</p>
+  <p>STEP 3 完成交付</p>
 </section>
 
 <!-- Selected Works -->
 <section id="pro">
   <h2>KAYON STUDIO｜Selected Works</h2>
 
+  <!-- ✅ 新增提示（只改這裡） -->
+  <p style="opacity:0.6; font-size:13px; margin-top:10px;">
+    請點擊任一作品連結試聽
+  </p>
+
   <div style="text-align:left; max-width:700px; margin:40px auto; line-height:2.2;">
 
-    <a class="work-item" href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank">
-      01｜SOMETHING REAL｜國際質感
-    </a>
+    <p>01｜
+      <a href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank" style="color:#fff;">
+        SOMETHING REAL
+      </a>｜國際質感
+    </p>
 
-    <a class="work-item" href="https://music.apple.com/tw/album/%E6%9C%80%E5%BE%8C%E4%B8%80%E6%AC%A1%E5%BF%83%E8%B7%B3-2026-remastered-version/1876513606?i=1876513607" target="_blank">
-      02｜放手的重量｜情緒敘事
-    </a>
+    <p>02｜
+      <a href="https://music.apple.com/tw/album/%E6%9C%80%E5%BE%8C%E4%B8%80%E6%AC%A1%E5%BF%83%E8%B7%B3-2026-remastered-version/1876513606?i=1876513607" target="_blank" style="color:#fff;">
+        放手的重量
+      </a>｜情緒敘事
+    </p>
 
-    <a class="work-item" href="https://music.apple.com/tw/album/no-gravity-2026-remastered-version/1884021525?i=1884021766" target="_blank">
-      03｜NO GRAVITY｜商業動能
-    </a>
+    <p>03｜
+      <a href="https://music.apple.com/tw/album/no-gravity-2026-remastered-version/1884021525?i=1884021766" target="_blank" style="color:#fff;">
+        NO GRAVITY
+      </a>｜商業動能
+    </p>
 
-    <a class="work-item" href="https://www.kkbox.com/tw/tc/song/CqstcdRCUh-7_bm43J" target="_blank">
-      04｜SHAKE IT｜潮流風格
-    </a>
+    <p>04｜
+      <a href="https://www.kkbox.com/tw/tc/song/CqstcdRCUh-7_bm43J" target="_blank" style="color:#fff;">
+        SHAKE IT
+      </a>｜潮流風格
+    </p>
 
-    <a class="work-item" href="https://www.kkbox.com/tw/tc/song/OnqbQjh7o9axMaZU5M" target="_blank">
-      05｜LUMINOUS FRACTURE｜專案製作
-    </a>
+    <p>05｜
+      <a href="https://www.kkbox.com/tw/tc/song/OnqbQjh7o9axMaZU5M" target="_blank" style="color:#fff;">
+        LUMINOUS FRACTURE
+      </a>｜專案製作
+    </p>
 
-    <a class="work-item" href="https://www.kkbox.com/tw/tc/song/1ZyAdGucmUN-7Uys3e" target="_blank">
-      06｜如果可是｜氛圍音樂
-    </a>
+    <p>06｜
+      <a href="https://www.kkbox.com/tw/tc/song/1ZyAdGucmUN-7Uys3e" target="_blank" style="color:#fff;">
+        如果可是
+      </a>｜氛圍音樂
+    </p>
 
   </div>
 </section>
@@ -240,6 +242,7 @@ img{
 <section>
   <h2>作品參考</h2>
 
+  <!-- ✅ 修正 grid -->
   <div class="grid">
     <div class="video"><iframe src="https://www.youtube.com/embed/sRC7AGxNMV4"></iframe></div>
     <div class="video"><iframe src="https://www.youtube.com/embed/nwMQyEO4hMw"></iframe></div>
@@ -251,14 +254,14 @@ img{
 
 <!-- Podcast -->
 <section id="podcast">
-  <h2>Podcast｜聲音調整</h2>
+  <h2>Podcast｜聲音優化</h2>
   <img src="images/podcast.jpg">
-  <p>降噪｜音量平衡｜贅詞處理｜音質優化</p>
+  <p>降噪｜音量平衡｜贅詞剪輯｜音質優化</p>
 </section>
 
 <!-- Contact -->
 <section id="contact">
-  <h2>聯絡我們</h2>
+  <h2>聯絡</h2>
   <p>
     <a href="https://lin.ee/uqYFa3X" style="color:#fff;">LINE</a> ｜ 
     <a href="mailto:karbonxgaia.kayon@gmail.com" style="color:#fff;">Email</a>
