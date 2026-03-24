@@ -96,10 +96,14 @@ section{
   max-width:1000px;
   margin:auto;
   text-align:center;
+  overflow:hidden; /* 🔥 防止被撐爆 */
 }
 
+/* 🔥 修正圖片問題 */
 img{
   width:100%;
+  max-width:100%;
+  display:block;
   border-radius:12px;
   margin-top:20px;
 }
@@ -159,7 +163,6 @@ img{
   opacity:0.4;
   padding:50px 20px;
   border-top:1px solid rgba(255,255,255,0.08);
-  letter-spacing:0.5px;
 }
 
 /* 手機優化 */
@@ -310,7 +313,7 @@ img{
   </p>
 </section>
 
-<!-- Footer（你剛剛缺的） -->
+<!-- Footer -->
 <footer class="footer">
   ©2026 KAYON STUDIO ｜ ©2026 KARBON X GAIA ENTERTAINMENT
 </footer>
