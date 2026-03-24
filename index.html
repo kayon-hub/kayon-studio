@@ -142,7 +142,7 @@ img{
   border:0;
 }
 
-/* 🔥 讓連結明顯 */
+/* 🔥 高級連結動畫 */
 a{
   color:#fff;
   text-decoration:none;
@@ -162,6 +162,14 @@ a::after{
 
 a:hover::after{
   width:100%;
+}
+
+/* 行距優化 */
+.list{
+  text-align:left;
+  max-width:700px;
+  margin:40px auto;
+  line-height:2.4;
 }
 </style>
 </head>
@@ -214,9 +222,9 @@ a:hover::after{
 <!-- Selected Works -->
 <section id="pro">
   <h2>KAYON STUDIO｜Selected Works</h2>
-  <p>Selected from 100+ released tracks</p>
+  <p style="opacity:0.6; font-size:14px;">Click any track to listen</p>
 
-  <div style="text-align:left; max-width:700px; margin:40px auto; line-height:2.2;">
+  <div class="list">
 
     <p>01｜<a href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank">SOMETHING REAL</a>｜國際質感</p>
 
