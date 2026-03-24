@@ -25,6 +25,7 @@ body{
   background:rgba(0,0,0,0.6);
   backdrop-filter:blur(10px);
   z-index:9999;
+  padding:0 10px;
 }
 
 .nav-group{
@@ -72,7 +73,6 @@ body{
 h1{
   font-size:42px;
   line-height:1.4;
-  letter-spacing:1px;
 }
 
 .subtitle{
@@ -88,7 +88,6 @@ h1{
   color:#000;
   text-decoration:none;
   border-radius:999px;
-  font-weight:500;
 }
 
 /* section */
@@ -97,15 +96,6 @@ section{
   max-width:1000px;
   margin:auto;
   text-align:center;
-}
-
-h2{
-  font-size:26px;
-  margin-bottom:10px;
-}
-
-section p{
-  opacity:0.8;
 }
 
 img{
@@ -142,7 +132,7 @@ img{
   border:0;
 }
 
-/* 🔥 高級連結動畫 */
+/* 高級連結動畫 */
 a{
   color:#fff;
   text-decoration:none;
@@ -164,12 +154,34 @@ a:hover::after{
   width:100%;
 }
 
-/* 行距優化 */
+/* list */
 .list{
   text-align:left;
   max-width:700px;
   margin:40px auto;
   line-height:2.4;
+}
+
+/* 🔥 手機優化 */
+@media(max-width:768px){
+
+  .nav-group{
+    gap:15px;
+    padding:0 10px;
+  }
+
+  .nav-group a{
+    font-size:12px;
+  }
+
+  .logo{
+    width:90px;
+  }
+
+  h1{
+    font-size:28px;
+  }
+
 }
 </style>
 </head>
@@ -222,7 +234,7 @@ a:hover::after{
 <!-- Selected Works -->
 <section id="pro">
   <h2>KAYON STUDIO｜Selected Works</h2>
-  <p style="opacity:0.6; font-size:14px;">Click any track to listen</p>
+  <p style="opacity:0.6;">Click any track to listen</p>
 
   <div class="list">
 
@@ -268,10 +280,8 @@ a:hover::after{
 <!-- Contact -->
 <section id="contact">
   <h2>聯絡我們</h2>
-
-  <p style="margin-top:20px; font-size:16px;">
-    <a href="https://lin.ee/uqYFa3X">LINE</a>
-    ｜ 
+  <p>
+    <a href="https://lin.ee/uqYFa3X">LINE</a> ｜ 
     <a href="mailto:karbonxgaia.kayon@gmail.com">Email</a>
   </p>
 </section>
