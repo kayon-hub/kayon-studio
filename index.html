@@ -165,9 +165,13 @@ a:hover::after{
 /* 🔥 手機優化 */
 @media(max-width:768px){
 
+  .navbar{
+    height:70px;
+    padding:0 12px;
+  }
+
   .nav-group{
-    gap:15px;
-    padding:0 10px;
+    gap:12px;
   }
 
   .nav-group a{
@@ -175,11 +179,41 @@ a:hover::after{
   }
 
   .logo{
-    width:90px;
+    width:80px;
   }
 
   h1{
-    font-size:28px;
+    font-size:26px;
+    line-height:1.5;
+    padding:0 20px;
+  }
+
+  .subtitle{
+    font-size:13px;
+    padding:0 20px;
+  }
+
+  .btn{
+    padding:12px 22px;
+  }
+
+  section{
+    padding:60px 20px;
+  }
+
+  h2{
+    font-size:20px;
+    line-height:1.4;
+    padding:0 10px;
+  }
+
+  .list{
+    padding:0 10px;
+    line-height:2.6;
+  }
+
+  .list p{
+    font-size:15px;
   }
 
 }
@@ -233,8 +267,14 @@ a:hover::after{
 
 <!-- Selected Works -->
 <section id="pro">
-  <h2>KAYON STUDIO｜Selected Works</h2>
-  <p style="opacity:0.6;">Click any track to listen</p>
+  <h2>
+    KAYON STUDIO<br>
+    <span style="opacity:0.5; font-size:15px;">Selected Works</span>
+  </h2>
+
+  <p style="opacity:0.4; font-size:13px;">
+    Tap any track to listen
+  </p>
 
   <div class="list">
 
