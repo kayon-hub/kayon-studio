@@ -18,38 +18,31 @@ body{
   position:fixed;
   top:0;
   width:100%;
-  height:70px;
+  height:80px;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.6);
   backdrop-filter:blur(10px);
   z-index:9999;
-  padding:0 12px;
+  padding:0 10px;
 }
 
 .nav-group{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  width:100%;
-  max-width:900px;
-}
-
-.nav-left,.nav-right{
-  display:flex;
-  gap:12px;
+  gap:24px;
 }
 
 .nav-group a{
   color:#fff;
   text-decoration:none;
-  font-size:12px;
-  opacity:0.8;
+  font-size:14px;
+  opacity:0.85;
 }
 
 .logo{
-  width:80px;
+  width:130px;
 }
 
 /* Hero */
@@ -62,7 +55,7 @@ body{
   text-align:center;
   background:url("images/hero.jpg") center/cover no-repeat;
   position:relative;
-  padding-top:70px;
+  padding-top:80px;
 }
 
 .hero::before{
@@ -78,20 +71,19 @@ body{
 }
 
 h1{
-  font-size:28px;
+  font-size:42px;
   line-height:1.4;
-  padding:0 20px;
 }
 
 .subtitle{
   opacity:0.7;
   margin-top:10px;
-  font-size:13px;
+  font-size:14px;
 }
 
 .btn{
-  margin-top:25px;
-  padding:12px 24px;
+  margin-top:30px;
+  padding:14px 28px;
   background:#fff;
   color:#000;
   text-decoration:none;
@@ -100,16 +92,14 @@ h1{
 
 /* section */
 section{
-  padding:70px 20px;
+  padding:80px 20px;
   max-width:1000px;
   margin:auto;
+  text-align:center;
 }
 
-/* 圖片 */
 img{
   width:100%;
-  max-width:100%;
-  display:block;
   border-radius:12px;
   margin-top:20px;
 }
@@ -118,54 +108,92 @@ img{
 .grid{
   display:grid;
   gap:20px;
-  grid-template-columns:1fr;
 }
 
-/* 桌機版 */
 @media(min-width:768px){
   .grid{
     grid-template-columns:1fr 1fr;
   }
 }
 
-/* iframe比例修正（重點） */
 .video{
+  position:relative;
   width:100%;
-  aspect-ratio:16/9;
+  padding-top:56.25%;
 }
 
 .video iframe{
+  position:absolute;
   width:100%;
   height:100%;
   border-radius:12px;
   border:0;
 }
 
-/* works */
-.list{
-  max-width:700px;
-  margin:40px auto;
-}
-
+/* 作品整行可點 */
 .work-item{
   display:block;
-  color:#fff;
   text-decoration:none;
-  padding:14px 0;
+  color:#fff;
+  padding:12px 0;
   border-bottom:1px solid rgba(255,255,255,0.1);
-  font-size:15px;
+  transition:0.2s;
 }
 
 .work-item:hover{
   opacity:0.6;
 }
 
-/* footer */
+/* list */
+.list{
+  text-align:left;
+  max-width:700px;
+  margin:40px auto;
+  line-height:2.2;
+}
+
+/* Footer */
 .footer{
   text-align:center;
   font-size:12px;
   opacity:0.4;
-  padding:40px 20px;
+  padding:50px 20px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  letter-spacing:0.5px;
+}
+
+/* 手機優化 */
+@media(max-width:768px){
+
+  .navbar{
+    height:70px;
+  }
+
+  .nav-group{
+    gap:10px;
+  }
+
+  .nav-group a{
+    font-size:11px;
+  }
+
+  .logo{
+    width:75px;
+  }
+
+  h1{
+    font-size:26px;
+    padding:0 20px;
+  }
+
+  .subtitle{
+    font-size:13px;
+  }
+
+  h2{
+    font-size:20px;
+  }
+
 }
 </style>
 </head>
@@ -175,17 +203,11 @@ img{
 <!-- Navbar -->
 <div class="navbar">
   <div class="nav-group">
-    <div class="nav-left">
-      <a href="#custom">客製</a>
-      <a href="#pro">作品</a>
-    </div>
-
+    <a href="#custom">客製歌曲</a>
+    <a href="#pro">業界製作</a>
     <img src="logo.png" class="logo">
-
-    <div class="nav-right">
-      <a href="#podcast">Podcast</a>
-      <a href="#contact">聯絡</a>
-    </div>
+    <a href="#podcast">Podcast</a>
+    <a href="#contact">聯絡</a>
   </div>
 </div>
 
@@ -221,7 +243,10 @@ img{
 
 <!-- Selected Works -->
 <section id="pro">
-  <h2>KAYON STUDIO｜Selected Works</h2>
+  <h2>
+    KAYON STUDIO<br>
+    <span style="opacity:0.5; font-size:15px;">Selected Works</span>
+  </h2>
 
   <div class="list">
 
@@ -261,14 +286,12 @@ img{
 <!-- 作品 -->
 <section>
   <h2>作品參考</h2>
-
   <div class="grid">
     <div class="video"><iframe src="https://www.youtube.com/embed/sRC7AGxNMV4"></iframe></div>
     <div class="video"><iframe src="https://www.youtube.com/embed/nwMQyEO4hMw"></iframe></div>
     <div class="video"><iframe src="https://www.youtube.com/embed/yyVXVirPXQo"></iframe></div>
     <div class="video"><iframe src="https://www.youtube.com/embed/o-aIw9toVJs"></iframe></div>
   </div>
-
 </section>
 
 <!-- Podcast -->
@@ -280,14 +303,14 @@ img{
 
 <!-- Contact -->
 <section id="contact">
-  <h2>聯絡</h2>
+  <h2>聯絡我們</h2>
   <p>
     <a href="https://lin.ee/uqYFa3X">LINE</a> ｜ 
     <a href="mailto:karbonxgaia.kayon@gmail.com">Email</a>
   </p>
 </section>
 
-<!-- Footer -->
+<!-- Footer（你剛剛缺的） -->
 <footer class="footer">
   ©2026 KAYON STUDIO ｜ ©2026 KARBON X GAIA ENTERTAINMENT
 </footer>
