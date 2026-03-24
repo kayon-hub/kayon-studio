@@ -30,7 +30,7 @@ body{
 .nav-group{
   display:flex;
   align-items:center;
-  gap:40px;
+  gap:30px;
 }
 
 .nav-group a{
@@ -52,7 +52,7 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  background:url("https://images.unsplash.com/photo-1598488035139-bdbb2231ce04") center/cover no-repeat;
+  background:url("https://images.unsplash.com/photo-1511379938547-c1f69419868d") center/cover no-repeat;
   position:relative;
   padding-top:80px;
 }
@@ -90,7 +90,7 @@ section{
   text-align:center;
 }
 
-/* 影片 */
+/* grid */
 .grid{
   display:grid;
   gap:20px;
@@ -142,103 +142,107 @@ section{
 
 <body>
 
+<!-- Navbar -->
 <div class="navbar">
   <div class="nav-group">
-    <a href="#process">製作流程</a>
-    <a href="#works">作品參考</a>
+    <a href="#custom">客製歌曲</a>
+    <a href="#pro">業界製作</a>
 
     <img src="logo.png" class="logo">
 
-    <a href="#faq">FAQ</a>
-    <a href="https://lin.ee/uqYFa3X">聯絡我們</a>
+    <a href="#podcast">Podcast</a>
+    <a href="#contact">聯絡</a>
   </div>
 </div>
 
+<!-- Hero -->
 <section class="hero">
   <h1>
     有些話 說不出口<br>
     就讓一首歌替你說
   </h1>
 
+  <p style="opacity:0.7; margin-top:10px;">
+    Custom Songs｜Music Production｜Audio Storytelling
+  </p>
+
   <a href="https://lin.ee/uqYFa3X" class="btn">
     開始你的專屬歌曲
   </a>
 </section>
 
-<section id="process">
+<!-- 客製 -->
+<section id="custom">
+  <h2>客製化歌曲</h2>
+  <p>把你的故事 變成一首專屬於你的歌</p>
+  <p>生日｜求婚｜紀念｜情感故事</p>
+</section>
+
+<!-- 流程 -->
+<section>
   <h2>製作流程</h2>
   <p>STEP 1 告訴我你的故事</p>
   <p>STEP 2 為你創作專屬歌曲</p>
   <p>STEP 3 完成交付音樂作品</p>
 </section>
 
-<section id="works">
-  <h2>作品參考</h2>
-  <div class="grid">
+<!-- 業界作品 -->
+<section id="pro">
+  <h2>KAYON STUDIO｜Selected Works</h2>
+  <p>Selected from 100+ released tracks</p>
 
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4"></iframe>
-    </div>
-
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw"></iframe>
-    </div>
-
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/yyVXVirPXQo"></iframe>
-    </div>
-
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/o-aIw9toVJs"></iframe>
-    </div>
-
+  <div style="text-align:left; max-width:700px; margin:40px auto; line-height:2;">
+    <p>01｜SOMETHING REAL｜國際質感 / 情緒</p>
+    <p>02｜放手的重量｜深層敘事 / 情感衝擊</p>
+    <p>03｜NO GRAVITY｜商業動能 / 品牌導向</p>
+    <p>04｜SHAKE IT｜潮流 / 時尚 / 夜生活</p>
+    <p>05｜LUMINOUS FRACTURE｜專案統籌 / 團體製作</p>
+    <p>06｜IF｜空間 / 陪伴 / 氛圍音樂</p>
   </div>
 </section>
 
-<section id="faq">
-  <h2>常見問題 FAQ</h2>
+<!-- 作品 -->
+<section>
+  <h2>作品參考</h2>
+  <div class="grid">
+    <div class="video"><iframe src="https://www.youtube.com/embed/sRC7AGxNMV4"></iframe></div>
+    <div class="video"><iframe src="https://www.youtube.com/embed/nwMQyEO4hMw"></iframe></div>
+    <div class="video"><iframe src="https://www.youtube.com/embed/yyVXVirPXQo"></iframe></div>
+    <div class="video"><iframe src="https://www.youtube.com/embed/o-aIw9toVJs"></iframe></div>
+  </div>
+</section>
 
+<!-- Podcast -->
+<section id="podcast">
+  <h2>Podcast｜聲音優化</h2>
+  <p>降噪｜音量平衡｜贅詞剪輯｜音質優化</p>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2>FAQ</h2>
   <div class="faq-container">
 
     <div class="faq-item">
-      <p class="q">Q1｜製作一首專屬歌曲，大概需要多少預算？</p>
-      <p class="a">依內容與需求提供專屬報價。</p>
+      <p class="q">Q｜製作費用？</p>
+      <p class="a">依需求報價</p>
     </div>
 
     <div class="faq-item">
-      <p class="q">Q2｜製作需要多久？</p>
-      <p class="a">約 21～30 個工作天。</p>
-    </div>
-
-    <div class="faq-item">
-      <p class="q">Q3｜可以修改嗎？</p>
-      <p class="a">會依回饋進行調整。</p>
-    </div>
-
-    <div class="faq-item">
-      <p class="q">Q4｜會提供哪些檔案？</p>
-      <p class="a">提供完整人聲音檔，可加購伴奏版本。</p>
-    </div>
-
-    <!-- 🔥 新增 Q5 -->
-    <div class="faq-item">
-      <p class="q">Q5｜版權與使用說明</p>
-      <p class="a">
-        一、本工作室製作之歌曲皆為原創，內容依您提供之故事進行創作。若您提供之素材涉及抄襲或侵權，相關責任由提供者自行負責，與本工作室無關。<br><br>
-        二、完成作品之詞曲著作權歸委託方所有。若後續有上架串流平台或其他發行需求，本工作室可提供協助，並另行簽訂相關合約。
-      </p>
+      <p class="q">Q｜製作時間？</p>
+      <p class="a">約21～30天</p>
     </div>
 
   </div>
 </section>
 
-<section>
-  <h2>把你的故事交給我</h2>
-  <p>下一首被記住的歌 可能就是你的故事</p>
+<!-- Contact -->
+<section id="contact">
+  <h2>聯絡</h2>
+  <p>LINE 或 Email 聯絡我們</p>
 
-  <a href="https://lin.ee/uqYFa3X" class="btn">
-    立即開始創作你的故事
-  </a>
+  <p>LINE｜<a href="https://lin.ee/uqYFa3X" style="color:#fff;">點此聯絡</a></p>
+  <p>Email｜<a href="mailto:karbonxgaia.kayon@gmail.com" style="color:#fff;">karbonxgaia.kayon@gmail.com</a></p>
 </section>
 
 </body>
