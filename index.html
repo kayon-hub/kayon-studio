@@ -96,13 +96,19 @@ section{
   text-align:center;
 }
 
+/* 🔥 三欄 */
+.three-col{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:40px;
+}
+
 img{
   width:100%;
   border-radius:12px;
   margin-top:20px;
 }
 
-/* grid */
 .grid{
   display:grid;
   gap:20px;
@@ -166,23 +172,15 @@ a:hover{
   </a>
 </section>
 
-<!-- 客製 -->
-<!-- 三欄服務區 -->
+<!-- 🔥 三欄服務 -->
 <section>
-  <div style="
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:40px;
-    text-align:center;
-  ">
+  <div class="three-col">
 
-    <!-- 客製 -->
     <div>
       <h2>客製化歌曲</h2>
       <p>把你的故事變成一首專屬於你的歌</p>
     </div>
 
-    <!-- 流程 -->
     <div>
       <h2>製作流程</h2>
       <p>STEP 1 告訴我你的故事</p>
@@ -190,7 +188,6 @@ a:hover{
       <p>STEP 3 完成交付</p>
     </div>
 
-    <!-- 產業 -->
     <div>
       <h2>產業製作</h2>
       <p>品牌配樂 影像音樂 客製歌曲</p>
@@ -322,7 +319,6 @@ a:hover{
   </p>
 </section>
 
-<!-- Footer -->
 <footer class="footer">
   ©2026 KAYON STUDIO ｜ ©2026 KARBON X GAIA ENTERTAINMENT
 </footer>
