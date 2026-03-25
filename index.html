@@ -13,10 +13,11 @@ body{
   color:#fff;
 }
 
-/* ✅ 只補這段（修藍色連結） */
+/* 🔥 連結樣式 */
 a{
   color:#fff;
   text-decoration:none;
+  transition:0.3s;
 }
 
 a:visited{
@@ -27,15 +28,23 @@ a:hover{
   opacity:0.7;
 }
 
-/* 🔥 只補這兩個 class */
+/* works item */
+.work-item{
+  display:block;
+  text-decoration:underline;
+}
+
+/* 不換行 */
 .nowrap{
   white-space:nowrap;
 }
 
+/* 往右 */
 .shift-right{
   transform:translateX(20px);
 }
 
+/* Podcast 小字 */
 .subtitle-inline{
   font-size:13px;
   opacity:0.5;
@@ -60,13 +69,6 @@ a:hover{
   display:flex;
   align-items:center;
   gap:30px;
-}
-
-.nav-group a{
-  color:#fff;
-  text-decoration:none;
-  font-size:14px;
-  opacity:0.85;
 }
 
 .logo{
@@ -111,7 +113,6 @@ h1{
   padding:12px 24px;
   background:#fff;
   color:#000;
-  text-decoration:none;
   border-radius:999px;
 }
 
@@ -184,38 +185,36 @@ img{
   <p style="opacity:0.6;">請點擊任一作品連結試聽</p>
 
   <div class="works">
-  <a href="#" class="work-item nowrap">
-    01｜ SOMETHING REAL ｜韓系質感
-  </a>
 
-  <a href="#" class="work-item nowrap">
-    02｜ 放手的重量 ｜情緒敘事
-  </a>
+    <a href="#" class="work-item nowrap">
+      01｜ SOMETHING REAL ｜韓系質感
+    </a>
 
-  <a href="#" class="work-item nowrap shift-right">
-    03｜ NO GRAVITY ｜商業動能
-  </a>
+    <a href="#" class="work-item nowrap">
+      02｜ 放手的重量 ｜情緒敘事
+    </a>
 
-  <a href="#" class="work-item nowrap">
-    04｜ SHAKE IT ｜潮流風格
-  </a>
+    <a href="#" class="work-item nowrap shift-right">
+      03｜ NO GRAVITY ｜商業動能
+    </a>
 
-  <a href="#" class="work-item nowrap">
-    05｜ LUMINOUS FRACTURE ｜專案製作
-  </a>
+    <a href="#" class="work-item nowrap">
+      04｜ SHAKE IT ｜潮流風格
+    </a>
 
-  <a href="#" class="work-item nowrap shift-right">
-    06｜ 如果可是 ｜氛圍音樂
-  </a>
+    <a href="#" class="work-item nowrap">
+      05｜ LUMINOUS FRACTURE ｜專案製作
+    </a>
 
-</div>
+    <a href="#" class="work-item nowrap shift-right">
+      06｜ 如果可是 ｜氛圍音樂
+    </a>
 
   </div>
 </section>
 
 <!-- Podcast -->
 <section id="podcast">
-
   <h2>
     Podcast｜聲音優化
     <span class="subtitle-inline">
@@ -224,7 +223,6 @@ img{
   </h2>
 
   <img src="images/podcast.jpg">
-
 </section>
 
 <!-- Contact -->
