@@ -136,6 +136,33 @@ section {
   transform: translateX(20px);
 }
 
+/* 影像製作 YouTube 網格 */
+.youtube-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 電腦版顯示兩排 */
+  gap: 30px;
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 比例 */
+  background-color: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 /* Podcast 區塊 */
 .podcast-tag {
   font-size: 13px;
@@ -177,17 +204,27 @@ section {
   backdrop-filter: blur(10px);
   color: white;
   border-radius: 50%;
-  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   z-index: 9999;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+}
+
+.music-toggle svg {
+  width: 24px;
+  height: 24px;
+  fill: rgba(255, 255, 255, 0.7);
+  transition: fill 0.3s ease;
 }
 
 .music-toggle:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+.music-toggle:hover svg {
+  fill: rgba(255, 255, 255, 1);
 }
 
 /* 響應式設計 RWD */
@@ -199,9 +236,21 @@ section {
   .nav-group { gap: 15px; font-size: 13px; }
   .logo { width: 90px; }
   h1 { font-size: 28px; }
+  
   .works-grid { grid-template-columns: 1fr; text-align: center; }
-  .shift-right { transform: none; } /* 手機版取消位移，保持置中整齊 */
+  .shift-right { transform: none; }
+  
+  .youtube-grid { grid-template-columns: 1fr; gap: 20px; }
+  
   .music-toggle { bottom: 20px; right: 20px; width: 45px; height: 45px; }
+
+  /* 修復 Podcast 手機版小字排版 */
+  .podcast-tag {
+    display: block;
+    margin-left: 0;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
 }
 </style>
 </head>
@@ -212,18 +261,16 @@ section {
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
-<div id="musicBtn" class="music-toggle">🔇</div>
-  
+<div id="musicBtn" class="music-toggle"></div>
+
 <div class="navbar">
   <div class="nav-group">
     <a href="#custom">客製歌曲</a>
     <a href="#pro">產業製作</a>
-    <a href="#video">影像製作</a> 
-    
+    <a href="#video">影像製作</a>
     <a href="#" onclick="window.scrollTo(0,0); return false;">
       <img src="logo.png" class="logo" alt="KAYON STUDIO Logo">
     </a>
-    
     <a href="#podcast">Podcast</a>
     <a href="#contact">聯絡我們</a>
   </div>
@@ -266,6 +313,25 @@ section {
   </div>
 </section>
 
+<section id="video">
+  <h2>影像製作｜Video Production</h2>
+  
+  <div class="youtube-grid">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/yyVXVirPXQo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/o-aIw9toVJs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
 <section id="podcast">
   <h2>
     Podcast｜聲音優化
@@ -292,20 +358,25 @@ section {
   const musicBtn = document.getElementById("musicBtn");
   let isPlaying = false;
 
+  // 定義靜音與播放的精緻線條圖案
+  const svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>`;
+  const svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>`;
+
+  // 一進網頁預設顯示靜音圖案
+  musicBtn.innerHTML = svgMute;
+
   musicBtn.addEventListener("click", () => {
     if (isPlaying) {
       audio.pause();
-      musicBtn.innerText = "🔇";
+      musicBtn.innerHTML = svgMute;
     } else {
       audio.volume = 0.3; // 預設音量 30%
       const playPromise = audio.play();
       
-      // 處理瀏覽器可能的播放限制或找不到檔案的狀況
       if (playPromise !== undefined) {
         playPromise.then(_ => {
-          musicBtn.innerText = "🔊";
+          musicBtn.innerHTML = svgPlay;
         }).catch(error => {
-          alert("音樂檔案無法播放，請確認 bgm.mp3 已經上傳至 GitHub。");
           console.error("Audio playback error:", error);
         });
       }
