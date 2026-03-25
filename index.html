@@ -19,13 +19,14 @@ body {
 a {
   color: #ffffff;
   text-decoration: none;
-  transition: opacity 0.3s;
+  transition: all 0.3s;
 }
 
 a:hover {
   opacity: 0.7;
 }
 
+/* 主要按鈕 */
 .btn {
   display: inline-block;
   padding: 12px 35px;
@@ -34,8 +35,26 @@ a:hover {
   border-radius: 999px;
   font-weight: bold;
   font-size: 16px;
-  margin-top: 20px;
+  margin: 10px;
   box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+}
+
+/* 次要按鈕 (Email 用) */
+.btn-outline {
+  display: inline-block;
+  padding: 11px 34px;
+  background: transparent;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  font-weight: normal;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
 }
 
 /* ==================== 導覽列 Navbar ==================== */
@@ -63,7 +82,7 @@ a:hover {
   cursor: pointer;
 }
 
-/* ==================== 首頁視覺 Hero (專業風) ==================== */
+/* ==================== 首頁視覺 Hero ==================== */
 .hero {
   height: 100vh;
   display: flex;
@@ -190,6 +209,7 @@ h2 {
   h1 { font-size: 28px; }
   .works-grid { grid-template-columns: 1fr; text-align: center; }
   .youtube-grid { grid-template-columns: 1fr; }
+  .btn, .btn-outline { width: 80%; margin: 10px auto; }
 }
 </style>
 </head>
@@ -258,10 +278,15 @@ h2 {
 
 <section id="contact">
   <h2>與我們對話</h2>
-  <p style="opacity: 0.8; line-height: 1.8; margin-bottom: 30px;">每一段難忘的回憶，都值得一個專屬的旋律。<br>準備好讓世界聽見你的故事了嗎？</p>
-  <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank">預約你的主題曲</a>
-  <div style="margin-top: 40px; opacity: 0.6;">
-    <a href="mailto:karbonxgaia.kayon@gmail.com">karbonxgaia.kayon@gmail.com</a>
+  <p style="opacity: 0.8; line-height: 1.8; margin-bottom: 30px;">
+    每一段難忘的回憶，都值得一個專屬的旋律。<br>
+    準備好讓世界聽見你的故事了嗎？
+  </p>
+  
+  <div class="cta-container">
+    <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank">預約你的主題曲</a>
+    
+    <a href="mailto:karbonxgaia.kayon@gmail.com" class="btn-outline">透過 Email 聯繫</a>
   </div>
 </section>
 
@@ -284,11 +309,7 @@ h2 {
       audio.volume = 0.3;
       var playPromise = audio.play();
       if (playPromise !== undefined) {
-        playPromise.then(_ => {
-          musicBtn.innerHTML = svgPlay;
-        }).catch(error => {
-          console.log("播放攔截:", error);
-        });
+        playPromise.then(_ => { musicBtn.innerHTML = svgPlay; }).catch(e => { console.log(e); });
       }
     } else {
       audio.pause();
@@ -296,7 +317,6 @@ h2 {
     }
   }
 
-  // 電腦與手機點擊後解鎖
   const unlockEvents = ["mousedown", "touchstart"];
   unlockEvents.forEach(evt => {
     document.addEventListener(evt, () => {
@@ -307,7 +327,6 @@ h2 {
     }, { once: true });
   });
 
-  // 按鈕點擊切換
   musicBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     hasInteracted = true;
