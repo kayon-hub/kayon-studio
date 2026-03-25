@@ -28,13 +28,14 @@ a:hover {
 
 .btn {
   display: inline-block;
-  padding: 12px 28px;
+  padding: 12px 35px;
   background: #ffffff;
   color: #000000 !important;
   border-radius: 999px;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 16px;
   margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(255,255,255,0.2);
 }
 
 /* ==================== 導覽列 Navbar ==================== */
@@ -60,14 +61,9 @@ a:hover {
 .logo {
   width: 120px;
   cursor: pointer;
-  transition: opacity 0.3s;
 }
 
-.logo:hover {
-  opacity: 0.8;
-}
-
-/* ==================== 首頁視覺 Hero ==================== */
+/* ==================== 首頁視覺 Hero (專業風) ==================== */
 .hero {
   height: 100vh;
   display: flex;
@@ -84,7 +80,7 @@ a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.95));
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
   z-index: 0;
 }
 
@@ -94,71 +90,60 @@ a:hover {
 }
 
 h1 {
-  font-size: 36px;
-  line-height: 1.5;
-  margin-bottom: 10px;
+  font-size: 42px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
 }
 
 .subtitle {
-  opacity: 0.7;
-  font-size: 16px;
-  margin-bottom: 30px;
+  opacity: 0.8;
+  font-size: 18px;
+  margin-bottom: 35px;
+  font-weight: 300;
 }
 
 /* ==================== 通用區塊 Section ==================== */
 section {
-  padding: 100px 20px 60px;
+  padding: 100px 20px 80px;
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
 }
 
 h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 26px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
 }
 
 /* ==================== 作品區塊 Works ==================== */
-.works-desc {
-  opacity: 0.6;
-  font-size: 14px;
-  line-height: 1.8;
-  margin: 15px 0 40px;
-}
-
 .works-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px 40px;
   text-align: left;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 40px auto 0;
 }
 
 .work-item {
   display: block;
   text-decoration: underline;
-  white-space: nowrap;
   font-size: 15px;
 }
 
-.shift-right {
-  transform: translateX(20px);
-}
-
-/* ==================== 影像製作 YouTube 網格 ==================== */
+/* ==================== 影像製作 YouTube ==================== */
 .youtube-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
-  max-width: 900px;
-  margin: 40px auto 0;
+  margin-top: 40px;
 }
 
 .video-container {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 比例 */
+  padding-bottom: 56.25%;
   background-color: #000;
   border-radius: 12px;
   overflow: hidden;
@@ -173,94 +158,37 @@ h2 {
   border: none;
 }
 
-/* ==================== Podcast 區塊 ==================== */
-.podcast-tag {
-  font-size: 13px;
-  opacity: 0.5;
-  margin-left: 10px;
-  font-weight: normal;
-}
-
-.podcast-img {
-  width: 100%;
-  max-width: 800px;
-  border-radius: 12px;
-  margin-top: 25px;
-}
-
-/* ==================== 聯絡我們與 Footer ==================== */
-.contact-links {
-  margin: 30px 0;
-  font-size: 18px;
-}
-
-.footer {
-  text-align: center;
-  font-size: 12px;
-  opacity: 0.4;
-  padding: 40px 20px;
-  margin-top: 40px;
-}
-
 /* ==================== 🎵 懸浮音樂按鈕 ==================== */
 .music-toggle {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
-  color: white;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   z-index: 9999;
-  transition: all 0.3s ease;
 }
 
 .music-toggle svg {
-  width: 24px;
-  height: 24px;
-  fill: rgba(255, 255, 255, 0.7);
-  transition: fill 0.3s ease;
-}
-
-.music-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.music-toggle:hover svg {
-  fill: rgba(255, 255, 255, 1);
+  width: 26px;
+  height: 26px;
+  fill: white;
 }
 
 /* ==================== 響應式設計 RWD ==================== */
-@media (max-width: 1024px) {
-  .works-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
 @media (max-width: 768px) {
-  .nav-group { gap: 15px; font-size: 13px; }
-  .logo { width: 90px; }
+  .nav-group { gap: 12px; font-size: 12px; }
+  .logo { width: 85px; }
   h1 { font-size: 28px; }
-  
   .works-grid { grid-template-columns: 1fr; text-align: center; }
-  .shift-right { transform: none; }
-  
-  .youtube-grid { grid-template-columns: 1fr; gap: 20px; }
-  
-  .music-toggle { bottom: 20px; right: 20px; width: 45px; height: 45px; }
-
-  /* 修復 Podcast 手機版小字排版 */
-  .podcast-tag {
-    display: block;
-    margin-left: 0;
-    margin-top: 10px;
-    line-height: 1.6;
-  }
+  .youtube-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -278,11 +206,7 @@ h2 {
     <a href="#about">品牌故事</a>
     <a href="#custom">客製歌曲</a>
     <a href="#pro">產業製作</a>
-    
-    <a href="#" onclick="window.scrollTo(0,0); return false;" style="display: flex; align-items: center; margin: 0 10px;">
-      <img src="logo.png" class="logo" alt="KAYON STUDIO Logo">
-    </a>
-    
+    <a href="#" onclick="window.scrollTo(0,0); return false;"><img src="logo.png" class="logo"></a>
     <a href="#video">影像製作</a>
     <a href="#podcast">Podcast</a>
     <a href="#contact">聯絡我們</a>
@@ -290,95 +214,57 @@ h2 {
 </div>
 
 <section class="hero">
-  <h1>有些話 說不出口<br>就讓一首歌替你說</h1>
-  <p class="subtitle">Custom Songs｜Music Production｜Audio Storytelling</p>
-  <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank" rel="noopener noreferrer">開始你的音樂旅程</a>
+  <h1>從商業動能到個人 IP<br>為聲音注入靈魂</h1>
+  <p class="subtitle">專業音樂製作 ｜ 品牌配樂 ｜ 影像聲音設計</p>
+  <a href="#pro" class="btn">瀏覽作品集</a>
 </section>
 
 <section id="about">
-  <h2>品牌故事｜About KAYON STUDIO</h2>
-  
-  <div style="max-width: 700px; margin: 30px auto 0; text-align: left; line-height: 1.8; opacity: 0.85; font-size: 16px; letter-spacing: 0.5px;">
-    <p style="text-align: center; font-weight: bold; margin-bottom: 30px; opacity: 1;">
-      「有些話說不出口，就讓一首歌替你說。」
-    </p>
-    <p>
-      這不僅僅是一句標語，更是 KAYON STUDIO 創立的初衷。我們相信，每一段故事、每一次心跳，都能轉化為最純粹的頻率。
-    </p>
-    <p>
-      無論是充滿商業動能的品牌配樂、需要細膩情緒敘事的影像聲音設計，還是屬於你個人的專屬主題曲，我們致力於捕捉那些難以言喻的情感，用音樂將它們具象化。在這裡，聲音不只是背景，而是訴說故事的主角。
-    </p>
+  <h2>About KAYON STUDIO</h2>
+  <div style="max-width: 700px; margin: 0 auto; line-height: 2; opacity: 0.9; text-align: left;">
+    <p style="text-align: center; font-weight: bold; margin-bottom: 25px;">「有些話說不出口，就讓一首歌替你說。」</p>
+    <p>無論是細膩的情緒敘事、廣告配樂、或是專屬於你的個人主題曲，我們致力於捕捉難以言喻的情感，將其具象化為純粹的頻率。在這裡，聲音不只是背景，而是訴說故事的主角。</p>
   </div>
 </section>
 
 <section id="custom">
-  <div id="pro"></div> <h2>KAYON STUDIO｜Selected Works</h2>
-  
-  <p class="works-desc">
-    請點擊任一作品連結試聽<br><br>
-    品牌配樂｜廣告音樂｜影像聲音設計｜YouTube Podcast 配樂<br>
-    客製主題曲｜個人 IP 音樂｜完整歌曲製作（詞 曲 編曲 混音）
-  </p>
-
+  <div id="pro"></div>
+  <h2>Selected Works</h2>
   <div class="works-grid">
-    <a href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank" rel="noopener noreferrer" class="work-item">
-      01｜ SOMETHING REAL ｜韓系質感
-    </a>
-    <a href="https://music.apple.com/tw/album/%E6%9C%80%E5%BE%8C%E4%B8%80%E6%AC%A1%E5%BF%83%E8%B7%B3-2026-remastered-version/1876513606?i=1876513607" target="_blank" rel="noopener noreferrer" class="work-item">
-      02｜ 放手的重量 ｜情緒敘事
-    </a>
-    <a href="https://music.apple.com/tw/album/no-gravity-2026-remastered-version/1884021525?i=1884021766" target="_blank" rel="noopener noreferrer" class="work-item shift-right">
-      03｜ NO GRAVITY ｜商業動能
-    </a>
-    <a href="https://www.kkbox.com/tw/tc/song/CqstcdRCUh-7_bm43J" target="_blank" rel="noopener noreferrer" class="work-item">
-      04｜ SHAKE IT ｜潮流風格
-    </a>
-    <a href="https://www.kkbox.com/tw/tc/song/OnqbQjh7o9axMaZU5M" target="_blank" rel="noopener noreferrer" class="work-item">
-      05｜ LUMINOUS FRACTURE ｜專案製作
-    </a>
-    <a href="https://www.kkbox.com/tw/tc/song/1ZyAdGucmUN-7Uys3e" target="_blank" rel="noopener noreferrer" class="work-item shift-right">
-      06｜ 如果可是 ｜氛圍音樂
-    </a>
+    <a href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank" class="work-item">01｜ SOMETHING REAL ｜ 韓系質感</a>
+    <a href="https://music.apple.com/tw/album/%E6%9C%80%E5%BE%8C%E4%B8%80%E6%AC%A1%E5%BF%83%E8%B7%B3-2026-remastered-version/1876513606?i=1876513607" target="_blank" class="work-item">02｜ 放手的重量 ｜ 情緒敘事</a>
+    <a href="https://music.apple.com/tw/album/no-gravity-2026-remastered-version/1884021525?i=1884021766" target="_blank" class="work-item">03｜ NO GRAVITY ｜ 商業動能</a>
+    <a href="https://www.kkbox.com/tw/tc/song/CqstcdRCUh-7_bm43J" target="_blank" class="work-item">04｜ SHAKE IT ｜ 潮流風格</a>
+    <a href="https://www.kkbox.com/tw/tc/song/OnqbQjh7o9axMaZU5M" target="_blank" class="work-item">05｜ LUMINOUS FRACTURE ｜ 專案製作</a>
+    <a href="https://www.kkbox.com/tw/tc/song/1ZyAdGucmUN-7Uys3e" target="_blank" class="work-item">06｜ 如果可是 ｜ 氛圍音樂</a>
   </div>
 </section>
 
 <section id="video">
-  <h2>影像製作｜Video Production</h2>
-  
+  <h2>Video Production</h2>
   <div class="youtube-grid">
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/yyVXVirPXQo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/o-aIw9toVJs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/sRC7AGxNMV4" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/nwMQyEO4hMw" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/yyVXVirPXQo" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/o-aIw9toVJs" allowfullscreen></iframe></div>
   </div>
 </section>
 
 <section id="podcast">
-  <h2>
-    Podcast｜聲音優化
-    <span class="podcast-tag">降噪｜音量平衡｜贅詞剪輯｜音質優化</span>
-  </h2>
-  <img src="images/podcast.jpg" alt="Podcast 聲音優化" class="podcast-img">
+  <h2>Podcast 聲音優化</h2>
+  <img src="images/podcast.jpg" style="width: 100%; border-radius: 12px; margin-top: 20px;">
 </section>
 
 <section id="contact">
-  <h2>聯絡我們</h2>
-  <div class="contact-links">
-    <a href="https://lin.ee/uqYFa3X" target="_blank" rel="noopener noreferrer">LINE</a> ｜ 
-    <a href="mailto:karbonxgaia.kayon@gmail.com">Email</a>
+  <h2>與我們對話</h2>
+  <p style="opacity: 0.8; line-height: 1.8; margin-bottom: 30px;">每一段難忘的回憶，都值得一個專屬的旋律。<br>準備好讓世界聽見你的故事了嗎？</p>
+  <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank">預約你的主題曲</a>
+  <div style="margin-top: 40px; opacity: 0.6;">
+    <a href="mailto:karbonxgaia.kayon@gmail.com">karbonxgaia.kayon@gmail.com</a>
   </div>
-  <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank" rel="noopener noreferrer">把你的故事變成一首歌</a>
 </section>
 
-<footer class="footer">
+<footer style="text-align: center; padding: 40px; font-size: 12px; opacity: 0.4;">
   ©2026 KAYON STUDIO ｜ ©2026 KARBON X GAIA ENTERTAINMENT
 </footer>
 
@@ -387,55 +273,27 @@ h2 {
   const musicBtn = document.getElementById("musicBtn");
   let hasInteracted = false; 
 
-  // SVG 圖案
   const svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>`;
   const svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>`;
 
   musicBtn.innerHTML = svgMute;
 
-  // 切換播放狀態的核心函數
   function togglePlay() {
     if (audio.paused) {
-      audio.volume = 0.3; // 預設音量
-      let playPromise = audio.play();
-      
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          musicBtn.innerHTML = svgPlay; // 成功播放才換圖案
-        }).catch(error => {
-          console.error("音樂載入錯誤:", error);
-          // 如果出錯，跳出警告視窗告訴你！
-          alert("音樂播放失敗 🚨\n請檢查 GitHub 裡是否真的有 kayonstudio.mp3 這個檔案喔！");
-        });
-      }
+      audio.volume = 0.3;
+      audio.play().then(() => { musicBtn.innerHTML = svgPlay; }).catch(e => { console.error("Play error", e); });
     } else {
       audio.pause();
       musicBtn.innerHTML = svgMute;
     }
   }
 
-  // 監聽網頁任意點擊 (第一次互動即播放)
-  document.addEventListener("click", function(e) {
-    // 避免跟右下角按鈕打架
+  document.addEventListener("click", (e) => {
     if (e.target.closest('#musicBtn')) return;
-    
-    if (!hasInteracted) {
-      hasInteracted = true;
-      togglePlay();
-    }
+    if (!hasInteracted) { hasInteracted = true; togglePlay(); }
   });
 
-  // 觸控螢幕也算互動
-  document.addEventListener("touchstart", function(e) {
-    if (e.target.closest('#musicBtn')) return;
-    if (!hasInteracted) {
-      hasInteracted = true;
-      togglePlay();
-    }
-  }, {passive: true});
-
-  // 專門處理右下角按鈕的點擊
-  musicBtn.addEventListener("click", function(e) {
+  musicBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     hasInteracted = true;
     togglePlay();
