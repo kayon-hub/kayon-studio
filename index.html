@@ -16,17 +16,9 @@ body {
   scroll-behavior: smooth;
 }
 
-a {
-  color: #ffffff;
-  text-decoration: none;
-  transition: all 0.3s;
-}
+a { color: #ffffff; text-decoration: none; transition: all 0.3s; }
+a:hover { opacity: 0.7; }
 
-a:hover {
-  opacity: 0.7;
-}
-
-/* 主要按鈕 (LINE) */
 .btn {
   display: inline-block;
   padding: 12px 35px;
@@ -39,7 +31,6 @@ a:hover {
   box-shadow: 0 4px 15px rgba(255,255,255,0.2);
 }
 
-/* 次要按鈕 (Email 用) */
 .btn-outline {
   display: inline-block;
   padding: 11px 34px;
@@ -52,10 +43,7 @@ a:hover {
   margin: 10px;
 }
 
-.btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #ffffff;
-}
+.btn-outline:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; }
 
 /* ==================== 導覽列 Navbar ==================== */
 .navbar {
@@ -71,18 +59,10 @@ a:hover {
   z-index: 9999;
 }
 
-.nav-group {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
+.nav-group { display: flex; align-items: center; gap: 30px; }
+.logo { width: 120px; cursor: pointer; }
 
-.logo {
-  width: 120px;
-  cursor: pointer;
-}
-
-/* ==================== 首頁視覺 Hero ==================== */
+/* ==================== 區塊設計 ==================== */
 .hero {
   height: 100vh;
   display: flex;
@@ -103,82 +83,22 @@ a:hover {
   z-index: 0;
 }
 
-.hero h1, .hero p, .hero a {
-  position: relative;
-  z-index: 1;
-}
+.hero h1, .hero p, .hero a { position: relative; z-index: 1; }
 
-h1 {
-  font-size: 42px;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
-  line-height: 1.4;
-}
+h1 { font-size: 42px; letter-spacing: 2px; margin-bottom: 15px; line-height: 1.4; }
+.subtitle { opacity: 0.8; font-size: 18px; margin-bottom: 35px; font-weight: 300; }
 
-.subtitle {
-  opacity: 0.8;
-  font-size: 18px;
-  margin-bottom: 35px;
-  font-weight: 300;
-}
+section { padding: 100px 20px 80px; max-width: 1000px; margin: 0 auto; text-align: center; }
+h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
 
-/* ==================== 通用區塊 Section ==================== */
-section {
-  padding: 100px 20px 80px;
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
-}
+.works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px 40px; text-align: left; max-width: 900px; margin: 40px auto 0; }
+.work-item { display: block; text-decoration: underline; font-size: 15px; }
 
-h2 {
-  font-size: 26px;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
-}
+.youtube-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 40px; }
+.video-container { position: relative; width: 100%; padding-bottom: 56.25%; background-color: #000; border-radius: 12px; overflow: hidden; }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-/* ==================== 作品區塊 Works ==================== */
-.works-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px 40px;
-  text-align: left;
-  max-width: 900px;
-  margin: 40px auto 0;
-}
-
-.work-item {
-  display: block;
-  text-decoration: underline;
-  font-size: 15px;
-}
-
-/* ==================== 影像製作 YouTube ==================== */
-.youtube-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.video-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  background-color: #000;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* ==================== 🎵 懸浮音樂按鈕 ==================== */
+/* 🎵 音樂按鈕 */
 .music-toggle {
   position: fixed;
   bottom: 30px;
@@ -196,13 +116,8 @@ h2 {
   z-index: 9999;
 }
 
-.music-toggle svg {
-  width: 26px;
-  height: 26px;
-  fill: white;
-}
+.music-toggle svg { width: 26px; height: 26px; fill: white; }
 
-/* ==================== 響應式設計 RWD ==================== */
 @media (max-width: 768px) {
   .nav-group { gap: 12px; font-size: 12px; }
   .logo { width: 85px; }
@@ -242,9 +157,9 @@ h2 {
 
 <section id="about">
   <h2>About KAYON STUDIO</h2>
-  <div style="max-width: 700px; margin: 0 auto; line-height: 2; opacity: 0.9; text-align: left;">
-    <p style="text-align: center; font-weight: bold; margin-bottom: 25px;">「有些話說不出口，就讓一首歌替你說。」</p>
-    <p>無論是細膩的情緒敘事、廣告配樂、或是專屬於你的個人主題曲，我們致力於捕捉難以言喻的情感，將其具象化為純粹的頻率。在這裡，聲音不只是背景，而是訴說故事的主角。</p>
+  <div style="max-width: 700px; margin: 0 auto; line-height: 2; opacity: 0.9;">
+    <p style="font-weight: bold; margin-bottom: 25px;">「有些話說不出口，就讓一首歌替你說。」</p>
+    <p style="text-align: left;">無論是細膩的情緒敘事、廣告配樂、或是專屬於你的個人主題曲，我們致力於捕捉難以言喻的情感，將其具象化為純粹的頻率。</p>
   </div>
 </section>
 
@@ -282,10 +197,8 @@ h2 {
     每一段難忘的回憶，都值得一個專屬的旋律。<br>
     準備好讓世界聽見你的故事了嗎？
   </p>
-  
   <div class="cta-container">
     <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank">預約你的主題曲</a>
-    
     <a href="mailto:karbonxgaia.kayon@gmail.com" class="btn-outline">透過 Email 聯繫</a>
   </div>
 </section>
@@ -295,42 +208,49 @@ h2 {
 </footer>
 
 <script>
-  const audio = document.getElementById("bgm");
-  const musicBtn = document.getElementById("musicBtn");
-  let hasInteracted = false; 
+  var audio = document.getElementById("bgm");
+  var musicBtn = document.getElementById("musicBtn");
+  var hasInteracted = false;
 
-  const svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>`;
-  const svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>`;
+  var svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>`;
+  var svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>`;
 
   musicBtn.innerHTML = svgMute;
 
-  function togglePlay() {
+  // 如果載入失敗，在 console 報警
+  audio.onerror = function() {
+    console.error("⚠️ 音樂檔案載入失敗！請檢查 GitHub 檔案路徑。");
+  };
+
+  function tryPlay() {
+    if (hasInteracted) return;
+    hasInteracted = true;
+    audio.volume = 0.3;
+    
+    audio.play().then(function() {
+      musicBtn.innerHTML = svgPlay;
+    }).catch(function(e) {
+      console.log("播放被攔截:", e);
+      hasInteracted = false; 
+    });
+  }
+
+  // 監聽所有動作來解鎖
+  window.addEventListener("mousedown", tryPlay);
+  window.addEventListener("touchstart", tryPlay);
+  window.addEventListener("scroll", tryPlay);
+
+  // 手動按鈕控制
+  musicBtn.addEventListener("click", function(e) {
+    e.stopPropagation();
+    hasInteracted = true;
     if (audio.paused) {
-      audio.volume = 0.3;
-      var playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.then(_ => { musicBtn.innerHTML = svgPlay; }).catch(e => { console.log(e); });
-      }
+      audio.play();
+      musicBtn.innerHTML = svgPlay;
     } else {
       audio.pause();
       musicBtn.innerHTML = svgMute;
     }
-  }
-
-  const unlockEvents = ["mousedown", "touchstart"];
-  unlockEvents.forEach(evt => {
-    document.addEventListener(evt, () => {
-      if (!hasInteracted) {
-        hasInteracted = true;
-        togglePlay();
-      }
-    }, { once: true });
-  });
-
-  musicBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    hasInteracted = true;
-    togglePlay();
   });
 </script>
 
