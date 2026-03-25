@@ -13,11 +13,10 @@ body{
   color:#fff;
 }
 
-/* 🔥 連結統一樣式 */
+/* ✅ 只補這段（修藍色連結） */
 a{
   color:#fff;
   text-decoration:none;
-  transition:0.3s;
 }
 
 a:visited{
@@ -28,8 +27,50 @@ a:hover{
   opacity:0.7;
 }
 
-a:active{
+/* 🔥 只補這兩個 class */
+.nowrap{
+  white-space:nowrap;
+}
+
+.shift-right{
+  transform:translateX(20px);
+}
+
+.subtitle-inline{
+  font-size:13px;
+  opacity:0.5;
+  margin-left:12px;
+}
+
+/* Navbar */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:80px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  z-index:9999;
+}
+
+.nav-group{
+  display:flex;
+  align-items:center;
+  gap:30px;
+}
+
+.nav-group a{
   color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  opacity:0.85;
+}
+
+.logo{
+  width:140px;
 }
 
 /* Hero */
@@ -92,29 +133,13 @@ section{
   margin:40px auto;
 }
 
-/* 不換行（05修正） */
-.nowrap{
-  white-space:nowrap;
-}
-
-/* 03 / 06 右移 */
-.shift-right{
-  transform:translateX(20px);
-}
-
-/* Podcast 小字 */
-.subtitle-inline{
-  font-size:13px;
-  opacity:0.5;
-  margin-left:12px;
-}
-
 img{
   width:100%;
   border-radius:12px;
   margin-top:20px;
 }
 
+/* Footer */
 .footer{
   text-align:center;
   font-size:12px;
@@ -125,6 +150,17 @@ img{
 </head>
 
 <body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="nav-group">
+    <a href="#custom">客製歌曲</a>
+    <a href="#pro">產業製作</a>
+    <img src="logo.png" class="logo">
+    <a href="#podcast">Podcast</a>
+    <a href="#contact">聯絡我們</a>
+  </div>
+</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -186,16 +222,22 @@ img{
     </span>
   </h2>
 
-  <!-- ⚠️ 圖片在 images 資料夾 -->
-  <div style="max-width:900px; margin:40px auto;">
-    <img src="images/podcast.jpg">
-  </div>
+  <img src="images/podcast.jpg">
 
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>聯絡我們</h2>
+  <p>
+    <a href="https://lin.ee/uqYFa3X">LINE</a> ｜ 
+    <a href="mailto:karbonxgaia.kayon@gmail.com">Email</a>
+  </p>
 </section>
 
 <!-- Footer -->
 <footer class="footer">
-  ©2026 KAYON STUDIO
+  ©2026 KAYON STUDIO ｜ ©2026 KARBON X GAIA ENTERTAINMENT
 </footer>
 
 </body>
