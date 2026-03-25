@@ -93,6 +93,7 @@ h1 {
   font-size: 42px;
   letter-spacing: 2px;
   margin-bottom: 15px;
+  line-height: 1.4;
 }
 
 .subtitle {
@@ -195,7 +196,7 @@ h2 {
 
 <body>
 
-<audio id="bgm" loop>
+<audio id="bgm" loop preload="auto">
   <source src="bgm.mp3/kayonstudio.mp3" type="audio/mpeg">
 </audio>
 
@@ -216,7 +217,7 @@ h2 {
 <section class="hero">
   <h1>從商業動能到個人 IP<br>為聲音注入靈魂</h1>
   <p class="subtitle">專業音樂製作 ｜ 品牌配樂 ｜ 影像聲音設計</p>
-  <a href="#pro" class="btn">瀏覽作品集</a>
+  <a href="#custom" class="btn">瀏覽作品集</a>
 </section>
 
 <section id="about">
@@ -281,18 +282,32 @@ h2 {
   function togglePlay() {
     if (audio.paused) {
       audio.volume = 0.3;
-      audio.play().then(() => { musicBtn.innerHTML = svgPlay; }).catch(e => { console.error("Play error", e); });
+      var playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          musicBtn.innerHTML = svgPlay;
+        }).catch(error => {
+          console.log("播放攔截:", error);
+        });
+      }
     } else {
       audio.pause();
       musicBtn.innerHTML = svgMute;
     }
   }
 
-  document.addEventListener("click", (e) => {
-    if (e.target.closest('#musicBtn')) return;
-    if (!hasInteracted) { hasInteracted = true; togglePlay(); }
+  // 電腦與手機點擊後解鎖
+  const unlockEvents = ["mousedown", "touchstart"];
+  unlockEvents.forEach(evt => {
+    document.addEventListener(evt, () => {
+      if (!hasInteracted) {
+        hasInteracted = true;
+        togglePlay();
+      }
+    }, { once: true });
   });
 
+  // 按鈕點擊切換
   musicBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     hasInteracted = true;
