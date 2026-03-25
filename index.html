@@ -6,101 +6,166 @@
 <title>KAYON STUDIO</title>
 
 <style>
+/* 基本設定 */
 body {
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  background:#0f0f0f;
-  color:#fff;
-  overflow-x:hidden;
-  scroll-behavior: smooth; /* 加上平滑捲動效果 */
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #0f0f0f;
+  color: #ffffff;
+  overflow-x: hidden;
+  scroll-behavior: smooth; /* 點擊選單會平滑捲動 */
 }
 
-/* 連結 */
-a { color:#fff; text-decoration:none; transition:0.3s; }
-a:visited { color:#fff; }
-a:hover { opacity:0.7; }
-
-/* 按鈕 */
-.btn {
-  display:inline-block;
-  margin-top:20px;
-  padding:12px 24px;
-  background:#fff;
-  color:#000 !important;
-  border-radius:999px;
-  font-weight:600;
+a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.3s;
 }
 
-/* works */
-.work-item { display:block; text-decoration:underline; }
-.nowrap { white-space:nowrap; }
-.shift-right { transform:translateX(20px); }
+a:hover {
+  opacity: 0.7;
+}
 
-/* Navbar */
+/* 導覽列 Navbar */
 .navbar {
-  position:fixed;
-  top:0;
-  width:100%;
-  height:70px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
-  z-index:9999;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
 }
-.nav-group { display:flex; align-items:center; gap:20px; }
-.logo { width:120px; cursor:pointer; }
 
-/* Hero */
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 120px;
+  cursor: pointer;
+}
+
+/* 首頁視覺 Hero */
 .hero {
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:url("images/hero.jpg") center/cover no-repeat;
-  position:relative;
-  padding:0 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: url("images/hero.jpg") center/cover no-repeat;
+  position: relative;
+  padding: 0 20px;
 }
+
 .hero::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9));
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.95));
+  z-index: 0;
 }
-.hero * { position:relative; z-index:1; }
 
-h1 { font-size:36px; line-height:1.4; }
-.subtitle { opacity:0.7; margin-top:10px; }
+.hero h1, .hero p, .hero a {
+  position: relative;
+  z-index: 1;
+}
 
-/* section */
+h1 {
+  font-size: 36px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  opacity: 0.7;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+/* 按鈕樣式 */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #ffffff;
+  color: #000000 !important;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* 通用區塊 Section */
 section {
-  padding:100px 20px 80px; /* 增加上方 padding 避免被 Navbar 擋住 */
-  max-width:1000px;
-  margin:auto;
-  text-align:center;
+  padding: 100px 20px 60px; /* 上方留白給導覽列 */
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* works */
-.works {
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:20px 40px;
-  text-align:left;
-  max-width:900px;
-  margin:40px auto;
+/* 作品區塊 Works */
+.works-desc {
+  opacity: 0.6;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 15px 0 40px;
 }
 
-/* Podcast */
-.subtitle-inline { font-size:13px; opacity:0.5; margin-left:10px; }
-img { width:100%; border-radius:12px; margin-top:20px; }
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px 40px;
+  text-align: left;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-/* Footer */
-.footer { text-align:center; font-size:12px; opacity:0.4; padding:50px 20px; }
+.work-item {
+  display: block;
+  text-decoration: underline;
+  white-space: nowrap;
+  font-size: 15px;
+}
 
-/* 🎵 懸浮音樂播放按鈕 CSS */
+.shift-right {
+  transform: translateX(20px);
+}
+
+/* Podcast 區塊 */
+.podcast-tag {
+  font-size: 13px;
+  opacity: 0.5;
+  margin-left: 10px;
+  font-weight: normal;
+}
+
+.podcast-img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 12px;
+  margin-top: 25px;
+}
+
+/* 聯絡我們與 Footer */
+.contact-links {
+  margin: 30px 0;
+  font-size: 18px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.4;
+  padding: 40px 20px;
+  margin-top: 40px;
+}
+
+/* 🎵 懸浮音樂按鈕 */
 .music-toggle {
   position: fixed;
   bottom: 30px;
@@ -112,28 +177,31 @@ img { width:100%; border-radius:12px; margin-top:20px; }
   backdrop-filter: blur(10px);
   color: white;
   border-radius: 50%;
-  font-size: 24px;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   z-index: 9999;
-  transition: 0.3s;
+  transition: background 0.3s;
 }
-.music-toggle:hover { background: rgba(255, 255, 255, 0.3); }
 
-/* 平板 */
-@media (max-width:1024px){
-  .works { grid-template-columns:1fr 1fr; }
+.music-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
-/* 手機 */
-@media (max-width:768px){
-  .shift-right { transform:none; }
-  .works { grid-template-columns:1fr; }
-  h1 { font-size:28px; }
-  .nav-group { gap:12px; font-size:12px; }
-  .logo { width:90px; }
-  .music-toggle { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 20px; }
+
+/* 響應式設計 RWD */
+@media (max-width: 1024px) {
+  .works-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav-group { gap: 15px; font-size: 13px; }
+  .logo { width: 90px; }
+  h1 { font-size: 28px; }
+  .works-grid { grid-template-columns: 1fr; text-align: center; }
+  .shift-right { transform: none; } /* 手機版取消位移，保持置中整齊 */
+  .music-toggle { bottom: 20px; right: 20px; width: 45px; height: 45px; }
 }
 </style>
 </head>
@@ -150,50 +218,46 @@ img { width:100%; border-radius:12px; margin-top:20px; }
   <div class="nav-group">
     <a href="#custom">客製歌曲</a>
     <a href="#pro">產業製作</a>
-    <a href="#"><img src="logo.png" class="logo" alt="KAYON STUDIO Logo"></a>
+    <a href="#" onclick="window.scrollTo(0,0); return false;">
+      <img src="logo.png" class="logo" alt="KAYON STUDIO Logo">
+    </a>
     <a href="#podcast">Podcast</a>
     <a href="#contact">聯絡我們</a>
   </div>
 </div>
 
 <section class="hero">
-  <h1>
-    有些話 說不出口<br>
-    就讓一首歌替你說
-  </h1>
-  <p class="subtitle">
-    Custom Songs｜Music Production｜Audio Storytelling
-  </p>
-  <a href="https://lin.ee/uqYFa3X" class="btn">
-    開始你的音樂旅程
-  </a>
+  <h1>有些話 說不出口<br>就讓一首歌替你說</h1>
+  <p class="subtitle">Custom Songs｜Music Production｜Audio Storytelling</p>
+  <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank" rel="noopener noreferrer">開始你的音樂旅程</a>
 </section>
 
 <section id="custom">
   <div id="pro"></div> <h2>KAYON STUDIO｜Selected Works</h2>
-  <p style="opacity:0.6;">請點擊任一作品連結試聽</p>
-  <p style="opacity:0.5; font-size:13px; margin-top:10px; line-height:1.8;">
+  
+  <p class="works-desc">
+    請點擊任一作品連結試聽<br><br>
     品牌配樂｜廣告音樂｜影像聲音設計｜YouTube Podcast 配樂<br>
     客製主題曲｜個人 IP 音樂｜完整歌曲製作（詞 曲 編曲 混音）
   </p>
 
-  <div class="works">
-    <a href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank" rel="noopener noreferrer" class="work-item nowrap">
+  <div class="works-grid">
+    <a href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank" rel="noopener noreferrer" class="work-item">
       01｜ SOMETHING REAL ｜韓系質感
     </a>
-    <a href="https://music.apple.com/tw/album/%E6%9C%80%E5%BE%8C%E4%B8%80%E6%AC%A1%E5%BF%83%E8%B7%B3-2026-remastered-version/1876513606?i=1876513607" target="_blank" rel="noopener noreferrer" class="work-item nowrap">
+    <a href="https://music.apple.com/tw/album/%E6%9C%80%E5%BE%8C%E4%B8%80%E6%AC%A1%E5%BF%83%E8%B7%B3-2026-remastered-version/1876513606?i=1876513607" target="_blank" rel="noopener noreferrer" class="work-item">
       02｜ 放手的重量 ｜情緒敘事
     </a>
-    <a href="https://music.apple.com/tw/album/no-gravity-2026-remastered-version/1884021525?i=1884021766" target="_blank" rel="noopener noreferrer" class="work-item nowrap shift-right">
+    <a href="https://music.apple.com/tw/album/no-gravity-2026-remastered-version/1884021525?i=1884021766" target="_blank" rel="noopener noreferrer" class="work-item shift-right">
       03｜ NO GRAVITY ｜商業動能
     </a>
-    <a href="https://www.kkbox.com/tw/tc/song/CqstcdRCUh-7_bm43J" target="_blank" rel="noopener noreferrer" class="work-item nowrap">
+    <a href="https://www.kkbox.com/tw/tc/song/CqstcdRCUh-7_bm43J" target="_blank" rel="noopener noreferrer" class="work-item">
       04｜ SHAKE IT ｜潮流風格
     </a>
-    <a href="https://www.kkbox.com/tw/tc/song/OnqbQjh7o9axMaZU5M" target="_blank" rel="noopener noreferrer" class="work-item nowrap">
+    <a href="https://www.kkbox.com/tw/tc/song/OnqbQjh7o9axMaZU5M" target="_blank" rel="noopener noreferrer" class="work-item">
       05｜ LUMINOUS FRACTURE ｜專案製作
     </a>
-    <a href="https://www.kkbox.com/tw/tc/song/1ZyAdGucmUN-7Uys3e" target="_blank" rel="noopener noreferrer" class="work-item nowrap shift-right">
+    <a href="https://www.kkbox.com/tw/tc/song/1ZyAdGucmUN-7Uys3e" target="_blank" rel="noopener noreferrer" class="work-item shift-right">
       06｜ 如果可是 ｜氛圍音樂
     </a>
   </div>
@@ -202,20 +266,18 @@ img { width:100%; border-radius:12px; margin-top:20px; }
 <section id="podcast">
   <h2>
     Podcast｜聲音優化
-    <span class="subtitle-inline">降噪｜音量平衡｜贅詞剪輯｜音質優化</span>
+    <span class="podcast-tag">降噪｜音量平衡｜贅詞剪輯｜音質優化</span>
   </h2>
-  <img src="images/podcast.jpg" alt="Podcast 聲音優化">
+  <img src="images/podcast.jpg" alt="Podcast 聲音優化" class="podcast-img">
 </section>
 
 <section id="contact">
   <h2>聯絡我們</h2>
-  <p>
+  <div class="contact-links">
     <a href="https://lin.ee/uqYFa3X" target="_blank" rel="noopener noreferrer">LINE</a> ｜ 
     <a href="mailto:karbonxgaia.kayon@gmail.com">Email</a>
-  </p>
-  <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank" rel="noopener noreferrer">
-    把你的故事變成一首歌
-  </a>
+  </div>
+  <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank" rel="noopener noreferrer">把你的故事變成一首歌</a>
 </section>
 
 <footer class="footer">
@@ -232,11 +294,18 @@ img { width:100%; border-radius:12px; margin-top:20px; }
       audio.pause();
       musicBtn.innerText = "🔇";
     } else {
-      audio.volume = 0.3;
-      audio.play().catch(() => {
-        alert("找不到音樂檔案！請確認 bgm.mp3 有正確上傳。");
-      });
-      musicBtn.innerText = "🔊";
+      audio.volume = 0.3; // 預設音量 30%
+      const playPromise = audio.play();
+      
+      // 處理瀏覽器可能的播放限制或找不到檔案的狀況
+      if (playPromise !== undefined) {
+        playPromise.then(_ => {
+          musicBtn.innerText = "🔊";
+        }).catch(error => {
+          alert("音樂檔案無法播放，請確認 bgm.mp3 已經上傳至 GitHub。");
+          console.error("Audio playback error:", error);
+        });
+      }
     }
     isPlaying = !isPlaying;
   });
