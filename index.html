@@ -13,7 +13,6 @@ body{
   color:#fff;
 }
 
-/* 你原本的連結設定（不動） */
 a{
   color:#fff;
   text-decoration:none;
@@ -28,32 +27,20 @@ a:hover{
   opacity:0.7;
 }
 
-/* 🔥 只加這一行修正 */
-.btn{
-  margin-top:20px;
-  padding:12px 24px;
-  background:#fff;
-  border-radius:999px;
-  color:#000; /* ← 加在這裡 */
-}
-
 /* works item */
 .work-item{
   display:block;
   text-decoration:underline;
 }
 
-/* 不換行 */
 .nowrap{
   white-space:nowrap;
 }
 
-/* 往右 */
 .shift-right{
   transform:translateX(20px);
 }
 
-/* Podcast 小字 */
 .subtitle-inline{
   font-size:13px;
   opacity:0.5;
@@ -117,11 +104,13 @@ h1{
   opacity:0.7;
 }
 
+/* ✅ 唯一修正：btn 顏色寫在最後這段 */
 .btn{
   margin-top:20px;
   padding:12px 24px;
   background:#fff;
   border-radius:999px;
+  color:#000;
 }
 
 /* section */
@@ -160,7 +149,6 @@ img{
 
 <body>
 
-<!-- Navbar -->
 <div class="navbar">
   <div class="nav-group">
     <a href="#custom">客製歌曲</a>
@@ -171,7 +159,6 @@ img{
   </div>
 </div>
 
-<!-- Hero -->
 <section class="hero">
   <h1>
     有些話 說不出口<br>
@@ -187,7 +174,6 @@ img{
   </a>
 </section>
 
-<!-- Selected Works -->
 <section>
   <h2>KAYON STUDIO｜Selected Works</h2>
   <p style="opacity:0.6;">請點擊任一作品連結試聽</p>
@@ -221,7 +207,6 @@ img{
   </div>
 </section>
 
-<!-- Podcast -->
 <section id="podcast">
   <h2>
     Podcast｜聲音優化
@@ -233,7 +218,6 @@ img{
   <img src="images/podcast.jpg">
 </section>
 
-<!-- Contact -->
 <section id="contact">
   <h2>聯絡我們</h2>
   <p>
@@ -242,7 +226,6 @@ img{
   </p>
 </section>
 
-<!-- Footer -->
 <footer class="footer">
   ©2026 KAYON STUDIO ｜ ©2026 KARBON X GAIA ENTERTAINMENT
 </footer>
