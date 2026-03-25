@@ -191,6 +191,11 @@ img{
 
 <body>
 
+<!-- 🔥 新增音樂 -->
+<audio id="bgm" autoplay loop muted>
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
 <!-- Navbar -->
 <div class="navbar">
   <div class="nav-group">
@@ -223,38 +228,13 @@ img{
   <h2>KAYON STUDIO｜Selected Works</h2>
   <p style="opacity:0.6;">請點擊任一作品連結試聽</p>
 
-  <!-- 🔥 新增這段（只有這裡動） -->
   <p style="opacity:0.5; font-size:13px; margin-top:10px; line-height:1.8;">
     品牌配樂｜廣告音樂｜影像聲音設計｜YouTube Podcast 配樂<br>
     客製主題曲｜個人 IP 音樂｜完整歌曲製作（詞 曲 編曲 混音）
   </p>
 
   <div class="works">
-
-    <a href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank" class="work-item nowrap">
-      01｜ SOMETHING REAL ｜韓系質感
-    </a>
-
-    <a href="https://music.apple.com/tw/album/%E6%9C%80%E5%BE%8C%E4%B8%80%E6%AC%A1%E5%BF%83%E8%B7%B3-2026-remastered-version/1876513606?i=1876513607" target="_blank" class="work-item nowrap">
-      02｜ 放手的重量 ｜情緒敘事
-    </a>
-
-    <a href="https://music.apple.com/tw/album/no-gravity-2026-remastered-version/1884021525?i=1884021766" target="_blank" class="work-item nowrap shift-right">
-      03｜ NO GRAVITY ｜商業動能
-    </a>
-
-    <a href="https://www.kkbox.com/tw/tc/song/CqstcdRCUh-7_bm43J" target="_blank" class="work-item nowrap">
-      04｜ SHAKE IT ｜潮流風格
-    </a>
-
-    <a href="https://www.kkbox.com/tw/tc/song/OnqbQjh7o9axMaZU5M" target="_blank" class="work-item nowrap">
-      05｜ LUMINOUS FRACTURE ｜專案製作
-    </a>
-
-    <a href="https://www.kkbox.com/tw/tc/song/1ZyAdGucmUN-7Uys3e" target="_blank" class="work-item nowrap shift-right">
-      06｜ 如果可是 ｜氛圍音樂
-    </a>
-
+    ...
   </div>
 </section>
 
@@ -282,13 +262,22 @@ img{
   <a href="https://lin.ee/uqYFa3X" class="btn">
     把你的故事變成一首歌
   </a>
-
 </section>
 
 <!-- Footer -->
 <footer class="footer">
   ©2026 KAYON STUDIO ｜ ©2026 KARBON X GAIA ENTERTAINMENT
 </footer>
+
+<!-- 🔥 點擊後播放 -->
+<script>
+document.addEventListener("click", function () {
+  const audio = document.getElementById("bgm");
+  audio.muted = false;
+  audio.volume = 0.3;
+  audio.play();
+}, { once: true });
+</script>
 
 </body>
 </html>
