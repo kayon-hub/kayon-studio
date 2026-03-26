@@ -7,124 +7,43 @@
 
 <style>
 /* ==================== 基本設定 ==================== */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #0f0f0f;
-  color: #ffffff;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
-
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0f0f0f; color: #ffffff; overflow-x: hidden; scroll-behavior: smooth; }
 a { color: #ffffff; text-decoration: none; transition: all 0.3s; }
 a:hover { opacity: 0.7; }
 
-.btn {
-  display: inline-block;
-  padding: 12px 35px;
-  background: #ffffff;
-  color: #000000 !important;
-  border-radius: 999px;
-  font-weight: bold;
-  font-size: 16px;
-  margin: 10px;
-  box-shadow: 0 4px 15px rgba(255,255,255,0.2);
-}
+/* 按鈕樣式 */
+.btn { display: inline-block; padding: 12px 35px; background: #ffffff; color: #000000 !important; border-radius: 999px; font-weight: bold; font-size: 16px; margin: 10px; box-shadow: 0 4px 15px rgba(255,255,255,0.2); cursor: pointer; }
+.btn-outline { display: inline-block; padding: 11px 34px; background: transparent; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 999px; font-size: 16px; margin: 10px; cursor: pointer; }
 
-.btn-outline {
-  display: inline-block;
-  padding: 11px 34px;
-  background: transparent;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 999px;
-  font-weight: normal;
-  font-size: 16px;
-  margin: 10px;
-}
+/* ==================== 導覽列 ==================== */
+.navbar { position: fixed; top: 0; width: 100%; height: 70px; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); z-index: 9999; }
+.nav-group { display: flex; align-items: center; gap: 20px; }
+.logo { width: 110px; cursor: pointer; }
+.lang-select { background: none; border: 1px solid rgba(255,255,255,0.3); color: white; border-radius: 4px; padding: 4px 8px; font-size: 12px; cursor: pointer; }
+.lang-select option { background: #1a1a1a; color: white; }
 
-.btn-outline:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; }
-
-/* ==================== 導覽列 Navbar ==================== */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
-  z-index: 9999;
-}
-
-.nav-group { display: flex; align-items: center; gap: 30px; }
-.logo { width: 120px; cursor: pointer; }
-
-/* ==================== 區塊設計 ==================== */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: url("images/hero.jpg") center/cover no-repeat;
-  position: relative;
-  padding: 0 20px;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
-  z-index: 0;
-}
-
+/* ==================== 內容區塊 ==================== */
+.hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: url("images/hero.jpg") center/cover no-repeat; position: relative; padding: 0 20px; }
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9)); z-index: 0; }
 .hero h1, .hero p, .hero a { position: relative; z-index: 1; }
-
 h1 { font-size: 42px; letter-spacing: 2px; margin-bottom: 15px; line-height: 1.4; }
 .subtitle { opacity: 0.8; font-size: 18px; margin-bottom: 35px; font-weight: 300; }
 
-section { padding: 100px 20px 80px; max-width: 1000px; margin: 0 auto; text-align: center; }
+section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
 h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
 
 .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px 40px; text-align: left; max-width: 900px; margin: 40px auto 0; }
-.work-item { display: block; text-decoration: underline; font-size: 15px; }
-
-.youtube-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 40px; }
-.video-container { position: relative; width: 100%; padding-bottom: 56.25%; background-color: #000; border-radius: 12px; overflow: hidden; }
-.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.work-item { display: block; text-decoration: underline; font-size: 14px; }
 
 /* 🎵 音樂按鈕 */
-.music-toggle {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 55px;
-  height: 55px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 9999;
-}
-
+.music-toggle { position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 9999; }
 .music-toggle svg { width: 26px; height: 26px; fill: white; }
 
 @media (max-width: 768px) {
-  .nav-group { gap: 12px; font-size: 12px; }
-  .logo { width: 85px; }
+  .nav-group { gap: 10px; font-size: 11px; }
+  .logo { width: 80px; }
   h1 { font-size: 28px; }
   .works-grid { grid-template-columns: 1fr; text-align: center; }
-  .youtube-grid { grid-template-columns: 1fr; }
-  .btn, .btn-outline { width: 80%; margin: 10px auto; }
 }
 </style>
 </head>
@@ -139,68 +58,69 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
 
 <div class="navbar">
   <div class="nav-group">
-    <a href="#about">品牌故事</a>
-    <a href="#custom">客製歌曲</a>
-    <a href="#pro">產業製作</a>
+    <a href="#about" id="nav-about">品牌故事</a>
+    <a href="#custom" id="nav-works">作品集</a>
     <a href="#" onclick="window.scrollTo(0,0); return false;"><img src="logo.png" class="logo"></a>
-    <a href="#video">影像製作</a>
-    <a href="#podcast">Podcast</a>
-    <a href="#contact">聯絡我們</a>
+    <a href="#video" id="nav-video">影像製作</a>
+    <a href="#contact" id="nav-contact">聯絡我們</a>
+    <select class="lang-select" onchange="changeLang(this.value)">
+      <option value="tw">TW</option>
+      <option value="en">EN</option>
+      <option value="kr">KR</option>
+    </select>
   </div>
 </div>
 
 <section class="hero">
-  <h1>從商業動能到個人 IP<br>為聲音注入靈魂</h1>
-  <p class="subtitle">專業音樂製作 ｜ 品牌配樂 ｜ 影像聲音設計</p>
-  <a href="#custom" class="btn">瀏覽作品集</a>
+  <h1 id="hero-title">從商業動能到個人 IP<br>為聲音注入靈魂</h1>
+  <p class="subtitle" id="hero-sub">專業音樂製作 ｜ 品牌配樂 ｜ 影像聲音設計</p>
+  <a href="#custom" class="btn" id="hero-btn">瀏覽作品集</a>
 </section>
 
 <section id="about">
-  <h2>About KAYON STUDIO</h2>
+  <h2 id="about-title">About KAYON STUDIO</h2>
   <div style="max-width: 700px; margin: 0 auto; line-height: 2; opacity: 0.9;">
-    <p style="font-weight: bold; margin-bottom: 25px;">「有些話說不出口，就讓一首歌替你說。」</p>
-    <p style="text-align: left;">無論是細膩的情緒敘事、廣告配樂、或是專屬於你的個人主題曲，我們致力於捕捉難以言喻的情感，將其具象化為純粹的頻率。</p>
+    <p style="font-weight: bold; margin-bottom: 25px;" id="about-quote">「有些話說不出口，就讓一首歌替你說。」</p>
+    <p style="text-align: left;" id="about-p">無論是細膩的情緒敘事、廣告配樂、或是專屬於你的個人主題曲，我們致力於捕捉難以言喻的情感，將其具象化為純粹的頻率。</p>
   </div>
 </section>
 
 <section id="custom">
-  <div id="pro"></div>
-  <h2>Selected Works</h2>
+  <h2 id="works-title">Selected Works</h2>
   <div class="works-grid">
-    <a href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank" class="work-item">01｜ SOMETHING REAL ｜ 韓系質感</a>
-    <a href="https://music.apple.com/tw/album/%E6%9C%80%E5%BE%8C%E4%B8%80%E6%AC%A1%E5%BF%83%E8%B7%B3-2026-remastered-version/1876513606?i=1876513607" target="_blank" class="work-item">02｜ 放手的重量 ｜ 情緒敘事</a>
-    <a href="https://music.apple.com/tw/album/no-gravity-2026-remastered-version/1884021525?i=1884021766" target="_blank" class="work-item">03｜ NO GRAVITY ｜ 商業動能</a>
-    <a href="https://www.kkbox.com/tw/tc/song/CqstcdRCUh-7_bm43J" target="_blank" class="work-item">04｜ SHAKE IT ｜ 潮流風格</a>
-    <a href="https://www.kkbox.com/tw/tc/song/OnqbQjh7o9axMaZU5M" target="_blank" class="work-item">05｜ LUMINOUS FRACTURE ｜ 專案製作</a>
-    <a href="https://www.kkbox.com/tw/tc/song/1ZyAdGucmUN-7Uys3e" target="_blank" class="work-item">06｜ 如果可是 ｜ 氛圍音樂</a>
+    <a href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank" class="work-item">01｜ SOMETHING REAL ｜ <span id="w1">韓系質感</span></a>
+    <a href="https://music.apple.com/tw/album/%E6%9C%80%E5%BE%8C%E4%B8%80%E6%AC%A1%E5%BF%83%E8%B7%B3-2026-remastered-version/1876513606?i=1876513607" target="_blank" class="work-item">02｜ 放手的重量 ｜ <span id="w2">情緒敘事</span></a>
+    <a href="https://music.apple.com/tw/album/no-gravity-2026-remastered-version/1884021525?i=1884021766" target="_blank" class="work-item">03｜ NO GRAVITY ｜ <span id="w3">商業動能</span></a>
   </div>
 </section>
 
-<section id="video">
-  <h2>Video Production</h2>
-  <div class="youtube-grid">
-    <div class="video-container"><iframe src="https://www.youtube.com/embed/sRC7AGxNMV4" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe src="https://www.youtube.com/embed/nwMQyEO4hMw" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe src="https://www.youtube.com/embed/yyVXVirPXQo" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe src="https://www.youtube.com/embed/o-aIw9toVJs" allowfullscreen></iframe></div>
+<section id="video" style="text-align: left;">
+  <h2 id="pod-title">Podcast 聲音優化</h2>
+  <p style="margin-top: -15px; margin-bottom: 25px;">
+    <span id="pod-tags" style="background-color: #FFD700; color: #000; padding: 4px 12px; border-radius: 4px; font-weight: bold; font-size: 13px;">
+      ｜噪音消除｜音量平衡｜EQ 聲音優化｜贅詞剪輯｜節奏優化｜精華段落強化｜
+    </span>
+  </p>
+  <div style="width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.5);">
+    <img src="images/podcast.jpg" alt="Podcast" style="width: 100%; display: block;">
   </div>
 </section>
 
-<section id="baby-memories" style="margin-top: 40px; border-left: 4px solid #FFD1DC; padding-left: 20px;">
-  <h2 style="color: #555;">👶 寶寶影像配樂 ✕ 聲音時光膠囊</h2>
-  <p style="font-size: 14px; color: #777;">專為寶寶攝影提供：原創配樂製作｜父母寄語優化｜動態影音升級</p>
-  <p style="font-size: 13px; font-style: italic;">「照片紀錄容貌，旋律紀錄感動。讓每一份記憶都有專屬的聲音。」</p>
+<section id="baby-pets" style="margin-top: 40px; padding: 40px 20px; border: 1px dashed rgba(255,255,255,0.3); border-radius: 20px; background: rgba(255,255,255,0.05);">
+  <h2 id="baby-title">👶 寶寶與毛孩記錄 ✕ 聲音時光膠囊</h2>
+  <p id="baby-tags" style="font-size: 15px; color: #ccc; margin-bottom: 10px;">｜原創影像配樂｜父母/主人寄語優化｜成長動態影音升級｜</p>
+  <p id="baby-quote" style="font-size: 13px; color: #999; font-style: italic;">「影像紀錄瞬間，旋律封存感動。讓每一份純真都有專屬的聲響。」</p>
 </section>
 
 <section id="contact">
-  <h2>與我們對話</h2>
-  <p style="opacity: 0.8; line-height: 1.8; margin-bottom: 30px;">
+  <h2 id="contact-title">與我們對話</h2>
+  <p style="opacity: 0.8; line-height: 1.8; margin-bottom: 30px;" id="contact-p">
     每一段難忘的回憶，都值得一個專屬的旋律。<br>
     準備好讓世界聽見你的故事了嗎？
   </p>
   <div class="cta-container">
-    <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank">預約你的主題曲</a>
-    <a href="mailto:karbonxgaia.kayon@gmail.com" class="btn-outline">透過 Email 聯繫</a>
+    <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank" id="btn-line">預約你的主題曲</a>
+    <a href="mailto:karbonxgaia.kayon@gmail.com" class="btn-outline" id="btn-mail">透過 Email 聯繫</a>
   </div>
 </section>
 
@@ -209,50 +129,82 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
 </footer>
 
 <script>
-  var audio = document.getElementById("bgm");
-  var musicBtn = document.getElementById("musicBtn");
-  var hasInteracted = false;
-
-  var svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>`;
-  var svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>`;
-
-  musicBtn.innerHTML = svgMute;
-
-  // 如果載入失敗，在 console 報警
-  audio.onerror = function() {
-    console.error("⚠️ 音樂檔案載入失敗！請檢查 GitHub 檔案路徑。");
-  };
-
-  function tryPlay() {
-    if (hasInteracted) return;
-    hasInteracted = true;
-    audio.volume = 0.3;
-    
-    audio.play().then(function() {
-      musicBtn.innerHTML = svgPlay;
-    }).catch(function(e) {
-      console.log("播放被攔截:", e);
-      hasInteracted = false; 
-    });
+const translations = {
+  tw: {
+    navAbout: "品牌故事", navWorks: "作品集", navVideo: "影像製作", navContact: "聯絡我們",
+    hTitle: "從商業動能到個人 IP<br>為聲音注入靈魂", hSub: "專業音樂製作 ｜ 品牌配樂 ｜ 影像聲音設計", hBtn: "瀏覽作品集",
+    aTitle: "About KAYON STUDIO", aQuote: "「有些話說不出口，就讓一首歌替你說。」", aP: "無論是細膩的情緒敘事、廣告配樂、或是專屬於你的個人主題曲，我們致力於捕捉難以言喻的情感，將其具象化為純粹的頻率。",
+    wTitle: "Selected Works", w1: "韓系質感", w2: "情緒敘事", w3: "商業動能",
+    podTitle: "Podcast 聲音優化", podTags: "｜噪音消除｜音量平衡｜EQ 聲音優化｜贅詞剪輯｜節奏優化｜精華段落強化｜",
+    babyTitle: "👶 寶寶與毛孩記錄 ✕ 聲音時光膠囊", babyTags: "｜原創影像配樂｜父母/主人寄語優化｜成長動態影音升級｜", babyQuote: "「影像紀錄瞬間，旋律封存感動。讓每一份純真都有專屬的聲響。」",
+    cTitle: "與我們對話", cP: "每一段難忘的回憶，都值得一個專屬的旋律。<br>準備好讓世界聽見你的故事了嗎？",
+    bLine: "預約你的主題曲", bMail: "透過 Email 聯繫"
+  },
+  en: {
+    navAbout: "Story", navWorks: "Works", navVideo: "Video", navContact: "Contact",
+    hTitle: "From Brand Energy to Personal IP<br>Injecting Soul into Sound", hSub: "Music Production | Branding | Sound Design", hBtn: "Explore Works",
+    aTitle: "About KAYON STUDIO", aQuote: "\"When words fail, music speaks for you.\"", aP: "Whether it's subtle emotional narratives or commercial scores, we capture the unspoken and transform it into pure frequency.",
+    wTitle: "Selected Works", w1: "K-Style Texture", w2: "Emotional Narrative", w3: "Commercial Energy",
+    podTitle: "Podcast Optimization", podTags: "｜Denoise｜Leveling｜EQ Polish｜Editing｜Rhythm｜Highlights｜",
+    babyTitle: "👶 Baby & Pets ✕ Sound Capsule", babyTags: "｜Original Soundtrack｜Voice Optimization｜Video Upgrade｜", babyQuote: "\"Images capture the moment, melodies preserve the emotion.\"",
+    cTitle: "Connect With Us", cP: "Every unforgettable memory deserves a signature melody.<br>Ready to let the world hear your story?",
+    bLine: "Book Your Song", bMail: "Contact via Email"
+  },
+  kr: {
+    navAbout: "브랜드 스토리", navWorks: "작품집", navVideo: "영상 제작", navContact: "문의하기",
+    hTitle: "비즈니스 동력에서 퍼스널 IP까지<br>소리에 영혼을 불어넣다", hSub: "프로페셔널 음악 제작 | 브랜드 사운드 | 사운드 디자인", hBtn: "작품 보기",
+    aTitle: "About KAYON STUDIO", aQuote: "「말하기 어려운 진심, 노래가 대신 전해드립니다.」", aP: "섬세한 감성 서사부터 광고 음악까지, 말로 표현할 수 없는 감정을 포착하여 순수한 주파수로 구현합니다.",
+    wTitle: "Selected Works", w1: "K-스타일 감성", w2: "감성 서사", w3: "상업적 에너지",
+    podTitle: "팟캐스트 사운드 최적화", podTags: "｜노이즈 제거｜볼륨 밸런스｜EQ 최적화｜편집｜리듬｜하이라이트｜",
+    babyTitle: "👶 베이비 & 펫 ✕ 사운드 타임캡슐", babyTags: "｜오리지널 배경음악｜음성 최적화｜영상 업그레이드｜", babyQuote: "「영상은 순간을 기록하고, 멜로디는 감동을 간직합니다.」",
+    cTitle: "우리와 대화하기", cP: "모든 잊지 못할 추억에는 전용 멜로디가 필요합니다.<br>세상에 당신의 이야기를 들려줄 준비가 되셨나요?",
+    bLine: "나만의 노래 예약", bMail: "이메일 문의"
   }
+};
 
-  // 監聽所有動作來解鎖
-  window.addEventListener("mousedown", tryPlay);
-  window.addEventListener("touchstart", tryPlay);
-  window.addEventListener("scroll", tryPlay);
+function changeLang(lang) {
+  const t = translations[lang];
+  document.getElementById("nav-about").innerText = t.navAbout;
+  document.getElementById("nav-works").innerText = t.navWorks;
+  document.getElementById("nav-video").innerText = t.navVideo;
+  document.getElementById("nav-contact").innerText = t.navContact;
+  document.getElementById("hero-title").innerHTML = t.hTitle;
+  document.getElementById("hero-sub").innerText = t.hSub;
+  document.getElementById("hero-btn").innerText = t.hBtn;
+  document.getElementById("about-title").innerText = t.aTitle;
+  document.getElementById("about-quote").innerText = t.aQuote;
+  document.getElementById("about-p").innerText = t.aP;
+  document.getElementById("works-title").innerText = t.wTitle;
+  document.getElementById("w1").innerText = t.w1;
+  document.getElementById("w2").innerText = t.w2;
+  document.getElementById("w3").innerText = t.w3;
+  document.getElementById("pod-title").innerText = t.podTitle;
+  document.getElementById("pod-tags").innerText = t.podTags;
+  document.getElementById("baby-title").innerText = t.babyTitle;
+  document.getElementById("baby-tags").innerText = t.babyTags;
+  document.getElementById("baby-quote").innerText = t.babyQuote;
+  document.getElementById("contact-title").innerText = t.cTitle;
+  document.getElementById("contact-p").innerHTML = t.cP;
+  document.getElementById("btn-line").innerText = t.bLine;
+  document.getElementById("btn-mail").innerText = t.bMail;
+}
 
-  // 手動按鈕控制
-  musicBtn.addEventListener("click", function(e) {
-    e.stopPropagation();
-    hasInteracted = true;
-    if (audio.paused) {
-      audio.play();
-      musicBtn.innerHTML = svgPlay;
-    } else {
-      audio.pause();
-      musicBtn.innerHTML = svgMute;
-    }
-  });
+// 音樂按鈕邏輯
+var audio = document.getElementById("bgm");
+var musicBtn = document.getElementById("musicBtn");
+var svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>`;
+var svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>`;
+musicBtn.innerHTML = svgMute;
+
+musicBtn.onclick = function() {
+  if (audio.paused) {
+    audio.play();
+    musicBtn.innerHTML = svgPlay;
+  } else {
+    audio.pause();
+    musicBtn.innerHTML = svgMute;
+  }
+};
 </script>
 
 </body>
