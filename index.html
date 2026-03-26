@@ -26,11 +26,12 @@ a:hover { opacity: 0.7; }
 section { padding: 100px 20px 80px; max-width: 1000px; margin: 0 auto; text-align: center; }
 h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
 
-/* 🎵 你的原始作品網格設定 */
+/* 🎵 作品集網格 */
 .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px 40px; text-align: left; max-width: 900px; margin: 40px auto 0; }
 .work-item { display: block; text-decoration: underline; font-size: 14px; }
+.shift-right { /* 如果你有特定位移需求保留此 class */ }
 
-/* 📺 4個YouTube網格 */
+/* 📺 YouTube 網格 */
 .youtube-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 40px; }
 .video-container { position: relative; width: 100%; padding-bottom: 56.25%; background-color: #000; border-radius: 12px; overflow: hidden; }
 .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
@@ -46,7 +47,7 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
 
 <body>
 
-<audio id="bgm" loop preload="auto">
+<audio id="bgm" loop preload="auto" playsinline>
   <source src="bgm.mp3/kayonstudio.mp3" type="audio/mpeg">
 </audio>
 
@@ -94,12 +95,20 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
 </section>
 
 <section id="video">
-  <h2 id="nav-video-title">Video Production</h2>
+  <h2 id="nav-video-title">影像製作｜Video Production</h2>
   <div class="youtube-grid">
-    <div class="video-container"><iframe src="https://www.youtube.com/embed/S2p0P1p0_E4" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe src="https://www.youtube.com/embed/6_IeB0T01_c" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe src="https://www.youtube.com/embed/Yp9I3VvW8M8" allowfullscreen></iframe></div>
-    <div class="video-container"><iframe src="https://www.youtube.com/embed/l8n-zL1q6pY" allowfullscreen></iframe></div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/sRC7AGxNMV4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/nwMQyEO4hMw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/yyVXVirPXQo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/o-aIw9toVJs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
 </section>
 
@@ -141,7 +150,7 @@ const translations = {
     hTitle: "從商業動能到個人 IP<br>為聲音注入靈魂", hSub: "專業音樂製作 ｜ 品牌配樂 ｜ 影像聲音設計", hBtn: "瀏覽作品集",
     aTitle: "About KAYON STUDIO", aQuote: "「有些話說不出口，就讓一首歌替你說。」", aP: "無論是細膩的情緒敘事、廣告配樂、或是專屬於你的個人主題曲，我們致力於捕捉難以言喻的情感，將其具象化為純粹的頻率。",
     wTitle: "Selected Works", w1: "韓系質感", w2: "情緒敘事", w3: "商業動能", w4: "潮流風格", w5: "專案製作", w6: "氛圍音樂",
-    vTitle: "影像製作 Video Production",
+    vTitle: "影像製作｜Video Production",
     podTitle: "Podcast 聲音優化", podTags: "｜噪音消除｜音量平衡｜EQ 聲音優化｜贅詞剪輯｜節奏優化｜精華段落強化｜",
     babyTitle: "👶 寶寶與毛孩記錄 ✕ 聲音時光膠囊", babyTags: "｜原創影像配樂｜父母/主人寄語優化｜成長動態影音升級｜", babyQuote: "「影像紀錄瞬間，旋律封存感動。讓每一份純真都有專屬的聲響。」",
     cTitle: "與我們對話", cP: "每一段難忘的回憶，都值得一個專屬的旋律。<br>準備好讓世界聽見你的故事了嗎？",
@@ -163,7 +172,7 @@ const translations = {
     hTitle: "비즈니스 동력에서 퍼스널 IP까지<br>소리에 영혼을 불어넣다", hSub: "프로페셔널 음악 제작 | 브랜드 사운드 | 사운드 디자인", hBtn: "작품 보기",
     aTitle: "About KAYON STUDIO", aQuote: "「말하기 어려운 진심, 노래가 대신 전해드립니다.」", aP: "섬세한 감성 서사부터 광고 음악까지, 말로 표현할 수 없는 감정을 포착하여 순수한 주파수로 구현합니다.",
     wTitle: "Selected Works", w1: "K-스타일 감성", w2: "감성 서사", w3: "상업적 에너지", w4: "트렌디 스타일", w5: "프로젝트 제작", w6: "앰비언트 뮤직",
-    vTitle: "영상 제작 Video Production",
+    vTitle: "영상 제작｜Video Production",
     podTitle: "팟캐스트 사운드 최적화", podTags: "｜노이즈 제거｜볼륨 밸런스｜EQ 최적화｜편집｜리듬｜하이라이트｜",
     babyTitle: "👶 베이비 & 펫 ✕ 사운드 타임캡슐", babyTags: "｜오리지널 배경음악｜음성 최적화｜영상 업그레이드｜", babyQuote: "「영상은 순간을 기록하고, 멜로디는 감동을 간직합니다.」",
     cTitle: "우리와 대화하기", cP: "모든 잊지 못할 추억에는 전용 멜로디가 필요합니다.<br>세상에 당신의 이야기를 들려줄 준비가 되셨나요?",
@@ -216,7 +225,7 @@ musicBtn.onclick = function() {
       musicBtn.innerHTML = svgPlay;
     }).catch(err => {
       console.log("需要使用者互動才能播放音樂", err);
-      alert("請點擊網頁任一處後再開啟音樂！");
+      alert("Safari/Chrome 保護機制：請在網頁空白處點擊一下後，再按音樂按鈕！");
     });
   } else {
     audio.pause();
