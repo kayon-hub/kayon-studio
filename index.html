@@ -6,12 +6,12 @@
 <title>KAYON STUDIO</title>
 
 <style>
-/* ==================== 基礎樣式 (完全還原原始設定) ==================== */
+/* ==================== 基礎樣式 ==================== */
 body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0f0f0f; color: #ffffff; overflow-x: hidden; scroll-behavior: smooth; }
 a { color: #ffffff; text-decoration: none; transition: all 0.3s; }
 a:hover { opacity: 0.7; }
 
-.btn { display: inline-block; padding: 12px 35px; background: #ffffff; color: #000000 !important; border-radius: 999px; font-weight: bold; font-size: 16px; margin: 10px; box-shadow: 0 4px 15px rgba(255,255,255,0.2); cursor: pointer; }
+.btn { display: inline-block; padding: 12px 35px; background: #ffffff; color: #000000 !important; border-radius: 999px; font-weight: bold; font-size: 16px; margin: 10px; cursor: pointer; }
 .btn-outline { display: inline-block; padding: 11px 34px; background: transparent; color: #ffffff !important; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 999px; font-size: 16px; margin: 10px; cursor: pointer; }
 
 .navbar { position: fixed; top: 0; width: 100%; height: 70px; display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); z-index: 9999; }
@@ -26,11 +26,11 @@ a:hover { opacity: 0.7; }
 section { padding: 100px 20px 80px; max-width: 1000px; margin: 0 auto; text-align: center; }
 h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
 
-/* 🎵 6個作品網格 (修復完成) */
+/* 🎵 6個作品網格 */
 .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px 40px; text-align: left; max-width: 900px; margin: 40px auto 0; }
-.work-item { display: block; text-decoration: underline; font-size: 14px; margin-bottom: 10px; }
+.work-item { display: block; text-decoration: underline; font-size: 13px; margin-bottom: 5px; }
 
-/* 📺 4個YouTube網格 (修復完成) */
+/* 📺 4個YouTube網格 */
 .youtube-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
 .video-container { position: relative; width: 100%; padding-bottom: 56.25%; background-color: #000; border-radius: 8px; overflow: hidden; }
 .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
@@ -46,7 +46,7 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
 
 <body>
 
-<audio id="bgm" loop preload="auto">
+<audio id="bgm" loop>
   <source src="bgm.mp3/kayonstudio.mp3" type="audio/mpeg">
 </audio>
 
@@ -87,27 +87,19 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
     <a href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank" class="work-item">01｜ SOMETHING REAL ｜ <span id="w1">韓系質感</span></a>
     <a href="https://music.apple.com/tw/album/%E6%9C%80%E5%BE%8C%E4%B8%80%E6%AC%A1%E5%BF%83%E8%B7%B3-2026-remastered-version/1876513606?i=1876513607" target="_blank" class="work-item">02｜ 放手的重量 ｜ <span id="w2">情緒敘事</span></a>
     <a href="https://music.apple.com/tw/album/no-gravity-2026-remastered-version/1884021525?i=1884021766" target="_blank" class="work-item">03｜ NO GRAVITY ｜ <span id="w3">商業動能</span></a>
-    <a href="https://music.apple.com/tw/album/id-dont-wanna-say-goodbye/1884021525?i=1884021768" target="_blank" class="work-item">04｜ DON'T WANNA SAY GOODBYE ｜ <span id="w4">流行抒情</span></a>
-    <a href="https://music.apple.com/tw/album/id-your-echo/1884021525?i=1884021770" target="_blank" class="work-item">05｜ YOUR ECHO ｜ <span id="w5">氛圍電音</span></a>
-    <a href="https://music.apple.com/tw/album/id-midnight-ride/1884021525?i=1884021772" target="_blank" class="work-item">06｜ MIDNIGHT RIDE ｜ <span id="w6">都會節奏</span></a>
+    <a href="https://music.apple.com/tw/album/i-dont-wanna-say-goodbye/1884021525?i=1884021768" target="_blank" class="work-item">04｜ DON'T WANNA SAY GOODBYE ｜ <span id="w4">流行抒情</span></a>
+    <a href="https://music.apple.com/tw/album/your-echo/1884021525?i=1884021770" target="_blank" class="work-item">05｜ YOUR ECHO ｜ <span id="w5">氛圍電音</span></a>
+    <a href="https://music.apple.com/tw/album/midnight-ride/1884021525?i=1884021772" target="_blank" class="work-item">06｜ MIDNIGHT RIDE ｜ <span id="w6">都會節奏</span></a>
   </div>
 </section>
 
 <section id="video">
   <h2 id="v-title">Video Production</h2>
   <div class="youtube-grid">
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/S2p0P1p0_E4" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/6_IeB0T01_c" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/Yp9I3VvW8M8" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/l8n-zL1q6pY" allowfullscreen></iframe>
-    </div>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/S2p0P1p0_E4" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/6_IeB0T01_c" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/Yp9I3VvW8M8" allowfullscreen></iframe></div>
+    <div class="video-container"><iframe src="https://www.youtube.com/embed/l8n-zL1q6pY" allowfullscreen></iframe></div>
   </div>
 </section>
 
@@ -131,16 +123,13 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
 
 <section id="contact">
   <h2 id="contact-title">與我們對話</h2>
-  <p id="contact-p" style="opacity: 0.8; line-height: 1.8; margin-bottom: 30px;">每一段難忘的回憶，都值得一個專屬的旋律。<br>準備好讓世界聽見你的故事了嗎？</p>
+  <p id="contact-p" style="opacity: 0.8; line-height: 1.8; margin-bottom: 30px;">每一段難忘的回憶，都值得一個專屬的旋律。</p>
   <div class="cta-container">
     <a href="https://lin.ee/uqYFa3X" class="btn" target="_blank" id="btn-line">預約你的主題曲</a>
-    <a href="mailto:karbonxgaia.kayon@gmail.com" class="btn-outline" id="btn-mail">透過 Email 聯繫</a>
   </div>
 </section>
 
-<footer style="text-align: center; padding: 40px; font-size: 12px; opacity: 0.4;">
-  ©2026 KAYON STUDIO ｜ ©2026 KARBON X GAIA ENTERTAINMENT
-</footer>
+<footer style="text-align: center; padding: 40px; font-size: 12px; opacity: 0.4;">©2026 KAYON STUDIO</footer>
 
 <script>
 const translations = {
@@ -149,33 +138,27 @@ const translations = {
     hTitle: "從商業動能到個人 IP<br>為聲音注入靈魂", hSub: "專業音樂製作 ｜ 品牌配樂 ｜ 影像聲音設計", hBtn: "瀏覽作品集",
     aTitle: "About KAYON STUDIO", aQuote: "「有些話說不出口，就讓一首歌替你說。」", aP: "無論是細膩的情緒敘事、廣告配樂、或是專屬於你的個人主題曲，我們致力於捕捉難以言喻的情感，將其具象化為純粹的頻率。",
     wTitle: "Selected Works", w1: "韓系質感", w2: "情緒敘事", w3: "商業動能", w4: "流行抒情", w5: "氛圍電音", w6: "都會節奏",
-    vTitle: "Video Production",
-    podTitle: "Podcast 聲音優化", podTags: "｜噪音消除｜音量平衡｜EQ 聲音優化｜贅詞剪輯｜節奏優化｜精華段落強化｜",
+    vTitle: "Video Production", podTitle: "Podcast 聲音優化", podTags: "｜噪音消除｜音量平衡｜EQ 聲音優化｜贅詞剪輯｜節奏優化｜精華段落強化｜",
     babyTitle: "👶 寶寶與毛孩記錄 ✕ 聲音時光膠囊", babyTags: "｜原創影像配樂｜父母/主人寄語優化｜成長動態影音升級｜", babyQuote: "「影像紀錄瞬間，旋律封存感動。讓每一份純真都有專屬的聲響。」",
-    cTitle: "與我們對話", cP: "每一段難忘的回憶，都值得一個專屬的旋律。<br>準備好讓世界聽見你的故事了嗎？",
-    bLine: "預約你的主題曲", bMail: "透過 Email 聯繫"
+    contactTitle: "與我們對話", btnLine: "預約你的主題曲"
   },
   en: {
     navAbout: "Story", navWorks: "Works", navVideo: "Video", navContact: "Contact",
     hTitle: "From Brand Energy to Personal IP<br>Injecting Soul into Sound", hSub: "Music Production | Branding | Sound Design", hBtn: "Explore Works",
-    aTitle: "About KAYON STUDIO", aQuote: "\"When words fail, music speaks for you.\"", aP: "Whether it's subtle emotional narratives or commercial scores, we capture the unspoken and transform it into pure frequency.",
-    wTitle: "Selected Works", w1: "K-Style Texture", w2: "Emotional Narrative", w3: "Commercial Energy", w4: "Pop Ballad", w5: "Ambient Electronic", w6: "Urban Rhythm",
-    vTitle: "Video Production",
-    podTitle: "Podcast Optimization", podTags: "｜Denoise｜Leveling｜EQ Polish｜Editing｜Rhythm｜Highlights｜",
-    babyTitle: "👶 Baby & Pets ✕ Sound Capsule", babyTags: "｜Original Soundtrack｜Voice Optimization｜Video Upgrade｜", babyQuote: "\"Images capture the moment, melodies preserve the emotion.\"",
-    cTitle: "Connect With Us", cP: "Every unforgettable memory deserves a signature melody.<br>Ready to let the world hear your story?",
-    bLine: "Book Your Song", bMail: "Contact via Email"
+    aTitle: "About KAYON STUDIO", aQuote: "\"When words fail, music speaks for you.\"", aP: "We capture the unspoken and transform it into pure frequency.",
+    wTitle: "Selected Works", w1: "K-Style", w2: "Emotional", w3: "Business", w4: "Ballad", w5: "Ambient", w6: "Urban",
+    vTitle: "Video Production", podTitle: "Podcast Optimization", podTags: "｜Denoise｜Leveling｜EQ Polish｜Editing｜Rhythm｜",
+    babyTitle: "👶 Baby & Pets ✕ Sound Capsule", babyTags: "｜OST｜Voice Optimization｜Video Upgrade｜", babyQuote: "\"Images capture moments, melodies preserve emotions.\"",
+    contactTitle: "Connect", btnLine: "Book Your Song"
   },
   kr: {
     navAbout: "브랜드 스토리", navWorks: "작품집", navVideo: "영상 제작", navContact: "문의하기",
     hTitle: "비즈니스 동력에서 퍼스널 IP까지<br>소리에 영혼을 불어넣다", hSub: "프로페셔널 음악 제작 | 브랜드 사운드 | 사운드 디자인", hBtn: "작품 보기",
-    aTitle: "About KAYON STUDIO", aQuote: "「말하기 어려운 진심, 노래가 대신 전해드립니다.」", aP: "섬세한 감성 서사부터 광고 음악까지, 말로 표현할 수 없는 감정을 포착하여 순수한 주파수로 구현합니다.",
-    wTitle: "Selected Works", w1: "K-스타일 감성", w2: "감성 서사", w3: "상업적 에너지", w4: "팝 발라드", w5: "앰비언트 일렉트로닉", w6: "어반 리듬",
-    vTitle: "Video Production",
-    podTitle: "팟캐스트 사운드 최적화", podTags: "｜노이즈 제거｜볼륨 밸런스｜EQ 최적화｜편집｜리듬｜하이라이트｜",
-    babyTitle: "👶 베이비 & 펫 ✕ 사운드 타임캡슐", babyTags: "｜오리지널 배경음악｜음성 최적화｜영상 업그레이드｜", babyQuote: "「영상은 순간을 기록하고, 멜로디는 감동을 간직합니다.」",
-    cTitle: "우리와 대화하기", cP: "모든 잊지 못할 추억에는 전용 멜로디가 필요합니다.<br>세상에 당신의 이야기를 들려줄 준비가 되셨나요?",
-    bLine: "나만의 노래 예약", bMail: "이메일 문의"
+    aTitle: "About KAYON STUDIO", aQuote: "「말하기 어려운 진심, 노래가 대신 전해드립니다.」", aP: "섬세한 감성 서사부터 광고 음악까지 주파수로 구현합니다.",
+    wTitle: "Selected Works", w1: "K-스타일", w2: "감성 서사", w3: "비즈니스", w4: "발라드", w5: "앰비언트", w6: "어반",
+    vTitle: "영상 제작", podTitle: "팟캐스트 최적화", podTags: "｜노이즈 제거｜볼륨 밸런스｜EQ 최적화｜편집｜",
+    babyTitle: "👶 베이비 & 펫 ✕ 사운드 타임캡슐", babyTags: "｜OST｜음성 최적화｜영상 업그레이드｜", babyQuote: "「영상은 순간을 기록하고, 멜로디는 감동을 간직합니다.」",
+    contactTitle: "문의하기", btnLine: "나만의 노래 예약"
   }
 };
 
@@ -204,21 +187,26 @@ function changeLang(lang) {
   document.getElementById("baby-title").innerText = t.babyTitle;
   document.getElementById("baby-tags").innerText = t.babyTags;
   document.getElementById("baby-quote").innerText = t.babyQuote;
-  document.getElementById("contact-title").innerText = t.cTitle;
-  document.getElementById("contact-p").innerHTML = t.cP;
-  document.getElementById("btn-line").innerText = t.bLine;
-  document.getElementById("btn-mail").innerText = t.bMail;
+  document.getElementById("contact-title").innerText = t.contactTitle;
+  document.getElementById("btn-line").innerText = t.btnLine;
 }
 
+// 音樂播放邏輯：只控制播放/暫停，不改路徑
 var audio = document.getElementById("bgm");
 var musicBtn = document.getElementById("musicBtn");
 var svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>`;
 var svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>`;
+
 musicBtn.innerHTML = svgMute;
 
 musicBtn.onclick = function() {
-  if (audio.paused) { audio.play(); musicBtn.innerHTML = svgPlay; }
-  else { audio.pause(); musicBtn.innerHTML = svgMute; }
+  if (audio.paused) {
+    audio.play().catch(e => console.log("需點擊後播放"));
+    musicBtn.innerHTML = svgPlay;
+  } else {
+    audio.pause();
+    musicBtn.innerHTML = svgMute;
+  }
 };
 </script>
 
