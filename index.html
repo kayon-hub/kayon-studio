@@ -211,7 +211,7 @@ function changeLang(lang) {
   document.getElementById("btn-mail").innerText = t.bMail;
 }
 
-// ==================== 音樂播放邏輯 ====================
+// ==================== 音樂播放與自動破解邏輯 ====================
 var audio = document.getElementById("bgm");
 var musicBtn = document.getElementById("musicBtn");
 var svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>`;
@@ -219,14 +219,33 @@ var svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-
 
 musicBtn.innerHTML = svgMute;
 
-musicBtn.onclick = function() {
+// 核心破解機制：嘗試播放，如果被擋住，就在使用者第一次滑動/點擊時強制播放
+function forcePlayAudio() {
+  audio.play().then(() => {
+    musicBtn.innerHTML = svgPlay;
+    // 成功播放後，把這些偷聽滑動的機制關掉，避免消耗效能
+    document.removeEventListener('click', forcePlayAudio);
+    document.removeEventListener('scroll', forcePlayAudio);
+    document.removeEventListener('touchstart', forcePlayAudio);
+  }).catch(err => {
+    console.log("瀏覽器擋住了自動播放，等待使用者互動...");
+  });
+}
+
+// 網頁一開先試圖播一次
+forcePlayAudio();
+
+// 綁定使用者的滑動或點擊行為
+document.addEventListener('click', forcePlayAudio);
+document.addEventListener('scroll', forcePlayAudio, { once: true });
+document.addEventListener('touchstart', forcePlayAudio, { once: true });
+
+// 按鈕本身的開關功能
+musicBtn.onclick = function(e) {
+  e.stopPropagation(); // 防止點擊按鈕時觸發上面的背景點擊機制
   if (audio.paused) {
-    audio.play().then(() => {
-      musicBtn.innerHTML = svgPlay;
-    }).catch(err => {
-      console.log("需要使用者互動才能播放音樂", err);
-      alert("Safari/Chrome 保護機制：請在網頁空白處點擊一下後，再按音樂按鈕！");
-    });
+    audio.play();
+    musicBtn.innerHTML = svgPlay;
   } else {
     audio.pause();
     musicBtn.innerHTML = svgMute;
