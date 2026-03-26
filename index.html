@@ -22,7 +22,7 @@ a:hover { opacity: 0.7; }
 .lang-select { background: none; border: 1px solid rgba(255,255,255,0.3); color: white; border-radius: 4px; padding: 4px 8px; font-size: 12px; cursor: pointer; }
 .lang-select option { background: #1a1a1a; color: white; }
 
-/* ==================== 內容區塊 ==================== */
+/* ==================== 內容區塊樣式 ==================== */
 .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: url("images/hero.jpg") center/cover no-repeat; position: relative; padding: 0 20px; }
 .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9)); z-index: 0; }
 .hero h1, .hero p, .hero a { position: relative; z-index: 1; }
@@ -178,18 +178,21 @@ function changeLang(lang) {
   document.getElementById("w1").innerText = t.w1;
   document.getElementById("w2").innerText = t.w2;
   document.getElementById("w3").innerText = t.w3;
+  
+  // 更新 Podcast 與 寶寶區翻譯
   document.getElementById("pod-title").innerText = t.podTitle;
   document.getElementById("pod-tags").innerText = t.podTags;
   document.getElementById("baby-title").innerText = t.babyTitle;
   document.getElementById("baby-tags").innerText = t.babyTags;
   document.getElementById("baby-quote").innerText = t.babyQuote;
+  
   document.getElementById("contact-title").innerText = t.cTitle;
   document.getElementById("contact-p").innerHTML = t.cP;
   document.getElementById("btn-line").innerText = t.bLine;
   document.getElementById("btn-mail").innerText = t.bMail;
 }
 
-// 音樂按鈕邏輯
+// ==================== 音樂控制邏輯 ====================
 var audio = document.getElementById("bgm");
 var musicBtn = document.getElementById("musicBtn");
 var svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>`;
