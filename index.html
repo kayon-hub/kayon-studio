@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KAYON STUDIO</title>
 
-<script src="https://www.paypal.com/sdk/js?client-id=BAA60JbOybnKoW-hBbZmo_m58jlZbpdNEWKABUYLZp_lBPn2g0amDd1IjIQM-BRReH6Lx9WGjimixvx9E&components=hosted-buttons&disable-funding=venmo&currency=TWD"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=BAA60JbOybnKoW-hBbZmo_m58jlZbpdNeWKABUyLZp_lBpTn2g0amDd1IjIQM-BRreH6Lx9WGjimixvx9E&components=hosted-buttons&disable-funding=venmo&currency=TWD"></script>
 
 <style>
 /* ==================== 基本設定 ==================== */
@@ -129,10 +129,10 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
   .btn, .btn-outline { width: 80%; margin: 10px auto; }
 }
 
-/* 💰 PayPal 容器樣式 */
+/* 💰 PayPal 容器樣式 (確保按鈕置中且不會太突兀) */
 #paypal-container-58WXWYM5QN98S {
-  margin: 30px auto;
-  max-width: 300px;
+  margin: 25px auto;
+  max-width: 320px;
 }
 </style>
 </head>
@@ -214,8 +214,8 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
   <p style="font-size: 15px; color: #ccc; margin-bottom: 10px;">｜原創影像配樂｜父母/主人寄語優化｜成長動態影音升級｜</p>
   <p style="font-size: 13px; color: #999; font-style: italic;">「影像紀錄瞬間，旋律封存感動。讓每一份純真都有專屬的聲響。」</p>
 
-  <div style="margin-top: 30px;">
-    <p style="font-size: 14px; color: #ffffff; margin-bottom: 15px;">☕️ 邀請您，支持「偷故事的人」典藏計畫</p>
+  <div style="margin-top: 40px;">
+    <p style="font-size: 14px; opacity: 0.8; margin-bottom: 10px;">☕️ 邀請您，支持「偷故事的人」典藏計畫</p>
     <div id="paypal-container-58WXWYM5QN98S"></div>
     <script>
       paypal.HostedButtons({
@@ -242,7 +242,7 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
 </footer>
 
 <script>
-  // 這段 Script 100% 來自你提供的 OK 版本，一個字都沒有改
+  // 原有的音樂控制 Script，我完全沒有動到它
   var audio = document.getElementById("bgm");
   var musicBtn = document.getElementById("musicBtn");
   var hasInteracted = false;
