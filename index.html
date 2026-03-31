@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KAYON STUDIO</title>
 
-<script src="https://www.paypal.com/sdk/js?client-id=BAA60JbOybnKoW-hBbZmo_m58jlZbpdNeWKABUyLZp_lBpTn2g0amDd1IjIQM-BRreH6Lx9WGjimixvx9E&components=hosted-buttons&disable-funding=venmo&currency=TWD"></script>
-
 <style>
 /* ==================== 基本設定 ==================== */
 body {
@@ -46,6 +44,21 @@ a:hover { opacity: 0.7; }
 }
 
 .btn-outline:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; }
+
+/* 💎 PayPal 實體按鈕樣式 */
+.btn-paypal {
+  display: inline-block;
+  padding: 12px 45px;
+  background: #0070ba;
+  color: #ffffff !important;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 20px auto;
+  box-shadow: 0 4px 20px rgba(0, 112, 186, 0.4);
+  text-decoration: none !important;
+}
+.btn-paypal:hover { transform: scale(1.05); background: #005ea6; opacity: 1; }
 
 /* ==================== 導覽列 Navbar ==================== */
 .navbar {
@@ -126,13 +139,7 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
   h1 { font-size: 28px; }
   .works-grid { grid-template-columns: 1fr; text-align: center; }
   .youtube-grid { grid-template-columns: 1fr; }
-  .btn, .btn-outline { width: 80%; margin: 10px auto; }
-}
-
-/* 💰 PayPal 容器樣式 (確保按鈕置中且不會太突兀) */
-#paypal-container-58WXWYM5QN98S {
-  margin: 25px auto;
-  max-width: 320px;
+  .btn, .btn-outline, .btn-paypal { width: 80%; margin: 10px auto; }
 }
 </style>
 </head>
@@ -214,14 +221,10 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
   <p style="font-size: 15px; color: #ccc; margin-bottom: 10px;">｜原創影像配樂｜父母/主人寄語優化｜成長動態影音升級｜</p>
   <p style="font-size: 13px; color: #999; font-style: italic;">「影像紀錄瞬間，旋律封存感動。讓每一份純真都有專屬的聲響。」</p>
 
-  <div style="margin-top: 40px;">
+  <div style="margin-top: 30px;">
     <p style="font-size: 14px; opacity: 0.8; margin-bottom: 10px;">☕️ 邀請您，支持「偷故事的人」典藏計畫</p>
-    <div id="paypal-container-58WXWYM5QN98S"></div>
-    <script>
-      paypal.HostedButtons({
-        hostedButtonId: "58WXWYM5QN98S",
-      }).render("#paypal-container-58WXWYM5QN98S")
-    </script>
+    <a href="https://www.paypal.me/你的帳號" target="_blank" class="btn-paypal">PayPal 贊助支持</a>
+    <p style="font-size: 11px; color: #666; margin-top: 10px;">支援美金/港幣等國際貨幣</p>
   </div>
 </section>
 
