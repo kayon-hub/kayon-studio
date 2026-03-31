@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KAYON STUDIO</title>
 
+<script src="https://www.paypal.com/sdk/js?client-id=BAA60JbOybnKoW-hBbZmo_m58jlZbpdNEWKABUYLZp_lBPn2g0amDd1IjIQM-BRReH6Lx9WGjimixvx9E&components=hosted-buttons&disable-funding=venmo&currency=TWD"></script>
+
 <style>
 /* ==================== 基本設定 ==================== */
 body {
@@ -126,6 +128,12 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
   .youtube-grid { grid-template-columns: 1fr; }
   .btn, .btn-outline { width: 80%; margin: 10px auto; }
 }
+
+/* 💰 PayPal 容器樣式 */
+#paypal-container-58WXWYM5QN98S {
+  margin: 30px auto;
+  max-width: 300px;
+}
 </style>
 </head>
 
@@ -205,6 +213,16 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
   <h2>👶 寶寶與毛孩記錄 ✕ 聲音時光膠囊</h2>
   <p style="font-size: 15px; color: #ccc; margin-bottom: 10px;">｜原創影像配樂｜父母/主人寄語優化｜成長動態影音升級｜</p>
   <p style="font-size: 13px; color: #999; font-style: italic;">「影像紀錄瞬間，旋律封存感動。讓每一份純真都有專屬的聲響。」</p>
+
+  <div style="margin-top: 30px;">
+    <p style="font-size: 14px; color: #ffffff; margin-bottom: 15px;">☕️ 邀請您，支持「偷故事的人」典藏計畫</p>
+    <div id="paypal-container-58WXWYM5QN98S"></div>
+    <script>
+      paypal.HostedButtons({
+        hostedButtonId: "58WXWYM5QN98S",
+      }).render("#paypal-container-58WXWYM5QN98S")
+    </script>
+  </div>
 </section>
 
 <section id="contact">
@@ -232,44 +250,4 @@ h2 { font-size: 26px; margin-bottom: 30px; letter-spacing: 1px; }
   var svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"></path></svg>`;
   var svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path></svg>`;
 
-  musicBtn.innerHTML = svgMute;
-
-  // 如果載入失敗，在 console 報警
-  audio.onerror = function() {
-    console.error("⚠️ 音樂檔案載入失敗！請檢查 GitHub 檔案路徑。");
-  };
-
-  function tryPlay() {
-    if (hasInteracted) return;
-    hasInteracted = true;
-    audio.volume = 0.3;
-    
-    audio.play().then(function() {
-      musicBtn.innerHTML = svgPlay;
-    }).catch(function(e) {
-      console.log("播放被攔截:", e);
-      hasInteracted = false; 
-    });
-  }
-
-  // 監聽所有動作來解鎖
-  window.addEventListener("mousedown", tryPlay);
-  window.addEventListener("touchstart", tryPlay);
-  window.addEventListener("scroll", tryPlay);
-
-  // 手動按鈕控制
-  musicBtn.addEventListener("click", function(e) {
-    e.stopPropagation();
-    hasInteracted = true;
-    if (audio.paused) {
-      audio.play();
-      musicBtn.innerHTML = svgPlay;
-    } else {
-      audio.pause();
-      musicBtn.innerHTML = svgMute;
-    }
-  });
-</script>
-
-</body>
-</html>
+  musicBtn.
