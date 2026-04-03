@@ -7,59 +7,61 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background-color: #ffffff; scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background-color: #ffffff; scroll-behavior: smooth; }
         
-        /* 橫向 Banner 裁切優化：重點保護頭部區域 */
+        /* 只動這裡：調整 object-position 確保不切臉 */
         #carousel-img { 
             transition: opacity 0.8s ease-in-out; 
             object-fit: cover;
-            object-position: center 15% !important; 
-            width: 100%; height: 100%;
+            object-position: center 5% !important; 
+            width: 100%;
+            height: 100%;
         }
         
         @media (max-width: 768px) {
-            #carousel-img { object-position: center 8% !important; }
-            .header-brand-text { font-size: 11px; }
+            #carousel-img { object-position: center 2% !important; }
+            .header-brand-text { font-size: 14px; }
         }
 
         .hero-overlay { background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); }
         .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        .music-toggle { position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px; background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 9999; }
+        .music-toggle { position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px; background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 9999; }
+        .music-toggle svg { width: 24px; height: 24px; fill: white; }
     </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
 
     <audio id="bgm" loop preload="auto"><source src="bgm.mp3/kayonstudio.mp3" type="audio/mpeg"></audio>
     <div id="musicBtn" class="music-toggle"></div>
 
-    <header class="fixed w-full top-0 bg-white/95 backdrop-blur-md z-[100] border-b border-gray-100 px-4 py-4">
+    <header class="fixed w-full top-0 bg-white/95 backdrop-blur-md z-[100] border-b border-gray-100 px-6 py-4">
         <nav class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3">
+            <a href="#" class="flex items-center gap-3 group">
                 <img src="logo/logo-mian.png" alt="Logo" class="h-8 w-auto">
-                <span class="header-brand-text font-extrabold italic tracking-tighter uppercase text-black">
-                    KARBØN X GAIA <span class="mx-1 text-gray-300">|</span> <span class="text-gray-900">KAYON STUDIO</span>
+                <span class="header-brand-text text-xl font-extrabold italic tracking-tighter uppercase text-black flex items-center">
+                    KARBØN X GAIA <span class="mx-3 text-gray-300 font-light italic text-lg">|</span> <span class="text-gray-900">KAYON STUDIO</span>
                 </span>
             </a>
             <div class="hidden lg:flex items-center gap-6 text-[10px] font-bold tracking-widest text-gray-400 uppercase">
-                <a href="#talents" class="hover:text-black transition-colors">Artist Matrix</a>
-                <a href="#vision" class="hover:text-black transition-colors">Philosophy</a>
-                <a href="#studio" class="hover:text-black transition-colors">Studio</a>
-                <a href="#contact" class="hover:text-black transition-colors">Contact</a>
+                <a href="#talents" class="hover:text-black transition-colors">藝人陣容</a>
+                <a href="#vision" class="hover:text-black transition-colors">品牌理念</a>
+                <a href="#studio" class="hover:text-black transition-colors">製作委託</a>
+                <a href="#contact" class="hover:text-black transition-colors">聯絡我們</a>
                 <a href="https://lin.ee/RHRJOIN" target="_blank" class="bg-black text-white px-5 py-2 rounded-full ml-4">預約製作</a>
             </div>
         </nav>
     </header>
 
-    <section class="relative w-full h-[85vh] md:h-[95vh] bg-black overflow-hidden flex flex-col items-center justify-end pb-24">
+    <section class="relative w-full h-[85vh] md:h-[90vh] bg-black overflow-hidden flex flex-col items-center justify-end pb-20">
         <div class="absolute inset-0">
             <img id="carousel-img" src="images/luyanganhero-banner.jpg" alt="Featured Artist">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
         <div class="relative z-30 text-center px-4 w-full max-w-4xl">
             <h2 class="text-white/60 text-[10px] tracking-[0.6em] font-medium mb-4 uppercase">Featured Artist</h2>
-            <h1 id="artist-name" class="text-white text-5xl md:text-8xl font-black tracking-[0.1em] uppercase italic leading-tight mb-6">劉揚安</h1>
+            <h1 id="artist-name" class="text-white text-6xl md:text-8xl font-black tracking-[0.1em] uppercase italic leading-tight mb-6">劉揚安</h1>
             <p class="text-white/90 text-sm md:text-base font-light tracking-[0.2em] max-w-2xl mx-auto border-t border-white/20 pt-6">
                 「用科技承載靈魂，創造跨越維度的溫暖陪伴」
             </p>
@@ -68,15 +70,13 @@
 
     <section id="talents" class="max-w-7xl mx-auto px-6 py-32">
         <div class="mb-16">
-            <h2 class="text-4xl md:text-5xl font-black tracking-tighter italic text-black uppercase">Artist Matrix</h2>
+            <h2 class="text-5xl font-black tracking-tighter italic text-black uppercase">Artist Matrix</h2>
             <p class="text-gray-400 font-bold text-[10px] tracking-widest uppercase italic mt-2">賦予生命，而非創造內容</p>
         </div>
-        <div id="talents-grid" class="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 md:gap-y-24">
-            </div>
+        <div id="talents-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20"></div>
     </section>
 
     <script>
-        // 藝人網格資料 (對應 talents/ 目錄下的 .webp)
         const talentsData = [
             { name: "NØVEX", cat: "引領潮流的先鋒", img: "talents/novex.webp" },
             { name: "NÄXER", cat: "最可靠的陪伴", img: "talents/naxer.webp" },
@@ -89,7 +89,6 @@
             { name: "RAUN", cat: "真實存在的生命", img: "talents/raun.webp" }
         ];
 
-        // 輪播 Banner 資料 (對應 images/ 目錄下的 -banner.jpg)
         const bannerList = [
             { name: "劉揚安", img: "images/luyanganhero-banner.jpg" },
             { name: "EUNA", img: "images/eunahero-banner.jpg" },
@@ -99,20 +98,18 @@
             { name: "LILITHIUM", img: "images/lilithiumhero-banner.jpg" }
         ];
 
-        // 渲染網格
         const grid = document.getElementById('talents-grid');
         talentsData.forEach((t, i) => {
             grid.innerHTML += `
                 <div class="group animate-fadeIn" style="animation-delay: ${i * 100}ms">
-                    <div class="aspect-square bg-gray-50 overflow-hidden mb-6 border border-gray-100 relative">
-                        <img src="${t.img}" class="h-full w-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <div class="aspect-square bg-gray-50 overflow-hidden mb-6 border border-gray-100 shadow-sm relative">
+                        <img src="${t.img}" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
                     </div>
-                    <h3 class="text-xl md:text-2xl font-black italic tracking-tighter uppercase text-black">${t.name}</h3>
+                    <h3 class="text-2xl font-black italic tracking-tighter uppercase text-black">${t.name}</h3>
                     <p class="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-widest">${t.cat}</p>
                 </div>`;
         });
 
-        // 輪播邏輯
         let cur = 0;
         const bImg = document.getElementById('carousel-img');
         const bNm = document.getElementById('artist-name');
@@ -123,8 +120,17 @@
             bNm.style.opacity = '0';
             
             setTimeout(() => {
-                bImg.src = bannerList[cur].img;
-                bNm.innerText = bannerList[cur].name;
+                const artist = bannerList[cur];
+                bImg.src = artist.img;
+                bNm.innerText = artist.name;
+
+                // 針對特定人名調整 object-position
+                if (artist.name === "NØVEX" || artist.name === "NÄXER") {
+                    bImg.style.objectPosition = "center 0%";
+                } else {
+                    bImg.style.objectPosition = "center 10%";
+                }
+
                 bImg.onload = () => {
                     bImg.style.opacity = '1';
                     bNm.style.opacity = '1';
@@ -132,7 +138,6 @@
             }, 800);
         }, 5000);
 
-        // 背景音樂控制 (與之前一致)
         const audio = document.getElementById("bgm");
         const musicBtn = document.getElementById("musicBtn");
         const svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
