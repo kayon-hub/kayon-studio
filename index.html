@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>KARBØN X GAIA ENTERTAINMENT | KAYON STUDIO</title>
+    <title>KARBØN X GAIA | KAYON STUDIO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background-color: #ffffff; scroll-behavior: smooth; }
-        #carousel-img { transition: opacity 0.8s ease-in-out; }
-        .hero-overlay { background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%); }
+        
+        #carousel-img { 
+            transition: opacity 0.8s ease-in-out; 
+            object-fit: cover;
+            object-position: top center; 
+        }
+        
+        .hero-overlay { background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); }
         .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* 音樂按鈕樣式 */
         .music-toggle { position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px; background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 9999; transition: transform 0.3s; }
         .music-toggle:hover { transform: scale(1.1); }
         .music-toggle svg { width: 24px; height: 24px; fill: white; }
 
-        /* 導覽列商標濾鏡 */
-        .header-logo { height: 35px; width: auto; filter: brightness(0); }
+        .header-logo { height: 32px; width: auto; filter: brightness(0); }
+        
+        /* 社群連結樣式 */
+        .social-link { transition: all 0.3s ease; opacity: 0.6; }
+        .social-link:hover { opacity: 1; transform: translateY(-2px); }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -29,23 +37,27 @@
 
     <header class="fixed w-full top-0 bg-white/95 backdrop-blur-md z-[100] border-b border-gray-100 px-6 py-4">
         <nav class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3">
+            <a href="#" class="flex items-center gap-3 group">
                 <img src="logo/logo-mian.png" alt="Logo" class="header-logo">
-                <span class="text-xl font-extrabold italic tracking-tighter uppercase text-black">KARBØN X GAIA</span>
+                <span class="text-lg md:text-xl font-extrabold italic tracking-tighter uppercase text-black flex items-center">
+                    KARBØN X GAIA 
+                    <span class="mx-3 text-gray-300 font-light italic text-lg">|</span> 
+                    <span class="text-gray-900">KAYON STUDIO</span>
+                </span>
             </a>
-            <div class="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-widest text-gray-500 uppercase">
+            <div class="hidden lg:flex items-center gap-6 text-[10px] font-bold tracking-widest text-gray-500 uppercase">
                 <a href="#talents" class="hover:text-black transition-colors">藝人陣容</a>
-                <a href="#studio" class="hover:text-black transition-colors">音樂製作委託</a>
-                <a href="#video" class="hover:text-black transition-colors">影像作品</a>
+                <a href="#studio" class="hover:text-black transition-colors">製作委託</a>
+                <a href="https://www.instagram.com/kayonstudio_official/" target="_blank" class="hover:text-pink-600 transition-colors">IG</a>
                 <a href="#contact" class="hover:text-black transition-colors">聯絡我們</a>
-                <a href="https://lin.ee/uqYFa3X" target="_blank" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-all">預約製作</a>
+                <a href="https://lin.ee/uqYFa3X" target="_blank" class="bg-black text-white px-5 py-2 rounded-full hover:bg-gray-800 transition-all ml-4">預約製作</a>
             </div>
         </nav>
     </header>
 
-    <section class="relative w-full h-[90vh] bg-black overflow-hidden flex flex-col items-center justify-end pb-20">
+    <section class="relative w-full h-[85vh] md:h-[90vh] bg-black overflow-hidden flex flex-col items-center justify-end pb-20">
         <div class="absolute inset-0">
-            <img id="carousel-img" src="images/luyanganhero-banner.jpg" class="w-full h-full object-cover object-top" alt="Artist">
+            <img id="carousel-img" src="images/luyanganhero-banner.jpg" class="w-full h-full" alt="Featured Artist">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
         <div class="relative z-30 text-center px-4 w-full max-w-4xl">
@@ -62,64 +74,50 @@
             <h2 class="text-5xl font-black tracking-tighter italic text-black uppercase">Artist Matrix</h2>
             <p class="text-gray-400 font-bold text-[10px] tracking-widest uppercase italic mt-2">賦予生命，而非創造內容</p>
         </div>
-        <div id="talents-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20">
-            </div>
+        <div id="talents-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20"></div>
     </section>
 
     <section id="studio" class="bg-[#0a0a0a] text-white py-32 px-6">
-        <div class="max-w-7xl mx-auto">
+        <div class="max-w-7xl mx-auto text-center md:text-left">
             <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
                 <div class="border-l-4 border-white pl-6">
                     <h2 class="text-5xl font-black italic uppercase tracking-tighter">KAYON STUDIO</h2>
                     <p class="text-gray-400 mt-2 tracking-widest">專業音樂製作 ｜ 品牌配樂 ｜ 影像聲音設計</p>
                 </div>
-                <a href="https://lin.ee/uqYFa3X" target="_blank" class="bg-white text-black px-10 py-4 rounded-full font-bold hover:bg-gray-200 transition-all">
-                    立即預約製作 →
-                </a>
+                <div class="flex flex-col gap-4 items-center md:items-end">
+                    <a href="https://www.youtube.com/@KAYONSTUDIO_TW" target="_blank" class="text-[10px] font-bold tracking-[0.3em] text-white/50 hover:text-white transition-all uppercase underline underline-offset-8">Visit Studio YouTube →</a>
+                    <a href="https://lin.ee/uqYFa3X" target="_blank" class="bg-white text-black px-10 py-4 rounded-full font-bold hover:bg-gray-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)]">立即預約製作</a>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-                <div class="p-10 border border-white/10 rounded-3xl bg-white/5 hover:bg-white/10 transition-all group">
-                    <div class="text-4xl mb-6 group-hover:scale-110 transition-transform">🎵</div>
+                <div class="p-10 border border-white/10 rounded-3xl bg-white/5 hover:bg-white/10 transition-all text-left">
+                    <div class="text-4xl mb-6">🎵</div>
                     <h3 class="text-xl font-bold mb-4">原創音樂製作</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">從詞曲創作到最終混音，為您的個人品牌或歌手身份量身打造具備靈魂的音樂作品。</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">提供詞曲、編曲、錄混音一站式服務，打造專屬單曲。</p>
                 </div>
-                <div class="p-10 border border-white/10 rounded-3xl bg-white/5 hover:bg-white/10 transition-all group">
-                    <div class="text-4xl mb-6 group-hover:scale-110 transition-transform">🏢</div>
+                <div class="p-10 border border-white/10 rounded-3xl bg-white/5 hover:bg-white/10 transition-all text-left">
+                    <div class="text-4xl mb-6">🏢</div>
                     <h3 class="text-xl font-bold mb-4">商業與影像配樂</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">針對影片情緒與品牌調性進行深度聲音設計，讓視覺與聽覺達到完美的共鳴與動能。</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">深度聲音設計，強化視覺動能與品牌識別度。</p>
                 </div>
-                <div class="p-10 border border-white/10 rounded-3xl bg-white/5 hover:bg-white/10 transition-all group">
-                    <div class="text-4xl mb-6 group-hover:scale-110 transition-transform">🎙️</div>
+                <div class="p-10 border border-white/10 rounded-3xl bg-white/5 hover:bg-white/10 transition-all text-left">
+                    <div class="text-4xl mb-6">🎙️</div>
                     <h3 class="text-xl font-bold mb-4">Podcast 聲音優化</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">提供降噪、EQ 優化與節奏剪輯，確保每一集節目都擁有最高品質的聆聽體驗。</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">降噪、EQ優化與節奏剪輯，呈現錄音室級質感。</p>
                 </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 opacity-80">
-                <a href="https://music.apple.com/tw/album/something-real/1852075090?i=1852075338" target="_blank" class="p-5 border border-white/5 rounded-xl hover:bg-white/5 flex justify-between items-center">
-                    <span class="text-sm font-medium">01｜SOMETHING REAL</span>
-                    <span class="text-xs text-gray-500 uppercase">韓系質感</span>
-                </a>
-                <a href="https://www.kkbox.com/tw/tc/song/CqstcdRCUh-7_bm43J" target="_blank" class="p-5 border border-white/5 rounded-xl hover:bg-white/5 flex justify-between items-center">
-                    <span class="text-sm font-medium">02｜SHAKE IT</span>
-                    <span class="text-xs text-gray-500 uppercase">潮流風格</span>
-                </a>
-                <a href="https://music.apple.com/..." target="_blank" class="p-5 border border-white/5 rounded-xl hover:bg-white/5 flex justify-between items-center">
-                    <span class="text-sm font-medium">03｜NO GRAVITY</span>
-                    <span class="text-xs text-gray-500 uppercase">商業動能</span>
-                </a>
             </div>
         </div>
     </section>
 
     <section id="video" class="max-w-7xl mx-auto px-6 py-32">
-        <h2 class="text-4xl font-black italic uppercase mb-12 text-center">Video Production</h2>
+        <h2 class="text-4xl font-black italic uppercase mb-8 text-center text-black">Video Production</h2>
+        <p class="text-center text-gray-400 text-[10px] tracking-[0.4em] uppercase mb-16">Explore our visual world on <a href="https://www.youtube.com/@KARBONXGAIA_ENT" target="_blank" class="text-black font-bold hover:underline">YouTube</a></p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
+            <div class="aspect-video bg-black rounded-2xl overflow-hidden shadow-xl">
                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/sRC7AGxNMV4" frameborder="0" allowfullscreen></iframe>
             </div>
-            <div class="aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl">
+            <div class="aspect-video bg-black rounded-2xl overflow-hidden shadow-xl">
                 <iframe class="w-full h-full" src="https://www.youtube.com/embed/nwMQyEO4hMw" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
@@ -127,24 +125,25 @@
 
     <section id="contact" class="bg-gray-50 py-32 px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-6xl font-black mb-12 uppercase">Let's Create.</h2>
+            <h2 class="text-5xl md:text-7xl font-black mb-16 uppercase tracking-tighter">Connect with Us.</h2>
             
-            <div class="bg-white p-12 rounded-3xl shadow-sm border border-gray-100 mb-12">
-                <p class="text-sm text-gray-400 font-bold uppercase tracking-widest mb-6">👶 寶寶與毛孩記錄 ✕ 聲音時光膠囊</p>
-                <a href="https://www.paypal.me/YOUR_ACCOUNT" target="_blank" class="inline-block bg-[#0070ba] text-white px-12 py-4 rounded-full font-bold hover:scale-105 transition-all">
-                    PayPal 贊助支持
-                </a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div class="p-10 bg-white border border-gray-100 rounded-3xl">
+                    <h4 class="text-2xl font-black mb-2">Sky</h4>
+                    <a href="mailto:karbonxgaia.sky@gmail.com" class="text-gray-400 font-medium hover:text-black transition-colors block mb-4">karbonxgaia.sky@gmail.com</a>
+                    <span class="text-[9px] font-bold text-gray-300 uppercase tracking-widest">Executive Producer</span>
+                </div>
+                <div class="p-10 bg-white border border-gray-100 rounded-3xl">
+                    <h4 class="text-2xl font-black mb-2">Ava</h4>
+                    <a href="mailto:karbonxgaiaxava@gmail.com" class="text-gray-400 font-medium hover:text-black transition-colors block mb-4">karbonxgaiaxava@gmail.com</a>
+                    <span class="text-[9px] font-bold text-gray-300 uppercase tracking-widest">Project Manager</span>
+                </div>
             </div>
 
-            <div class="flex flex-col md:flex-row gap-6">
-                <div class="flex-1 p-8 bg-white border border-gray-100 rounded-2xl">
-                    <h4 class="text-xl font-black mb-2">Sky</h4>
-                    <a href="mailto:karbonxgaia.sky@gmail.com" class="text-gray-500 font-bold hover:text-black transition-colors">karbonxgaia.sky@gmail.com</a>
-                </div>
-                <div class="flex-1 p-8 bg-white border border-gray-100 rounded-2xl">
-                    <h4 class="text-xl font-black mb-2">Ava</h4>
-                    <a href="mailto:karbonxgaiaxava@gmail.com" class="text-gray-500 font-bold hover:text-black transition-colors">karbonxgaiaxava@gmail.com</a>
-                </div>
+            <div class="flex justify-center gap-12 py-10 border-t border-gray-200">
+                <a href="https://www.instagram.com/kayonstudio_official/" target="_blank" class="social-link text-[11px] font-black uppercase tracking-widest text-gray-900">Instagram</a>
+                <a href="https://www.youtube.com/@KAYONSTUDIO_TW" target="_blank" class="social-link text-[11px] font-black uppercase tracking-widest text-gray-900">Studio YT</a>
+                <a href="https://www.youtube.com/@KARBONXGAIA_ENT" target="_blank" class="social-link text-[11px] font-black uppercase tracking-widest text-gray-900">Ent YT</a>
             </div>
         </div>
     </section>
@@ -154,7 +153,6 @@
     </footer>
 
     <script>
-        // 藝人資料數據
         const talentsData = [
             { name: "NØVEX", cat: "引領潮流的先鋒", img: "talents/novex.webp" },
             { name: "NÄXER", cat: "最可靠的陪伴", img: "talents/naxer.webp" },
@@ -164,33 +162,30 @@
             { name: "GAIALYRA", cat: "探索維度邊界", img: "talents/gaialyra.webp" }
         ];
 
-        // 輪播藝人數據
         const bannerArtists = [
             { name: "劉揚安", img: "images/luyanganhero-banner.jpg" },
             { name: "EUNA", img: "images/eunahero-banner.jpg" },
             { name: "NØVEX", img: "images/novexhero-banner.jpg" }
         ];
 
-        // 動態生成藝人矩陣
         const grid = document.getElementById('talents-grid');
         talentsData.forEach((t, i) => {
             grid.innerHTML += `
                 <div class="group animate-fadeIn" style="animation-delay: ${i * 100}ms">
-                    <div class="aspect-square bg-gray-50 overflow-hidden mb-6 border border-gray-100 relative shadow-sm">
-                        <img src="${t.img}" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/600?text=${t.name}'">
+                    <div class="aspect-square bg-gray-50 overflow-hidden mb-6 border border-gray-100 shadow-sm relative">
+                        <img src="${t.img}" class="h-full w-full object-cover transition duration-700 group-hover:scale-110" onerror="this.src='https://via.placeholder.com/600?text=${t.name}'">
                     </div>
                     <h3 class="text-2xl font-black italic tracking-tighter uppercase text-black">${t.name}</h3>
                     <p class="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-widest">${t.cat}</p>
-                </div>
-            `;
+                </div>`;
         });
 
-        // 輪播邏輯
         let currentIdx = 0;
+        const img = document.getElementById('carousel-img');
+        const name = document.getElementById('artist-name');
+
         setInterval(() => {
             currentIdx = (currentIdx + 1) % bannerArtists.length;
-            const img = document.getElementById('carousel-img');
-            const name = document.getElementById('artist-name');
             img.style.opacity = '0';
             setTimeout(() => {
                 img.src = bannerArtists[currentIdx].img;
@@ -199,7 +194,6 @@
             }, 800);
         }, 5000);
 
-        // 音樂控制邏輯 (保留原版控制)
         const audio = document.getElementById("bgm");
         const musicBtn = document.getElementById("musicBtn");
         const svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
@@ -207,17 +201,9 @@
         
         musicBtn.innerHTML = svgMute;
         musicBtn.addEventListener("click", () => {
-            if (audio.paused) {
-                audio.play();
-                musicBtn.innerHTML = svgPlay;
-            } else {
-                audio.pause();
-                musicBtn.innerHTML = svgMute;
-            }
+            if (audio.paused) { audio.play(); musicBtn.innerHTML = svgPlay; }
+            else { audio.pause(); musicBtn.innerHTML = svgMute; }
         });
-
-        // 首次點擊啟動音樂
-        document.addEventListener('click', () => { if(audio.paused) { /* 可以在此處理自動播放 */ } }, {once: true});
     </script>
 </body>
 </html>
