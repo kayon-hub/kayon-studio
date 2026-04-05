@@ -17,6 +17,7 @@ body{font-family:'Inter','Noto Sans TC',sans-serif;margin:0;background:#fff}
 width:100%;
 height:100%;
 object-fit:cover;
+object-position:center 20%;
 transition:.8s;
 }
 
@@ -89,6 +90,14 @@ From Frequencies to Soul
 <div>寶寶與毛孩記錄</div>
 <div>商業與影像配樂</div>
 </div>
+
+<div class="mt-12 text-center">
+<div id="paypal-container"></div>
+<script>
+paypal.HostedButtons({ hostedButtonId:"58WXWYM5QN98S" })
+.render("#paypal-container");
+</script>
+</div>
 </section>
 
 <!-- VIDEO -->
@@ -111,20 +120,6 @@ YouTube
 </div>
 </section>
 
-<!-- SUPPORT（保留你功能 只改文案） -->
-<section class="py-24 px-6 text-center">
-<h3 class="text-xl font-bold mb-2">支持偷故事的人企劃</h3>
-<p class="text-xs opacity-60 mb-6">
-每一段被忽略的心聲 都值得一首歌
-</p>
-
-<div id="paypal-container"></div>
-<script>
-paypal.HostedButtons({ hostedButtonId:"58WXWYM5QN98S" })
-.render("#paypal-container");
-</script>
-</section>
-
 <!-- CONTACT -->
 <section id="contact" class="py-24 px-6 text-center">
 <h2 class="text-4xl font-black mb-6">Connect</h2>
@@ -135,6 +130,8 @@ karbonxgaia.sky@gmail.com
 </a>
 
 <div class="flex justify-center gap-6">
+<a href="#">Apple Music</a>
+<a href="#">KKBOX</a>
 <a href="https://www.youtube.com/@KAYONSTUDIO_TW">Studio YT</a>
 <a href="https://www.youtube.com/@KARBONXGAIA_ENT">Ent YT</a>
 <a href="https://www.instagram.com/kayonstudio_official/">Instagram</a>
@@ -162,14 +159,14 @@ grid.innerHTML+=`
 </div>`;
 });
 
-/* BANNER（完整保留10個） */
+/* BANNER（唯一修正：lilithium 改成 .png） */
 const bannerList = [
 {name:"劉揚安", img:"images/luyanganhero-banner.jpg", pos:"center 18%"},
 {name:"EUNA", img:"images/eunahero-banner.jpg", pos:"center 12%"},
 {name:"NØVEX", img:"images/novexhero-banner.jpg", pos:"center 28%"},
 {name:"NÄXER", img:"images/naxerhero-banner.jpg", pos:"center 32%"},
 {name:"JOAH", img:"images/joahhero-banner.jpg", pos:"center 18%"},
-{name:"LILITHIUM", img:"images/lilithiumhero-banner.jpg", pos:"center 22%"},
+{name:"LILITHIUM", img:"images/lilithiumhero-banner.png", pos:"center 22%"},
 {name:"GAIALYRA", img:"images/gaialyrahero-banner.jpg", pos:"center 18%"},
 {name:"RÆNE", img:"images/raenehero-banner.jpg", pos:"center 28%"},
 {name:"RAUN", img:"images/raunhero-banner.jpg", pos:"center 12%"},
@@ -180,9 +177,8 @@ let cur=0;
 const img=document.getElementById("carousel-img");
 const name=document.getElementById("artist-name");
 
-/* 手機避免切臉（不動你邏輯，只補安全） */
 function getPos(p){
-return window.innerWidth<768 ? "center top" : p;
+return window.innerWidth<768 ? "center 8%" : p;
 }
 
 function show(i){
