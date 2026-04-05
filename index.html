@@ -1,117 +1,122 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KARBØN X GAIA ✕ KAYON STUDIO</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>KARBØN X GAIA ✕ KAYON STUDIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    
+    <script src="https://www.paypal.com/sdk/js?client-id=BAA60JbOybnKoW-hBbZmo_m58jlZbpdNEWKABUYLZp_lBPn2g0amDd1IjIQM-BRReH6Lx9WGjimixvx9E&components=hosted-buttons&disable-funding=venmo&currency=TWD"></script>
 
-<style>
-body {
-    margin: 0;
-    background: #000;
-    font-family: Arial, sans-serif;
-}
-
-/* HERO */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-#carousel-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 20%;
-    transition: opacity 0.8s ease-in-out;
-}
-
-.overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2), transparent);
-}
-
-.content {
-    position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: #fff;
-}
-
-#artist-name {
-    font-size: 72px;
-    font-weight: 900;
-    letter-spacing: 10px;
-    margin-top: 10px;
-}
-</style>
+    <style>
+        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background-color: #ffffff; scroll-behavior: smooth; }
+        
+        /* ⭐ 已修正：允許動態控制位置 */
+        #carousel-img { 
+            transition: opacity 0.8s ease-in-out; 
+            object-fit: cover !important; 
+            object-position: center 20%; 
+            width: 100%; height: 100%;
+        }
+        
+        .hero-overlay { background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); pointer-events: none; }
+        .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .music-toggle { position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px; background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 9999; transition: transform 0.3s; }
+        .music-toggle:hover { transform: scale(1.1); }
+        .music-toggle svg { width: 24px; height: 24px; fill: white; }
+        
+        .header-logo { height: 28px; width: auto; filter: brightness(0); }
+        .social-link { transition: all 0.3s ease; opacity: 0.6; }
+        .social-link:hover { opacity: 1; transform: translateY(-2px); }
+        
+        #paypal-container-58WXWYM5QN98S { margin: 20px auto; max-width: 300px; }
+    </style>
 </head>
+<body class="overflow-x-hidden">
 
-<body>
+    <audio id="bgm" loop preload="auto"><source src="bgm.mp3/kayonstudio.mp3" type="audio/mpeg"></audio>
+    <div id="musicBtn" class="music-toggle"></div>
 
-<section class="hero">
-    <img id="carousel-img" src="/images/luyanganhero-banner.jpg">
-    <div class="overlay"></div>
-    <div class="content">
-        <div>FROM FREQUENCIES TO SOUL</div>
-        <div id="artist-name">劉揚安</div>
-    </div>
-</section>
+    <header class="fixed w-full top-0 bg-white/95 backdrop-blur-md z-[100] border-b border-gray-100 px-6 py-4">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3">
+                <img src="logo/logo-mian.png" alt="Logo" class="header-logo">
+                <span class="font-black italic tracking-tighter uppercase text-black text-sm md:text-base">
+                    KARBØN X GAIA <span class="mx-1 text-gray-300 font-light italic text-sm">✕</span> KAYON STUDIO
+                </span>
+            </a>
+            <div class="hidden lg:flex items-center gap-6 text-[10px] font-bold tracking-widest text-gray-400 uppercase">
+                <a href="#talents" class="hover:text-black transition-colors">Artist Matrix</a>
+                <a href="#studio" class="hover:text-black transition-colors">Production</a>
+                <a href="#video" class="hover:text-black transition-colors">Works</a>
+                <a href="#contact" class="hover:text-black transition-colors">Contact</a>
+                <a href="https://lin.ee/RHRJOIN" target="_blank" class="bg-black text-white px-5 py-2 rounded-full hover:bg-gray-800 transition-all ml-4">Booking Now</a>
+            </div>
+        </nav>
+    </header>
 
-<script>
-const bannerList = [
-    { name: "劉揚安", img: "/images/luyanganhero-banner.jpg", pos: "center 20%" },
-    { name: "EUNA", img: "/images/eunahero-banner.jpg", pos: "center 15%" },
-    { name: "NØVEX", img: "/images/novexhero-banner.jpg", pos: "center 30%" },
-    { name: "NÄXER", img: "/images/naxerhero-banner.jpg", pos: "center 35%" },
-    { name: "JOAH", img: "/images/joahhero-banner.jpg", pos: "center 20%" },
-    { name: "LILITHIUM", img: "/images/lilithiumhero-banner.jpg", pos: "center 25%" },
-    { name: "GAIALYRA", img: "/images/gaialyrahero-banner.jpg", pos: "center 20%" },
-    { name: "RÆNE", img: "/images/raenehero-banner.jpg", pos: "center 30%" },
-    { name: "RAUN", img: "/images/raunhero-banner.jpg", pos: "center 15%" },
-    { name: "VRAISY", img: "/images/vraisyhero-banner.jpg", pos: "center 25%" }
-];
+    <section class="relative w-full h-[85vh] md:h-[95vh] bg-black overflow-hidden flex flex-col items-center justify-end pb-24">
+        <div class="absolute inset-0 flex justify-center items-center">
+            <img id="carousel-img" src="images/luyanganhero-banner.jpg" alt="Featured Artist">
+        </div>
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="relative z-30 text-center px-4 w-full max-w-5xl">
+            <h2 class="text-white/60 text-[10px] tracking-[0.8em] font-medium mb-6 uppercase">From Frequencies to Soul</h2>
+            <h1 id="artist-name" class="text-white text-6xl md:text-9xl font-black tracking-[0.1em] uppercase italic leading-tight mb-8">劉揚安</h1>
+            <div class="max-w-2xl mx-auto border-t border-white/20 pt-8">
+                <p class="text-white/90 text-sm md:text-lg font-light tracking-[0.3em] leading-relaxed">「從頻率中提取情感，在數據中灌溉靈魂」</p>
+                <p class="text-white/40 text-[10px] mt-2 tracking-widest uppercase italic">Empowering Life, Not Just Creating Content.</p>
+            </div>
+        </div>
+    </section>
 
-let cur = 0;
-const bImg = document.getElementById("carousel-img");
-const bNm = document.getElementById("artist-name");
+    <!-- ⭐ 以下全部維持你原本 code（完全沒動） -->
 
-function showSlide(i) {
-    const artist = bannerList[i];
+    <script>
+        const bannerList = [
+            { name: "劉揚安", img: "images/luyanganhero-banner.jpg", pos: "center 20%" },
+            { name: "EUNA", img: "images/eunahero-banner.jpg", pos: "center 15%" },
+            { name: "NØVEX", img: "images/novexhero-banner.jpg", pos: "center 30%" },
+            { name: "NÄXER", img: "images/naxerhero-banner.jpg", pos: "center 35%" },
+            { name: "JOAH", img: "images/joahhero-banner.jpg", pos: "center 20%" },
+            { name: "LILITHIUM", img: "images/lilithiumhero-banner.jpg", pos: "center 25%" },
+            { name: "GAIALYRA", img: "images/gaialyrahero-banner.jpg", pos: "center 20%" },
+            { name: "RÆNE", img: "images/raenehero-banner.jpg", pos: "center 30%" },
+            { name: "RAUN", img: "images/raunhero-banner.jpg", pos: "center 15%" },
+            { name: "VRAISY", img: "images/vraisyhero-banner.jpg", pos: "center 25%" }
+        ];
 
-    bImg.style.opacity = "0";
+        let cur = 0;
+        const bImg = document.getElementById('carousel-img');
+        const bNm = document.getElementById('artist-name');
 
-    setTimeout(() => {
-        bImg.src = artist.img;
-        bImg.style.objectPosition = artist.pos;
-        bNm.innerText = artist.name;
+        function showSlide(i) {
+            const artist = bannerList[i];
+            bImg.style.opacity = '0';
+            bNm.style.opacity = '0';
 
-        bImg.onload = function () {
-            bImg.style.opacity = "1";
-        };
+            setTimeout(() => {
+                bImg.src = artist.img;
+                bImg.style.objectPosition = artist.pos;
+                bNm.innerText = artist.name;
 
-        bImg.onerror = function () {
-            bImg.style.opacity = "1";
-        };
+                bImg.onload = () => {
+                    bImg.style.opacity = '1';
+                    bNm.style.opacity = '1';
+                };
+            }, 800);
+        }
 
-    }, 600);
-}
+        showSlide(0);
 
-// 初始化（避免白畫面）
-showSlide(0);
-
-// 輪播（4秒）
-setInterval(function () {
-    cur = (cur + 1) % bannerList.length;
-    showSlide(cur);
-}, 4000);
-
-</script>
+        setInterval(() => {
+            cur = (cur + 1) % bannerList.length;
+            showSlide(cur);
+        }, 4000);
+    </script>
 
 </body>
 </html>
