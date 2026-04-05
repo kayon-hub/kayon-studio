@@ -9,6 +9,7 @@
 body {
     margin: 0;
     background: #000;
+    font-family: Arial, sans-serif;
 }
 
 /* HERO */
@@ -24,13 +25,13 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center 20%;
-    transition: opacity 0.8s ease;
+    transition: opacity 0.8s ease-in-out;
 }
 
 .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2), transparent);
 }
 
 .content {
@@ -39,13 +40,14 @@ body {
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: white;
+    color: #fff;
 }
 
 #artist-name {
     font-size: 72px;
     font-weight: 900;
     letter-spacing: 10px;
+    margin-top: 10px;
 }
 </style>
 </head>
@@ -53,22 +55,15 @@ body {
 <body>
 
 <section class="hero">
-
-    <!-- ⭐ 一定要有預設圖 -->
     <img id="carousel-img" src="/images/luyanganhero-banner.jpg">
-
     <div class="overlay"></div>
-
     <div class="content">
         <div>FROM FREQUENCIES TO SOUL</div>
         <div id="artist-name">劉揚安</div>
     </div>
-
 </section>
 
-<!-- ⭐ JS 放最底（關鍵） -->
 <script>
-
 const bannerList = [
     { name: "劉揚安", img: "/images/luyanganhero-banner.jpg", pos: "center 20%" },
     { name: "EUNA", img: "/images/eunahero-banner.jpg", pos: "center 15%" },
@@ -82,37 +77,38 @@ const bannerList = [
     { name: "VRAISY", img: "/images/vraisyhero-banner.jpg", pos: "center 25%" }
 ];
 
-const img = document.getElementById("carousel-img");
-const name = document.getElementById("artist-name");
-
-let index = 0;
+let cur = 0;
+const bImg = document.getElementById("carousel-img");
+const bNm = document.getElementById("artist-name");
 
 function showSlide(i) {
-    const item = bannerList[i];
+    const artist = bannerList[i];
 
-    img.style.opacity = "0";
+    bImg.style.opacity = "0";
 
     setTimeout(() => {
-        img.src = item.img;
-        img.style.objectPosition = item.pos;
-        name.innerText = item.name;
+        bImg.src = artist.img;
+        bImg.style.objectPosition = artist.pos;
+        bNm.innerText = artist.name;
 
-        img.onload = () => {
-            img.style.opacity = "1";
+        bImg.onload = function () {
+            bImg.style.opacity = "1";
         };
 
-    }, 500);
+        bImg.onerror = function () {
+            bImg.style.opacity = "1";
+        };
+
+    }, 600);
 }
 
-// ⭐ 初始化（保證不白）
-img.src = bannerList[0].img;
-img.style.objectPosition = bannerList[0].pos;
-name.innerText = bannerList[0].name;
+// 初始化（避免白畫面）
+showSlide(0);
 
-// ⭐ 輪播
-setInterval(() => {
-    index = (index + 1) % bannerList.length;
-    showSlide(index);
+// 輪播（4秒）
+setInterval(function () {
+    cur = (cur + 1) % bannerList.length;
+    showSlide(cur);
 }, 4000);
 
 </script>
