@@ -11,16 +11,7 @@
 
 <style>
 body{font-family:'Inter','Noto Sans TC',sans-serif;margin:0;background:#fff}
-
-/* Banner */
-#carousel-img{
-width:100%;
-height:100%;
-object-fit:cover;
-object-position:center 20%;
-transition:.8s;
-}
-
+#carousel-img{width:100%;height:100%;object-fit:cover;transition:.8s;}
 .hero{height:100dvh}
 </style>
 </head>
@@ -32,7 +23,7 @@ transition:.8s;
 <div class="max-w-7xl mx-auto flex justify-between items-center">
 
 <div class="flex items-center gap-3">
-<img src="logo/logo-mian.png" class="h-6">
+<img src="logo.png" class="h-6">
 <span class="font-black italic text-sm md:text-base">
 KARBØN X GAIA ✕ KAYON STUDIO
 </span>
@@ -54,11 +45,7 @@ Booking Now
 
 <!-- HERO -->
 <section class="hero relative bg-black flex items-end justify-center pb-24">
-
-<img id="carousel-img"
-src="images/luyanganhero-banner.jpg"
-class="absolute inset-0">
-
+<img id="carousel-img" src="images/luyanganhero-banner.jpg" class="absolute inset-0">
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
 
 <div class="relative text-white text-center px-6">
@@ -74,7 +61,23 @@ From Frequencies to Soul
 從頻率中提取情感，在數據中灌溉靈魂
 </p>
 </div>
+</section>
 
+<!-- SPLIT -->
+<section class="py-20 px-6 text-center bg-black text-white">
+<div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
+
+<a href="#talents" class="border p-10 hover:bg-white hover:text-black transition">
+<h3 class="text-2xl font-black mb-4">ENTERTAINMENT</h3>
+<p class="text-sm opacity-70">Artists｜Releases｜Universe</p>
+</a>
+
+<a href="#studio" class="border p-10 hover:bg-white hover:text-black transition">
+<h3 class="text-2xl font-black mb-4">STUDIO</h3>
+<p class="text-sm opacity-70">Production｜Sound｜Commercial</p>
+</a>
+
+</div>
 </section>
 
 <!-- TALENTS -->
@@ -86,17 +89,22 @@ From Frequencies to Soul
 <!-- STUDIO -->
 <section id="studio" class="bg-black text-white py-24 px-6">
 <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
-<div>原創音樂製作</div>
-<div>寶寶與毛孩記錄</div>
-<div>商業與影像配樂</div>
+
+<div>
+<h3 class="font-black text-xl mb-2">Music Production</h3>
+<p class="text-sm opacity-70">Original songs, artist development</p>
 </div>
 
-<div class="mt-12 text-center">
-<div id="paypal-container"></div>
-<script>
-paypal.HostedButtons({ hostedButtonId:"58WXWYM5QN98S" })
-.render("#paypal-container");
-</script>
+<div>
+<h3 class="font-black text-xl mb-2">Podcast</h3>
+<p class="text-sm opacity-70">Content & storytelling production</p>
+</div>
+
+<div>
+<h3 class="font-black text-xl mb-2">Sound Design</h3>
+<p class="text-sm opacity-70">Film, commercial, brand audio</p>
+</div>
+
 </div>
 </section>
 
@@ -109,29 +117,30 @@ paypal.HostedButtons({ hostedButtonId:"58WXWYM5QN98S" })
 <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/DGTf6jyeVhE"></iframe>
 <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/o-aIw9toVJs"></iframe>
 </div>
+</section>
 
-<div class="mt-12 flex justify-center gap-6">
-<a href="#" class="border px-6 py-2 rounded-full">Apple Music</a>
-<a href="#" class="border px-6 py-2 rounded-full">KKBOX</a>
-<a href="https://www.youtube.com/@KAYONSTUDIO_TW" target="_blank"
-class="border px-6 py-2 rounded-full">
-YouTube
-</a>
-</div>
+<!-- SUPPORT -->
+<section class="py-24 px-6 text-center">
+<h3 class="text-xl font-bold mb-2">支持偷故事的人企劃</h3>
+<p class="text-xs opacity-60 mb-6">
+每一段被忽略的心聲 都值得一首歌
+</p>
+<div id="paypal-container"></div>
+<script>
+paypal.HostedButtons({ hostedButtonId:"58WXWYM5QN98S" })
+.render("#paypal-container");
+</script>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="py-24 px-6 text-center">
 <h2 class="text-4xl font-black mb-6">Connect</h2>
 
-<a href="mailto:karbonxgaia.sky@gmail.com"
-class="block mb-6 underline">
+<a href="mailto:karbonxgaia.sky@gmail.com" class="block mb-6 underline">
 karbonxgaia.sky@gmail.com
 </a>
 
 <div class="flex justify-center gap-6">
-<a href="#">Apple Music</a>
-<a href="#">KKBOX</a>
 <a href="https://www.youtube.com/@KAYONSTUDIO_TW">Studio YT</a>
 <a href="https://www.youtube.com/@KARBONXGAIA_ENT">Ent YT</a>
 <a href="https://www.instagram.com/kayonstudio_official/">Instagram</a>
@@ -139,8 +148,6 @@ karbonxgaia.sky@gmail.com
 </section>
 
 <script>
-
-/* TALENTS */
 const talentsData=[
 {name:"劉揚安",img:"talents/luyangan.webp"},
 {name:"NØVEX",img:"talents/novex.webp"},
@@ -159,18 +166,10 @@ grid.innerHTML+=`
 </div>`;
 });
 
-/* BANNER */
 const bannerList=[
 {name:"劉揚安",img:"images/luyanganhero-banner.jpg",pos:"center 18%"},
 {name:"EUNA",img:"images/eunahero-banner.jpg",pos:"center 12%"},
-{name:"NØVEX",img:"images/novexhero-banner.jpg",pos:"center 28%"},
-{name:"NÄXER",img:"images/naxerhero-banner.jpg",pos:"center 32%"},
-{name:"JOAH",img:"images/joahhero-banner.jpg",pos:"center 18%"},
-{name:"LILITHIUM",img:"images/lilithiumhero-banner.jpg",pos:"center 22%"},
-{name:"GAIALYRA",img:"images/gaialyrahero-banner.jpg",pos:"center 18%"},
-{name:"RÆNE",img:"images/raenehero-banner.jpg",pos:"center 28%"},
-{name:"RAUN",img:"images/raunhero-banner.jpg",pos:"center 12%"},
-{name:"VRAISY",img:"images/vraisyhero-banner.jpg",pos:"center 22%"}
+{name:"NØVEX",img:"images/novexhero-banner.jpg",pos:"center 28%"}
 ];
 
 let cur=0;
@@ -178,7 +177,7 @@ const img=document.getElementById("carousel-img");
 const name=document.getElementById("artist-name");
 
 function getPos(p){
-return window.innerWidth<768?"center 8%":p;
+return window.innerWidth<768?"center top":p;
 }
 
 function show(i){
@@ -192,12 +191,10 @@ img.style.opacity="1";
 }
 
 show(0);
-
 setInterval(()=>{
 cur=(cur+1)%bannerList.length;
 show(cur);
 },4000);
-
 </script>
 
 </body>
