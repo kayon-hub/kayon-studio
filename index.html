@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KARBØN X GAIA</title>
+<title>KARBØN X GAIA ✕ KAYON STUDIO</title>
 
 <style>
 body {
     margin: 0;
-    background: black;
-    font-family: sans-serif;
+    background: #000;
+    font-family: Arial, sans-serif;
 }
 
+/* ===== HERO ===== */
 .hero {
     position: relative;
     width: 100%;
@@ -19,16 +20,16 @@ body {
     overflow: hidden;
 }
 
-/* ⭐ Banner 圖 */
+/* 圖片 */
 #carousel-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center 20%;
-    transition: opacity 0.8s ease;
+    transition: opacity 0.8s ease-in-out;
 }
 
-/* 漸層遮罩 */
+/* 遮罩 */
 .overlay {
     position: absolute;
     inset: 0;
@@ -42,18 +43,19 @@ body {
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: white;
-}
-
-#artist-name {
-    font-size: 64px;
-    font-weight: 900;
-    letter-spacing: 10px;
+    color: #fff;
 }
 
 .subtitle {
-    font-size: 14px;
-    opacity: 0.7;
+    font-size: 12px;
+    letter-spacing: 4px;
+    opacity: 0.6;
+}
+
+#artist-name {
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: 10px;
     margin-top: 10px;
 }
 </style>
@@ -64,14 +66,14 @@ body {
 <!-- HERO -->
 <section class="hero">
 
-    <!-- ⭐ 一定要有預設圖（防白畫面） -->
+    <!-- ⭐ 一定要有預設圖（避免白畫面） -->
     <img id="carousel-img" src="/images/luyanganhero-banner.jpg">
 
     <div class="overlay"></div>
 
     <div class="content">
         <div class="subtitle">FROM FREQUENCIES TO SOUL</div>
-        <h1 id="artist-name">劉揚安</h1>
+        <div id="artist-name">劉揚安</div>
     </div>
 
 </section>
@@ -79,7 +81,7 @@ body {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ⭐ Banner 資料（全部用 /images/）
+    // ===== 完整藝人 Banner =====
     const bannerList = [
         { name: "劉揚安", img: "/images/luyanganhero-banner.jpg", pos: "center 20%" },
         { name: "EUNA", img: "/images/eunahero-banner.jpg", pos: "center 15%" },
@@ -97,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const name = document.getElementById("artist-name");
 
     if (!img || !name) {
-        console.warn("banner 元素不存在");
+        console.warn("❌ Banner 元素抓不到");
         return;
     }
 
@@ -119,14 +121,14 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             img.onerror = () => {
-                console.error("圖片錯誤:", item.img);
+                console.error("❌ 圖片載入失敗:", item.img);
                 img.style.opacity = "1";
             };
 
-        }, 600);
+        }, 500);
     }
 
-    // ⭐ 初始化（關鍵）
+    // ⭐ 初始化（避免白畫面）
     img.src = bannerList[0].img;
     img.style.objectPosition = bannerList[0].pos;
     name.innerText = bannerList[0].name;
