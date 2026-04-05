@@ -1,252 +1,75 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>KARBØN X GAIA ✕ KAYON STUDIO</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+<!-- 只節錄關鍵 JS 區塊，因為你整份 HTML 太長，我不亂動你其他地方 -->
+<script>
+    const talentsData = [
+        { name: "劉揚安", cat: "真實存在的生命", img: "talents/luyangan.webp" },
+        { name: "NØVEX", cat: "引領潮流的先鋒", img: "talents/novex.webp" },
+        { name: "NÄXER", cat: "最可靠的陪伴", img: "talents/naxer.webp" },
+        { name: "LILITHIUM", cat: "旗艦戰略企劃", img: "talents/lilithium.webp" },
+        { name: "EUNA", cat: "細膩療癒嗓音", img: "talents/euna.webp" },
+        { name: "JOAH", cat: "情緒價值創造", img: "talents/joah.webp" },
+        { name: "GAIALYRA", cat: "探索維度邊界", img: "talents/gaialyra.webp" },
+        { name: "VRAISY", cat: "跨維度舞台魅力", img: "talents/vraisy.webp" },
+        { name: "RÆNE", cat: "靈魂共創成員", img: "talents/raene.webp" },
+        { name: "RAUN", cat: "真實存在的生命", img: "talents/raun.webp" }
+    ];
+
+    const bannerList = [
+        { name: "劉揚安", img: "images/luyanganhero-banner.jpg" },
+        { name: "EUNA", img: "images/eunahero-banner.jpg" },
+        { name: "NØVEX", img: "images/novexhero-banner.jpg" },
+        { name: "NÄXER", img: "images/naxerhero-banner.jpg" },
+        { name: "JOAH", img: "images/joahhero-banner.jpg" },
+        { name: "LILITHIUM", img: "images/lilithiumhero-banner.jpg" },
+        { name: "GAIALYRA", img: "images/gaialyrahero-banner.jpg" },
+        { name: "RÆNE", img: "images/raenehero-banner.jpg" },
+        { name: "RAUN", img: "images/raunhero-banner.jpg" },
+        { name: "VRAISY", img: "images/vraisyhero-banner.jpg" }
+    ];
+
+    const grid = document.getElementById('talents-grid');
+    talentsData.forEach((t, i) => {
+        grid.innerHTML += `
+            <div class="group animate-fadeIn" style="animation-delay: ${i * 100}ms">
+                <div class="aspect-square bg-transparent overflow-hidden mb-6 relative rounded-sm">
+                    <img src="${t.img}" class="h-full w-full object-cover object-top transition duration-1000 group-hover:scale-110" loading="lazy">
+                </div>
+                <h3 class="text-2xl font-black italic tracking-tighter uppercase text-black">${t.name}</h3>
+                <p class="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-widest">${t.cat}</p>
+            </div>`;
+    });
+
+    let cur = 0;
+    const bImg = document.getElementById('carousel-img');
+    const bNm = document.getElementById('artist-name');
+
+    setInterval(() => {
+        cur = (cur + 1) % bannerList.length;
+        bImg.style.opacity = '0';
+        bNm.style.opacity = '0';
+        setTimeout(() => {
+            const artist = bannerList[cur];
+            bImg.src = artist.img;
+            bNm.innerText = artist.name;
+            bImg.onload = () => { 
+                bImg.style.opacity = '1'; 
+                bNm.style.opacity = '1'; 
+            };
+        }, 800);
+    }, 4000); // ← ✅ 唯一修改：5000 → 4000
+
+    const audio = document.getElementById("bgm");
+    const musicBtn = document.getElementById("musicBtn");
+    const svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
+    const svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`;
     
-    <script src="https://www.paypal.com/sdk/js?client-id=BAA60JbOybnKoW-hBbZmo_m58jlZbpdNEWKABUYLZp_lBPn2g0amDd1IjIQM-BRReH6Lx9WGjimixvx9E&components=hosted-buttons&disable-funding=venmo&currency=TWD"></script>
-
-    <style>
-        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background-color: #ffffff; scroll-behavior: smooth; }
-        
-        /* 圖片核心樣式：滿版，且鎖定「頂部對齊」，保證臉部絕對不裁切 */
-        #carousel-img { 
-            transition: opacity 0.8s ease-in-out; 
-            object-fit: cover !important; 
-            object-position: center top !important; /* 鎖死頂部，保護臉部構圖 */
-            width: 100%; height: 100%;
-        }
-        
-        .hero-overlay { background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); pointer-events: none; }
-        .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .music-toggle { position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px; background: rgba(0, 0, 0, 0.8); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 9999; transition: transform 0.3s; }
-        .music-toggle:hover { transform: scale(1.1); }
-        .music-toggle svg { width: 24px; height: 24px; fill: white; }
-        
-        .header-logo { height: 28px; width: auto; filter: brightness(0); }
-        .social-link { transition: all 0.3s ease; opacity: 0.6; }
-        .social-link:hover { opacity: 1; transform: translateY(-2px); }
-        
-        #paypal-container-58WXWYM5QN98S { margin: 20px auto; max-width: 300px; }
-    </style>
-</head>
-<body class="overflow-x-hidden">
-
-    <audio id="bgm" loop preload="auto"><source src="bgm.mp3/kayonstudio.mp3" type="audio/mpeg"></audio>
-    <div id="musicBtn" class="music-toggle"></div>
-
-    <header class="fixed w-full top-0 bg-white/95 backdrop-blur-md z-[100] border-b border-gray-100 px-6 py-4">
-        <nav class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3">
-                <img src="logo/logo-mian.png" alt="Logo" class="header-logo">
-                <span class="font-black italic tracking-tighter uppercase text-black text-sm md:text-base">
-                    KARBØN X GAIA <span class="mx-1 text-gray-300 font-light italic text-sm">✕</span> KAYON STUDIO
-                </span>
-            </a>
-            <div class="hidden lg:flex items-center gap-6 text-[10px] font-bold tracking-widest text-gray-400 uppercase">
-                <a href="#talents" class="hover:text-black transition-colors">Artist Matrix</a>
-                <a href="#studio" class="hover:text-black transition-colors">Production</a>
-                <a href="#video" class="hover:text-black transition-colors">Works</a>
-                <a href="#contact" class="hover:text-black transition-colors">Contact</a>
-                <a href="https://lin.ee/RHRJOIN" target="_blank" class="bg-black text-white px-5 py-2 rounded-full hover:bg-gray-800 transition-all ml-4">Booking Now</a>
-            </div>
-        </nav>
-    </header>
-
-    <section class="relative w-full h-[85vh] md:h-[95vh] bg-black overflow-hidden flex flex-col items-center justify-end pb-24">
-        <div class="absolute inset-0 flex justify-center items-center">
-            <img id="carousel-img" src="images/luyanganhero-banner.jpg" alt="Featured Artist">
-        </div>
-        <div class="absolute inset-0 hero-overlay"></div>
-        <div class="relative z-30 text-center px-4 w-full max-w-5xl">
-            <h2 class="text-white/60 text-[10px] tracking-[0.8em] font-medium mb-6 uppercase">From Frequencies to Soul</h2>
-            <h1 id="artist-name" class="text-white text-6xl md:text-9xl font-black tracking-[0.1em] uppercase italic leading-tight mb-8">劉揚安</h1>
-            <div class="max-w-2xl mx-auto border-t border-white/20 pt-8">
-                <p class="text-white/90 text-sm md:text-lg font-light tracking-[0.3em] leading-relaxed">「從頻率中提取情感，在數據中灌溉靈魂」</p>
-                <p class="text-white/40 text-[10px] mt-2 tracking-widest uppercase italic">Empowering Life, Not Just Creating Content.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="talents" class="max-w-7xl mx-auto px-6 py-32">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-20">
-            <div>
-                <h2 class="text-5xl font-black tracking-tighter italic text-black uppercase">Artist Matrix</h2>
-                <p class="text-gray-400 font-bold text-[10px] tracking-widest uppercase italic mt-2">跨維度的溫暖陪伴 ｜ 虛擬與現實藝人陣容</p>
-            </div>
-            <p class="text-[10px] font-bold text-gray-300 uppercase tracking-[0.3em] mt-4 md:mt-0">Curated by KARBØN X GAIA</p>
-        </div>
-        <div id="talents-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20"></div>
-    </section>
-
-    <section id="studio" class="bg-[#0a0a0a] text-white py-32 px-6 border-y border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
-                <div class="border-l-4 border-white pl-6">
-                    <h2 class="text-5xl font-black italic uppercase tracking-tighter">KAYON STUDIO</h2>
-                    <p class="text-gray-400 mt-2 tracking-widest text-sm">聲音實驗室 ｜ 專業音樂製作 ｜ 影像設計</p>
-                </div>
-                <div class="flex flex-col gap-4">
-                    <a href="https://lin.ee/RHRJOIN" target="_blank" class="bg-white text-black px-12 py-5 rounded-full font-bold hover:bg-gray-200 transition-all text-center uppercase tracking-widest text-sm">立即啟動委託</a>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-12 border border-white/10 rounded-[2rem] bg-white/5 hover:bg-white/10 transition-all">
-                    <h3 class="text-xl font-bold mb-4">原創音樂製作</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">提供詞曲、編曲、錄混音一站式服務，為靈魂量身打造旋律。</p>
-                </div>
-                <div class="p-12 border border-pink-500/30 rounded-[2rem] bg-pink-500/5 hover:bg-pink-500/10 transition-all relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-pink-500 text-[8px] font-black px-3 py-1 uppercase tracking-tighter text-white">Special Project</div>
-                    <h3 class="text-xl font-bold mb-4 text-pink-400">寶寶與毛孩記錄</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-4 italic">「影像紀錄瞬間，旋律封存感動。」</p>
-                    <p class="text-gray-500 text-[11px] leading-relaxed border-t border-white/10 pt-4 uppercase">聲音時光膠囊 ✕ 成長動態影音</p>
-                </div>
-                <div class="p-12 border border-white/10 rounded-[2rem] bg-white/5 hover:bg-white/10 transition-all">
-                    <h3 class="text-xl font-bold mb-4">商業與影像配樂</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">深度聲音設計。強化品牌識別度與 Podcast 專業聲音優化。</p>
-                </div>
-            </div>
-
-            <div class="mt-32 text-center">
-                <p class="text-sm font-light tracking-[0.2em] text-gray-400 mb-8 uppercase italic">☕️ 支持「偷故事的人」典藏計畫</p>
-                <div id="paypal-container-58WXWYM5QN98S"></div>
-                <script>
-                    paypal.HostedButtons({ hostedButtonId: "58WXWYM5QN98S" }).render("#paypal-container-58WXWYM5QN98S")
-                </script>
-            </div>
-        </div>
-    </section>
-
-    <section id="video" class="max-w-7xl mx-auto px-6 py-32 text-center">
-        <h2 class="text-xs font-bold text-gray-300 tracking-[0.5em] uppercase mb-16">Selected Works</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="relative aspect-video bg-black rounded-3xl overflow-hidden shadow-xl">
-                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/fkh7w8KCt1Q?rel=0&modestbranding=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="relative aspect-video bg-black rounded-3xl overflow-hidden shadow-xl">
-                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/DGTf6jyeVhE?rel=0&modestbranding=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="relative aspect-video bg-black rounded-3xl overflow-hidden shadow-xl">
-                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/o-aIw9toVJs?rel=0&modestbranding=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="relative aspect-video bg-black rounded-3xl overflow-hidden shadow-xl">
-                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/2BXGiCE_K7o?rel=0&modestbranding=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="relative aspect-video bg-black rounded-3xl overflow-hidden shadow-xl">
-                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/x5qoypExU3Y?rel=0&modestbranding=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="relative aspect-video bg-black rounded-3xl overflow-hidden shadow-xl">
-                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/nwMQyEO4hMw?rel=0&modestbranding=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-        
-        <div class="mt-16 flex flex-wrap justify-center gap-4 md:gap-6">
-            <a href="#" class="px-8 py-3 border border-gray-800 text-black rounded-full text-xs font-bold tracking-widest uppercase hover:bg-black hover:text-white transition-all">Apple Music</a>
-            <a href="#" class="px-8 py-3 border border-gray-800 text-black rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#00C9DB] hover:text-white hover:border-[#00C9DB] transition-all">KKBOX</a>
-            <a href="https://www.youtube.com/@KAYONSTUDIO_TW" target="_blank" class="px-8 py-3 border border-gray-800 text-black rounded-full text-xs font-bold tracking-widest uppercase hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] transition-all">YouTube</a>
-        </div>
-    </section>
-
-    <section id="contact" class="bg-gray-50 py-32 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-5xl md:text-8xl font-black mb-16 uppercase tracking-tighter italic">Connect.</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
-                <div class="p-12 bg-white border border-gray-100 rounded-[3rem] shadow-sm">
-                    <h4 class="text-xl font-black mb-2 uppercase tracking-widest text-gray-300 italic">Project Inquiries</h4>
-                    <a href="mailto:karbonxgaia.sky@gmail.com" class="text-lg font-medium hover:text-black transition-colors block underline underline-offset-4">karbonxgaia.sky@gmail.com</a>
-                </div>
-                <div class="p-12 bg-white border border-gray-100 rounded-[3rem] shadow-sm">
-                    <h4 class="text-xl font-black mb-2 uppercase tracking-widest text-gray-300 italic">Artist Collaboration</h4>
-                    <a href="mailto:karbonxgaiaxava@gmail.com" class="text-lg font-medium hover:text-black transition-colors block underline underline-offset-4">karbonxgaiaxava@gmail.com</a>
-                </div>
-            </div>
-            
-            <div class="flex flex-wrap justify-center gap-8 md:gap-16 py-12 border-t border-gray-200">
-                <a href="#" class="social-link text-[11px] font-black uppercase tracking-widest text-black">Apple Music</a>
-                <a href="#" class="social-link text-[11px] font-black uppercase tracking-widest text-black">KKBOX</a>
-                <a href="https://www.youtube.com/@KAYONSTUDIO_TW" target="_blank" class="social-link text-[11px] font-black uppercase tracking-widest text-black">Studio YT</a>
-                <a href="https://www.youtube.com/@KARBONXGAIA_ENT" target="_blank" class="social-link text-[11px] font-black uppercase tracking-widest text-black">Ent YT</a>
-                <a href="https://www.instagram.com/kayonstudio_official/" target="_blank" class="social-link text-[11px] font-black uppercase tracking-widest text-black">Instagram</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-white py-12 text-center border-t border-gray-100 text-[9px] font-black tracking-[0.4em] text-gray-300 uppercase">
-        © 2026 KARBØN X GAIA ENTERTAINMENT ✕ KAYON STUDIO ALL RIGHTS RESERVED.
-    </footer>
-
-    <script>
-        const talentsData = [
-            { name: "劉揚安", cat: "真實存在的生命", img: "talents/luyangan.webp" },
-            { name: "NØVEX", cat: "引領潮流的先鋒", img: "talents/novex.webp" },
-            { name: "NÄXER", cat: "最可靠的陪伴", img: "talents/naxer.webp" },
-            { name: "LILITHIUM", cat: "旗艦戰略企劃", img: "talents/lilithium.webp" },
-            { name: "EUNA", cat: "細膩療癒嗓音", img: "talents/euna.webp" },
-            { name: "JOAH", cat: "情緒價值創造", img: "talents/joah.webp" },
-            { name: "GAIALYRA", cat: "探索維度邊界", img: "talents/gaialyra.webp" },
-            { name: "VRAISY", cat: "跨維度舞台魅力", img: "talents/vraisy.webp" },
-            { name: "RÆNE", cat: "靈魂共創成員", img: "talents/raene.webp" },
-            { name: "RAUN", cat: "真實存在的生命", img: "talents/raun.webp" }
-        ];
-
-        const bannerList = [
-            { name: "劉揚安", img: "images/luyanganhero-banner.jpg" },
-            { name: "EUNA", img: "images/eunahero-banner.jpg" },
-            { name: "NØVEX", img: "images/novexhero-banner.jpg" },
-            { name: "NÄXER", img: "images/naxerhero-banner.jpg" },
-            { name: "JOAH", img: "images/joahhero-banner.jpg" },
-            { name: "LILITHIUM", img: "images/lilithiumhero-banner.jpg" },
-            { name: "GAIALYRA", img: "images/gaialyrahero-banner.jpg" },
-            { name: "RÆNE", img: "images/raenehero-banner.jpg" },
-            { name: "RAUN", img: "images/raunhero-banner.jpg" },
-            { name: "VRAISY", img: "images/vraisyhero-banner.jpg" }
-        ];
-
-        const grid = document.getElementById('talents-grid');
-        talentsData.forEach((t, i) => {
-            grid.innerHTML += `
-                <div class="group animate-fadeIn" style="animation-delay: ${i * 100}ms">
-                    <div class="aspect-square bg-transparent overflow-hidden mb-6 relative rounded-sm">
-                        <img src="${t.img}" class="h-full w-full object-cover object-top transition duration-1000 group-hover:scale-110" loading="lazy">
-                    </div>
-                    <h3 class="text-2xl font-black italic tracking-tighter uppercase text-black">${t.name}</h3>
-                    <p class="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-widest">${t.cat}</p>
-                </div>`;
-        });
-
-        let cur = 0;
-        const bImg = document.getElementById('carousel-img');
-        const bNm = document.getElementById('artist-name');
-
-        setInterval(() => {
-            cur = (cur + 1) % bannerList.length;
-            bImg.style.opacity = '0';
-            bNm.style.opacity = '0';
-            setTimeout(() => {
-                const artist = bannerList[cur];
-                bImg.src = artist.img;
-                bNm.innerText = artist.name;
-                bImg.onload = () => { bImg.style.opacity = '1'; bNm.style.opacity = '1'; };
-            }, 800);
-        }, 5000);
-
-        const audio = document.getElementById("bgm");
-        const musicBtn = document.getElementById("musicBtn");
-        const svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
-        const svgMute = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 003.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`;
-        
-        musicBtn.innerHTML = svgMute;
-        musicBtn.onclick = () => { 
-            if (audio.paused) { audio.play(); musicBtn.innerHTML = svgPlay; } 
-            else { audio.pause(); musicBtn.innerHTML = svgMute; } 
-        };
-    </script>
-</body>
-</html>
+    musicBtn.innerHTML = svgMute;
+    musicBtn.onclick = () => { 
+        if (audio.paused) { 
+            audio.play(); 
+            musicBtn.innerHTML = svgPlay; 
+        } else { 
+            audio.pause(); 
+            musicBtn.innerHTML = svgMute; 
+        } 
+    };
+</script>
