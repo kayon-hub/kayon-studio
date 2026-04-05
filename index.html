@@ -1,19 +1,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-    const talentsData = [
-        { name: "劉揚安", cat: "真實存在的生命", img: "talents/luyangan.webp" },
-        { name: "NØVEX", cat: "引領潮流的先鋒", img: "talents/novex.webp" },
-        { name: "NÄXER", cat: "最可靠的陪伴", img: "talents/naxer.webp" },
-        { name: "LILITHIUM", cat: "旗艦戰略企劃", img: "talents/lilithium.webp" },
-        { name: "EUNA", cat: "細膩療癒嗓音", img: "talents/euna.webp" },
-        { name: "JOAH", cat: "情緒價值創造", img: "talents/joah.webp" },
-        { name: "GAIALYRA", cat: "探索維度邊界", img: "talents/gaialyra.webp" },
-        { name: "VRAISY", cat: "跨維度舞台魅力", img: "talents/vraisy.webp" },
-        { name: "RÆNE", cat: "靈魂共創成員", img: "talents/raene.webp" },
-        { name: "RAUN", cat: "真實存在的生命", img: "talents/raun.webp" }
-    ];
-
+    // ===== Banner 資料 =====
     const bannerList = [
         { name: "劉揚安", img: "images/luyanganhero-banner.jpg", pos: "center 20%" },
         { name: "EUNA", img: "images/eunahero-banner.jpg", pos: "center 15%" },
@@ -27,54 +15,53 @@ document.addEventListener("DOMContentLoaded", () => {
         { name: "VRAISY", img: "images/vraisyhero-banner.jpg", pos: "center 25%" }
     ];
 
-    const grid = document.getElementById('talents-grid');
+    // ===== 抓元素 =====
+    const bImg = document.getElementById("carousel-img");
+    const bNm = document.getElementById("artist-name");
 
-    if (grid) {
-        talentsData.forEach((t, i) => {
-            grid.innerHTML += `
-                <div class="group animate-fadeIn" style="animation-delay: ${i * 100}ms">
-                    <div class="aspect-square bg-transparent overflow-hidden mb-6 relative rounded-sm">
-                        <img src="${t.img}" class="h-full w-full object-cover object-top transition duration-1000 group-hover:scale-110" loading="lazy">
-                    </div>
-                    <h3 class="text-2xl font-black italic tracking-tighter uppercase text-black">${t.name}</h3>
-                    <p class="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-widest">${t.cat}</p>
-                </div>`;
-        });
+    // ===== 防呆（避免白畫面）=====
+    if (!bImg || !bNm) {
+        console.warn("⚠️ banner 元素沒抓到，不執行輪播");
+        return;
     }
 
     let cur = 0;
-    const bImg = document.getElementById('carousel-img');
-    const bNm = document.getElementById('artist-name');
 
-    if (bImg && bNm) {
+    // ===== 顯示函式 =====
+    function showSlide(index) {
+        const artist = bannerList[index];
+        if (!artist) return;
 
-        // 初始化
-        bImg.src = bannerList[0].img;
-        bImg.style.objectPosition = bannerList[0].pos;
-        bNm.innerText = bannerList[0].name;
+        bImg.style.opacity = "0";
+        bNm.style.opacity = "0";
 
-        setInterval(() => {
-            cur = (cur + 1) % bannerList.length;
+        setTimeout(() => {
+            bImg.src = artist.img;
+            bImg.style.objectPosition = artist.pos;
+            bNm.innerText = artist.name;
 
-            bImg.style.opacity = '0';
-            bNm.style.opacity = '0';
+            bImg.onload = () => {
+                bImg.style.opacity = "1";
+                bNm.style.opacity = "1";
+            };
 
-            setTimeout(() => {
-                const artist = bannerList[cur];
+            bImg.onerror = () => {
+                console.error("❌ 圖片載入失敗:", artist.img);
+                bImg.style.opacity = "1";
+                bNm.style.opacity = "1";
+            };
 
-                bImg.src = artist.img;
-                bImg.style.objectPosition = artist.pos;
-
-                bNm.innerText = artist.name;
-
-                bImg.onload = () => {
-                    bImg.style.opacity = '1';
-                    bNm.style.opacity = '1';
-                };
-            }, 800);
-
-        }, 4000);
+        }, 800);
     }
+
+    // ===== 初始化（超重要）=====
+    showSlide(0);
+
+    // ===== 輪播（4秒）=====
+    setInterval(() => {
+        cur = (cur + 1) % bannerList.length;
+        showSlide(cur);
+    }, 4000);
 
 });
 </script>
