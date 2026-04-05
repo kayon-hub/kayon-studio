@@ -1,67 +1,108 @@
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Banner</title>
 
-    // ===== Banner 資料 =====
+<style>
+body {
+    margin: 0;
+    background: black;
+}
+
+/* Hero */
+.hero {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    transition: opacity 0.8s ease;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.title {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 60px;
+    font-weight: 900;
+    letter-spacing: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <!-- ⭐ 先直接有圖（避免白畫面） -->
+    <img id="carousel-img" src="images/luyanganhero-banner.jpg">
+    
+    <div class="overlay"></div>
+    <div id="artist-name" class="title">劉揚安</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
     const bannerList = [
         { name: "劉揚安", img: "images/luyanganhero-banner.jpg", pos: "center 20%" },
         { name: "EUNA", img: "images/eunahero-banner.jpg", pos: "center 15%" },
-        { name: "NØVEX", img: "images/novexhero-banner.jpg", pos: "center 30%" },
-        { name: "NÄXER", img: "images/naxerhero-banner.jpg", pos: "center 35%" },
-        { name: "JOAH", img: "images/joahhero-banner.jpg", pos: "center 20%" },
-        { name: "LILITHIUM", img: "images/lilithiumhero-banner.jpg", pos: "center 25%" },
-        { name: "GAIALYRA", img: "images/gaialyrahero-banner.jpg", pos: "center 20%" },
-        { name: "RÆNE", img: "images/raenehero-banner.jpg", pos: "center 30%" },
-        { name: "RAUN", img: "images/raunhero-banner.jpg", pos: "center 15%" },
-        { name: "VRAISY", img: "images/vraisyhero-banner.jpg", pos: "center 25%" }
+        { name: "NØVEX", img: "images/novexhero-banner.jpg", pos: "center 30%" }
     ];
 
-    // ===== 抓元素 =====
-    const bImg = document.getElementById("carousel-img");
-    const bNm = document.getElementById("artist-name");
+    const img = document.getElementById("carousel-img");
+    const name = document.getElementById("artist-name");
 
-    // ===== 防呆（避免白畫面）=====
-    if (!bImg || !bNm) {
-        console.warn("⚠️ banner 元素沒抓到，不執行輪播");
-        return;
-    }
+    if (!img || !name) return;
 
-    let cur = 0;
+    let index = 0;
 
-    // ===== 顯示函式 =====
-    function showSlide(index) {
-        const artist = bannerList[index];
-        if (!artist) return;
+    function showSlide(i) {
+        const item = bannerList[i];
+        if (!item) return;
 
-        bImg.style.opacity = "0";
-        bNm.style.opacity = "0";
+        img.style.opacity = "0";
 
         setTimeout(() => {
-            bImg.src = artist.img;
-            bImg.style.objectPosition = artist.pos;
-            bNm.innerText = artist.name;
+            img.src = item.img;
+            img.style.objectPosition = item.pos;
+            name.innerText = item.name;
 
-            bImg.onload = () => {
-                bImg.style.opacity = "1";
-                bNm.style.opacity = "1";
+            img.onload = () => {
+                img.style.opacity = "1";
             };
 
-            bImg.onerror = () => {
-                console.error("❌ 圖片載入失敗:", artist.img);
-                bImg.style.opacity = "1";
-                bNm.style.opacity = "1";
-            };
-
-        }, 800);
+        }, 500);
     }
 
-    // ===== 初始化（超重要）=====
-    showSlide(0);
+    // 初始化（避免白畫面）
+    img.src = bannerList[0].img;
+    img.style.objectPosition = bannerList[0].pos;
+    name.innerText = bannerList[0].name;
 
-    // ===== 輪播（4秒）=====
+    // 輪播
     setInterval(() => {
-        cur = (cur + 1) % bannerList.length;
-        showSlide(cur);
+        index = (index + 1) % bannerList.length;
+        showSlide(index);
     }, 4000);
 
 });
 </script>
+
+</body>
+</html>
