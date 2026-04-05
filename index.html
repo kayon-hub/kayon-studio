@@ -3,22 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Test Banner</title>
+<title>KARBØN X GAIA</title>
 
 <style>
 body {
     margin: 0;
     background: black;
+    font-family: sans-serif;
 }
 
-/* Hero */
 .hero {
+    position: relative;
     width: 100%;
     height: 100vh;
-    position: relative;
     overflow: hidden;
 }
 
+/* ⭐ Banner 圖 */
 #carousel-img {
     width: 100%;
     height: 100%;
@@ -27,48 +28,78 @@ body {
     transition: opacity 0.8s ease;
 }
 
+/* 漸層遮罩 */
 .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2), transparent);
 }
 
-.title {
+/* 文字 */
+.content {
     position: absolute;
     bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
+    text-align: center;
     color: white;
-    font-size: 60px;
+}
+
+#artist-name {
+    font-size: 64px;
     font-weight: 900;
     letter-spacing: 10px;
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
-    <!-- ⭐ 先直接有圖（避免白畫面） -->
-    <img id="carousel-img" src="images/luyanganhero-banner.jpg">
-    
+<!-- HERO -->
+<section class="hero">
+
+    <!-- ⭐ 一定要有預設圖（防白畫面） -->
+    <img id="carousel-img" src="/images/luyanganhero-banner.jpg">
+
     <div class="overlay"></div>
-    <div id="artist-name" class="title">劉揚安</div>
-</div>
+
+    <div class="content">
+        <div class="subtitle">FROM FREQUENCIES TO SOUL</div>
+        <h1 id="artist-name">劉揚安</h1>
+    </div>
+
+</section>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
 
+    // ⭐ Banner 資料（全部用 /images/）
     const bannerList = [
-        { name: "劉揚安", img: "images/luyanganhero-banner.jpg", pos: "center 20%" },
-        { name: "EUNA", img: "images/eunahero-banner.jpg", pos: "center 15%" },
-        { name: "NØVEX", img: "images/novexhero-banner.jpg", pos: "center 30%" }
+        { name: "劉揚安", img: "/images/luyanganhero-banner.jpg", pos: "center 20%" },
+        { name: "EUNA", img: "/images/eunahero-banner.jpg", pos: "center 15%" },
+        { name: "NØVEX", img: "/images/novexhero-banner.jpg", pos: "center 30%" },
+        { name: "NÄXER", img: "/images/naxerhero-banner.jpg", pos: "center 35%" },
+        { name: "JOAH", img: "/images/joahhero-banner.jpg", pos: "center 20%" },
+        { name: "LILITHIUM", img: "/images/lilithiumhero-banner.jpg", pos: "center 25%" },
+        { name: "GAIALYRA", img: "/images/gaialyrahero-banner.jpg", pos: "center 20%" },
+        { name: "RÆNE", img: "/images/raenehero-banner.jpg", pos: "center 30%" },
+        { name: "RAUN", img: "/images/raunhero-banner.jpg", pos: "center 15%" },
+        { name: "VRAISY", img: "/images/vraisyhero-banner.jpg", pos: "center 25%" }
     ];
 
     const img = document.getElementById("carousel-img");
     const name = document.getElementById("artist-name");
 
-    if (!img || !name) return;
+    if (!img || !name) {
+        console.warn("banner 元素不存在");
+        return;
+    }
 
     let index = 0;
 
@@ -87,15 +118,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 img.style.opacity = "1";
             };
 
-        }, 500);
+            img.onerror = () => {
+                console.error("圖片錯誤:", item.img);
+                img.style.opacity = "1";
+            };
+
+        }, 600);
     }
 
-    // 初始化（避免白畫面）
+    // ⭐ 初始化（關鍵）
     img.src = bannerList[0].img;
     img.style.objectPosition = bannerList[0].pos;
     name.innerText = bannerList[0].name;
 
-    // 輪播
+    // ⭐ 輪播（4秒）
     setInterval(() => {
         index = (index + 1) % bannerList.length;
         showSlide(index);
