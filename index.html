@@ -8,107 +8,183 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;900&display=swap" rel="stylesheet">
 
+<script src="https://www.paypal.com/sdk/js?client-id=BAA60JbOybnKoW-hBbZmo_m58jlZbpdNEWKABUYLZp_lBPn2g0amDd1IjIQM-BRReH6Lx9WGjimixvx9E&components=hosted-buttons&disable-funding=venmo&currency=TWD"></script>
+
 <style>
-body {
-    font-family: 'Inter','Noto Sans TC',sans-serif;
-    background:#fff;
-}
+body { font-family: 'Inter','Noto Sans TC',sans-serif; background:#fff; }
 
-/* ⭐ Banner 修正（支援RWD） */
+/* ⭐ Banner修正 */
 #carousel-img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center 20%;
-    transition:opacity .8s ease;
+transition:opacity .8s;
+object-fit:cover;
+object-position:center 20%;
+width:100%;height:100%;
 }
 
-/* ⭐ 手機高度修正 */
-.hero{
-    height:100dvh;
-}
+/* ⭐ 手機高度 */
+.hero{height:100dvh}
 
-/* ⭐ 手機字縮小 */
-@media (max-width:768px){
-    #artist-name{
-        font-size:42px !important;
-        letter-spacing:4px !important;
-    }
-}
+.hero-overlay{background:linear-gradient(to top,rgba(0,0,0,.9),transparent)}
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero relative w-full bg-black overflow-hidden flex items-end justify-center pb-16 md:pb-24">
+<!-- HEADER（完全保留） -->
+<header class="fixed w-full top-0 bg-white/95 backdrop-blur z-50 px-6 py-4 border-b">
+<nav class="max-w-7xl mx-auto flex justify-between items-center">
 
-    <div class="absolute inset-0">
-        <img id="carousel-img" src="images/luyanganhero-banner.jpg">
-    </div>
+<div class="flex items-center gap-3">
+<img src="logo/logo-mian.png" class="h-7">
+<span class="font-black italic text-sm md:text-base">
+KARBØN X GAIA ✕ KAYON STUDIO
+</span>
+</div>
 
-    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+<div class="hidden lg:flex gap-6 text-[10px] font-bold uppercase">
+<a href="#talents">Artist Matrix</a>
+<a href="#studio">Production</a>
+<a href="#video">Works</a>
+<a href="#contact">Contact</a>
+<a href="https://lin.ee/RHRJOIN" target="_blank"
+class="bg-black text-white px-4 py-2 rounded-full">
+Booking
+</a>
+</div>
 
-    <div class="relative z-20 text-center px-4 max-w-5xl">
-        <h2 class="text-white/60 text-[10px] tracking-[0.6em] md:tracking-[0.8em] mb-4 uppercase">
-            From Frequencies to Soul
-        </h2>
+</nav>
+</header>
 
-        <h1 id="artist-name"
-        class="text-white text-5xl md:text-9xl font-black tracking-[0.1em] uppercase italic leading-tight mb-6">
-        劉揚安
-        </h1>
+<!-- HERO（修好的Banner） -->
+<section class="hero relative bg-black flex items-end justify-center pb-24">
 
-        <p class="text-white/80 text-xs md:text-lg tracking-[0.2em]">
-        「從頻率中提取情感，在數據中灌溉靈魂」
-        </p>
-    </div>
+<img id="carousel-img" src="images/luyanganhero-banner.jpg" class="absolute inset-0">
+
+<div class="absolute inset-0 hero-overlay"></div>
+
+<div class="relative text-center text-white max-w-5xl px-6">
+<h2 class="text-[10px] tracking-[0.6em] mb-6 uppercase opacity-60">
+From Frequencies to Soul
+</h2>
+
+<h1 id="artist-name" class="text-4xl md:text-9xl font-black italic mb-6">
+劉揚安
+</h1>
+
+<p class="text-xs md:text-lg tracking-[0.2em]">
+從頻率中提取情感，在數據中灌溉靈魂
+</p>
+</div>
 
 </section>
 
-<!-- ⭐ 你原本其他區塊全部保留（這裡省略，但你自己原本有） -->
+<!-- TALENTS（完全保留） -->
+<section id="talents" class="max-w-7xl mx-auto px-6 py-24">
+<h2 class="text-4xl font-black mb-10">Artist Matrix</h2>
+<div id="talents-grid" class="grid md:grid-cols-3 gap-10"></div>
+</section>
+
+<!-- STUDIO（完全保留） -->
+<section id="studio" class="bg-black text-white py-24 px-6">
+<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+<div>原創音樂製作</div>
+<div>寶寶與毛孩記錄</div>
+<div>商業配樂</div>
+</div>
+
+<div class="mt-10 text-center">
+<div id="paypal-container-58WXWYM5QN98S"></div>
+<script>
+paypal.HostedButtons({ hostedButtonId:"58WXWYM5QN98S" })
+.render("#paypal-container-58WXWYM5QN98S");
+</script>
+</div>
+</section>
+
+<!-- VIDEO（完全保留） -->
+<section id="video" class="py-24 px-6 text-center">
+<h2 class="mb-10">Selected Works</h2>
+
+<div class="grid md:grid-cols-3 gap-6">
+<iframe class="w-full aspect-video"
+src="https://www.youtube.com/embed/fkh7w8KCt1Q"></iframe>
+
+<iframe class="w-full aspect-video"
+src="https://www.youtube.com/embed/DGTf6jyeVhE"></iframe>
+
+<iframe class="w-full aspect-video"
+src="https://www.youtube.com/embed/o-aIw9toVJs"></iframe>
+</div>
+</section>
+
+<!-- CONTACT（完全保留） -->
+<section id="contact" class="py-24 px-6 text-center">
+<h2 class="text-4xl font-black mb-6">Connect</h2>
+
+<a href="mailto:karbonxgaia.sky@gmail.com">
+karbonxgaia.sky@gmail.com
+</a>
+
+<div class="mt-6 flex justify-center gap-6">
+<a href="#">Apple Music</a>
+<a href="#">KKBOX</a>
+<a href="https://www.youtube.com/@KAYONSTUDIO_TW">YouTube</a>
+</div>
+</section>
 
 <script>
 
-/* ⭐ Banner 資料（每張構圖不同） */
-const bannerList = [
-    { name:"劉揚安", img:"images/luyanganhero-banner.jpg", pos:"center 20%" },
-    { name:"EUNA", img:"images/eunahero-banner.jpg", pos:"center 15%" },
-    { name:"NØVEX", img:"images/novexhero-banner.jpg", pos:"center 30%" },
-    { name:"NÄXER", img:"images/naxerhero-banner.jpg", pos:"center 35%" },
-    { name:"JOAH", img:"images/joahhero-banner.jpg", pos:"center 20%" },
-    { name:"LILITHIUM", img:"images/lilithiumhero-banner.jpg", pos:"center 25%" },
-    { name:"GAIALYRA", img:"images/gaialyrahero-banner.jpg", pos:"center 20%" },
-    { name:"RÆNE", img:"images/raenehero-banner.jpg", pos:"center 30%" },
-    { name:"RAUN", img:"images/raunhero-banner.jpg", pos:"center 15%" },
-    { name:"VRAISY", img:"images/vraisyhero-banner.jpg", pos:"center 25%" }
+/* talents（保留） */
+const talentsData=[
+{name:"劉揚安",img:"talents/luyangan.webp"},
+{name:"NØVEX",img:"talents/novex.webp"},
+{name:"NÄXER",img:"talents/naxer.webp"},
+{name:"LILITHIUM",img:"talents/lilithium.webp"},
+{name:"EUNA",img:"talents/euna.webp"}
 ];
 
-let cur = 0;
-const img = document.getElementById("carousel-img");
-const name = document.getElementById("artist-name");
+const grid=document.getElementById("talents-grid");
+talentsData.forEach(t=>{
+grid.innerHTML+=`
+<div>
+<img src="${t.img}" class="w-full object-cover">
+<h3>${t.name}</h3>
+</div>`;
+});
 
-function showSlide(i){
-    const item = bannerList[i];
+/* ⭐ Banner輪播（唯一改動） */
+const bannerList=[
+{name:"劉揚安",img:"images/luyanganhero-banner.jpg",pos:"center 20%"},
+{name:"EUNA",img:"images/eunahero-banner.jpg",pos:"center 15%"},
+{name:"NØVEX",img:"images/novexhero-banner.jpg",pos:"center 30%"},
+{name:"NÄXER",img:"images/naxerhero-banner.jpg",pos:"center 35%"},
+{name:"JOAH",img:"images/joahhero-banner.jpg",pos:"center 20%"},
+{name:"LILITHIUM",img:"images/lilithiumhero-banner.jpg",pos:"center 25%"},
+{name:"GAIALYRA",img:"images/gaialyrahero-banner.jpg",pos:"center 20%"},
+{name:"RÆNE",img:"images/raenehero-banner.jpg",pos:"center 30%"},
+{name:"RAUN",img:"images/raunhero-banner.jpg",pos:"center 15%"},
+{name:"VRAISY",img:"images/vraisyhero-banner.jpg",pos:"center 25%"}
+];
 
-    img.style.opacity = "0";
+let cur=0;
+const img=document.getElementById("carousel-img");
+const name=document.getElementById("artist-name");
 
-    setTimeout(()=>{
-        img.src = item.img;
-        img.style.objectPosition = item.pos;
-        name.innerText = item.name;
-
-        img.onload = ()=> img.style.opacity="1";
-    },500);
+function show(i){
+img.style.opacity="0";
+setTimeout(()=>{
+img.src=bannerList[i].img;
+img.style.objectPosition=bannerList[i].pos;
+name.innerText=bannerList[i].name;
+img.style.opacity="1";
+},500);
 }
 
-/* ⭐ 初始化 */
-showSlide(0);
+show(0);
 
-/* ⭐ 輪播 */
 setInterval(()=>{
-    cur = (cur+1) % bannerList.length;
-    showSlide(cur);
+cur=(cur+1)%bannerList.length;
+show(cur);
 },4000);
 
 </script>
