@@ -1,4 +1,6 @@
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+
     const talentsData = [
         { name: "劉揚安", cat: "真實存在的生命", img: "talents/luyangan.webp" },
         { name: "NØVEX", cat: "引領潮流的先鋒", img: "talents/novex.webp" },
@@ -46,7 +48,7 @@
 
     if (bImg && bNm) {
 
-        // 初始化第一張（避免白畫面）
+        // 初始化
         bImg.src = bannerList[0].img;
         bImg.style.objectPosition = bannerList[0].pos;
         bNm.innerText = bannerList[0].name;
@@ -61,7 +63,7 @@
                 const artist = bannerList[cur];
 
                 bImg.src = artist.img;
-                bImg.style.objectPosition = artist.pos; // ⭐ 核心修正
+                bImg.style.objectPosition = artist.pos;
 
                 bNm.innerText = artist.name;
 
@@ -74,23 +76,5 @@
         }, 4000);
     }
 
-    const audio = document.getElementById("bgm");
-    const musicBtn = document.getElementById("musicBtn");
-
-    if (audio && musicBtn) {
-        const svgPlay = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>`;
-        const svgMute = `<svg viewBox="0 0 24 24"><path d="M16 12L21 17M21 12L16 17"/></svg>`;
-
-        musicBtn.innerHTML = svgMute;
-
-        musicBtn.onclick = () => {
-            if (audio.paused) {
-                audio.play();
-                musicBtn.innerHTML = svgPlay;
-            } else {
-                audio.pause();
-                musicBtn.innerHTML = svgMute;
-            }
-        };
-    }
+});
 </script>
