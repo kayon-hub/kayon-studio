@@ -14,17 +14,18 @@
     ];
 
     const bannerList = [
-        { name: "劉揚安", img: "images/luyanganhero-banner.jpg" },
-        { name: "EUNA", img: "images/eunahero-banner.jpg" },
-        { name: "NØVEX", img: "images/novexhero-banner.jpg" },
-        { name: "NÄXER", img: "images/naxerhero-banner.jpg" },
-        { name: "JOAH", img: "images/joahhero-banner.jpg" },
-        { name: "LILITHIUM", img: "images/lilithiumhero-banner.jpg" },
-        { name: "GAIALYRA", img: "images/gaialyrahero-banner.jpg" },
-        { name: "RÆNE", img: "images/raenehero-banner.jpg" },
-        { name: "RAUN", img: "images/raunhero-banner.jpg" },
-        { name: "VRAISY", img: "images/vraisyhero-banner.jpg" }
-    ];
+     const bannerList = [
+    { name: "劉揚安", img: "images/luyanganhero-banner.jpg", pos: "center 20%" },
+    { name: "EUNA", img: "images/eunahero-banner.jpg", pos: "center 15%" },
+    { name: "NØVEX", img: "images/novexhero-banner.jpg", pos: "center 30%" },
+    { name: "NÄXER", img: "images/naxerhero-banner.jpg", pos: "center 35%" },
+    { name: "JOAH", img: "images/joahhero-banner.jpg", pos: "center 20%" },
+    { name: "LILITHIUM", img: "images/lilithiumhero-banner.jpg", pos: "center 25%" },
+    { name: "GAIALYRA", img: "images/gaialyrahero-banner.jpg", pos: "center 20%" },
+    { name: "RÆNE", img: "images/raenehero-banner.jpg", pos: "center 30%" },
+    { name: "RAUN", img: "images/raunhero-banner.jpg", pos: "center 15%" },
+    { name: "VRAISY", img: "images/vraisyhero-banner.jpg", pos: "center 25%" }
+];
 
     const grid = document.getElementById('talents-grid');
     talentsData.forEach((t, i) => {
@@ -49,7 +50,7 @@
         setTimeout(() => {
             const artist = bannerList[cur];
             bImg.src = artist.img;
-            bNm.innerText = artist.name;
+           bImg.style.objectPosition = artist.pos;
             bImg.onload = () => { 
                 bImg.style.opacity = '1'; 
                 bNm.style.opacity = '1'; 
