@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KARBØN X GAIA ✕ KAYON STUDIO</title>
+
+<!-- SEO Meta -->
+<meta name="description" content="KARBØN X GAIA ✕ KAYON STUDIO — 原創音樂製作、AI 虛擬藝人管理、商業配樂。From Frequencies to Soul.">
+<meta name="keywords" content="KAYON STUDIO, KARBØN X GAIA, 音樂製作, AI 虛擬藝人, 台灣音樂, 商業配樂">
+<meta name="author" content="KAYON STUDIO">
+
+<!-- Open Graph (FB / LINE 分享縮圖) -->
+<meta property="og:title" content="KARBØN X GAIA ✕ KAYON STUDIO">
+<meta property="og:description" content="原創音樂製作、AI 虛擬藝人管理、商業配樂。From Frequencies to Soul.">
+<meta property="og:image" content="images/hero.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KARBØN X GAIA ✕ KAYON STUDIO">
+<meta name="twitter:description" content="原創音樂製作、AI 虛擬藝人管理、商業配樂。">
+<meta name="twitter:image" content="images/hero.jpg">
+
+<!-- Preload hero banner -->
+<link rel="preload" as="image" href="images/luyanganhero-banner.jpg">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+<script src="https://www.paypal.com/sdk/js?client-id=BAA60JbOybnKoW-hBbZmo_m58jlZbpdNEWKABUYLZp_lBPn2g0amDd1IjIQM-BRReH6Lx9WGjimixvx9E&components=hosted-buttons&currency=TWD" defer></script>
+
+<style>
+html { scroll-behavior: smooth; }
+body { font-family:'Inter','Noto Sans TC',sans-serif; margin:0; background:#fff; }
+
+/* Banner */
+#carousel-img {
+  width: 100%;
+  height: auto;          /* 保持原始比例，完全不裁切 */
+  display: block;
+  transition: opacity .8s;
+}
+.hero { position: relative; background: #000; margin-top: 65px; }
+
+/* Talent card hover */
+.talent-card img {
+  transition: transform .4s ease;
+  width: 100%;
+  height: auto;      /* 自然比例，完整顯示，不裁切 */
+  display: block;
+}
+.talent-card:hover img { transform: scale(1.03); }
+.talent-card { overflow: hidden; }
+
+/* Mobile menu */
+#mobile-menu {
+  display:none;
+  position:fixed; top:64px; left:0; right:0;
+  background:#fff; border-bottom:1px solid #e5e7eb;
+  padding:1rem 1.5rem; z-index:40;
+  flex-direction:column; gap:.75rem;
+}
+#mobile-menu.open { display:flex; }
+#hamburger span {
+  display:block; width:22px; height:2px;
+  background:#000; margin:4px 0;
+  transition: .3s;
+}
+
+/* Studio cards */
+.studio-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: border-color .3s, background .3s;
+}
+.studio-card:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* Section heading style */
+.section-title {
+  font-size:2.5rem; font-weight:900; margin-bottom:3rem;
+}
+</style>
+</head>
+
+<body class="overflow-x-hidden">
+
+<!-- HEADER -->
+<header class="fixed w-full top-0 bg-white/95 backdrop-blur z-50 border-b px-6 py-4">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+
+  <div class="flex items-center gap-3">
+    <img src="logo/logo-mian.png" class="h-6" alt="KAYON STUDIO Logo">
+    <div class="flex flex-col leading-tight">
+      <a href="artists.html" class="font-black italic text-sm tracking-tight hover:opacity-60 transition-opacity">
+        KARBØN X GAIA ENTERTAINMENT
+      </a>
+      <a href="index.html" class="text-[9px] font-bold tracking-widest uppercase text-gray-400 hover:text-black transition-colors hidden md:block">
+        KAYON STUDIO
+      </a>
+    </div>
+  </div>
+
+  <!-- Desktop Nav -->
+  <nav class="hidden lg:flex gap-6 text-[10px] font-bold uppercase items-center">
+    <a href="#talents" class="hover:opacity-60 transition-opacity">Artist Matrix</a>
+    <a href="#video" class="hover:opacity-60 transition-opacity">Works</a>
+    <a href="#contact" class="hover:opacity-60 transition-opacity">Contact</a>
+    <a href="index.html" class="hover:opacity-60 transition-opacity">Studio</a>
+    <a href="https://lin.ee/NjQVcYu" target="_blank" rel="noopener"
+      class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">
+      Booking Now
+    </a>
+  </nav>
+
+  <!-- Hamburger (mobile) -->
+  <button id="hamburger" class="lg:hidden flex flex-col justify-center" aria-label="開啟選單">
+    <span></span><span></span><span></span>
+  </button>
+
+</div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" role="navigation" aria-label="行動裝置選單">
+  <a href="#talents" class="text-sm font-bold uppercase py-1">Artist Matrix</a>
+  <a href="#video" class="text-sm font-bold uppercase py-1">Works</a>
+  <a href="#contact" class="text-sm font-bold uppercase py-1">Contact</a>
+  <a href="index.html" class="text-sm font-bold uppercase py-1">Studio</a>
+  <a href="https://lin.ee/NjQVcYu" target="_blank" rel="noopener"
+    class="bg-black text-white px-4 py-2 rounded-full text-sm font-bold text-center">
+    Booking Now
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="relative">
+    <img id="carousel-img"
+      src="images/luyanganhero-banner.jpg"
+      alt="KAYON STUDIO 藝人輪播"
+      class="w-full block">
+
+    <!-- 漸層遮罩：只在圖片底部，不影響臉部 -->
+    <div class="absolute bottom-0 left-0 right-0 h-2/5
+                bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+
+    <!-- 文字：疊在圖片底部 -->
+    <div class="absolute bottom-0 left-0 right-0 text-white text-center px-6 pb-10 md:pb-16">
+      <h2 class="text-[10px] tracking-[0.6em] mb-3 opacity-60 uppercase">
+        From Frequencies to Soul
+      </h2>
+      <h1 id="artist-name" class="text-3xl md:text-8xl font-black italic mb-3">
+        劉揚安
+      </h1>
+      <p class="text-xs md:text-base tracking-[0.2em]">
+        從頻率中提取情感，在數據中灌溉靈魂
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<!-- TALENTS -->
+<section id="talents" class="max-w-7xl mx-auto px-6 py-24">
+  <h2 class="section-title">Artist Matrix</h2>
+  <div id="talents-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
+</section>
+
+<!-- STUDIO -->
+<section id="studio" class="bg-black text-white py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+
+    <h2 class="section-title">Production</h2>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+
+      <div class="studio-card">
+        <div class="text-3xl mb-4">🎵</div>
+        <h3 class="text-lg font-bold mb-2">原創音樂製作</h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          從概念到成品，涵蓋人聲錄製、編曲、混音、母帶處理，打造具有辨識度的獨特聲音。
+        </p>
+      </div>
+
+      <div class="studio-card">
+        <div class="text-3xl mb-4">🎬</div>
+        <h3 class="text-lg font-bold mb-2">寶寶與毛孩記錄</h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          專屬客製化紀念配樂，將生命中最珍貴的時刻轉化為永恆的音樂記憶。
+        </p>
+      </div>
+
+      <div class="studio-card">
+        <div class="text-3xl mb-4">📺</div>
+        <h3 class="text-lg font-bold mb-2">商業與影像配樂</h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          廣告、品牌影片、短片配樂製作，以音樂強化視覺敘事的情感張力。
+        </p>
+      </div>
+
+    </div>
+
+    <div class="text-center">
+      <p class="text-gray-400 text-sm mb-6 tracking-widest uppercase">立即預約製作服務</p>
+      <div id="paypal-container"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="py-24 px-6 text-center">
+  <h2 class="section-title">YouTube Official Video</h2>
+
+  <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+    <a href="https://youtu.be/ORpbt71sYSY" target="_blank" rel="noopener"
+      class="group relative block aspect-video rounded-lg overflow-hidden bg-black">
+      <img src="https://img.youtube.com/vi/ORpbt71sYSY/maxresdefault.jpg"
+        alt="Selected Work 1" loading="lazy"
+        class="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-300">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center
+                    group-hover:scale-110 transition-transform duration-300 shadow-lg">
+          <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=nwMQyEO4hMw" target="_blank" rel="noopener"
+      class="group relative block aspect-video rounded-lg overflow-hidden bg-black">
+      <img src="https://img.youtube.com/vi/nwMQyEO4hMw/maxresdefault.jpg"
+        alt="Selected Work 2" loading="lazy"
+        class="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-300">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center
+                    group-hover:scale-110 transition-transform duration-300 shadow-lg">
+          <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- STREAMING PLATFORMS -->
+  <div class="mt-20 max-w-5xl mx-auto">
+    <p class="text-[10px] tracking-[0.5em] uppercase text-gray-400 mb-3">Available On</p>
+    <h3 class="text-2xl md:text-3xl font-black mb-2">在以下平台都可以聽到我們</h3>
+    <p class="text-xs text-gray-400 tracking-widest uppercase mb-12">Streaming Everywhere</p>
+
+    <div class="flex flex-wrap justify-center gap-3">
+      <span class="platform-tag">Apple Music</span>
+      <span class="platform-tag">Spotify</span>
+      <span class="platform-tag">YouTube Music</span>
+      <span class="platform-tag">YouTube</span>
+      <span class="platform-tag">Amazon Music</span>
+      <span class="platform-tag">KKBOX</span>
+      <span class="platform-tag">Line Music</span>
+      <span class="platform-tag">Melon</span>
+      <span class="platform-tag">Bugs!</span>
+      <span class="platform-tag">Genie</span>
+      <span class="platform-tag">FLO Music</span>
+      <span class="platform-tag">Naver Music</span>
+      <span class="platform-tag">網易雲音樂</span>
+      <span class="platform-tag">QQ 音樂</span>
+      <span class="platform-tag">酷狗音樂</span>
+      <span class="platform-tag">酷我音樂</span>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.platform-tag {
+  display: inline-block;
+  padding: .45rem 1.1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9999px;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: #374151;
+  white-space: nowrap;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.platform-tag:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+</style>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 px-6 bg-black text-white">
+  <div class="max-w-4xl mx-auto text-center">
+
+    <p class="text-[10px] tracking-[0.5em] uppercase opacity-50 mb-4">KARBØN X GAIA ENTERTAINMENT</p>
+    <h2 class="section-title">Connect</h2>
+
+    <p class="text-gray-400 text-sm tracking-widest uppercase mb-16">
+      For Media Inquiries, Licensing, Collaboration & Business Affairs
+    </p>
+
+    <div class="max-w-md mx-auto border border-white/10 rounded-xl p-10 hover:border-white/30 transition-colors mb-16">
+      <p class="text-[10px] tracking-[0.4em] uppercase text-gray-500 mb-6">
+        媒體洽詢 · 工作洽談 · Business Affairs
+      </p>
+      <div class="flex justify-center gap-8 mb-6">
+        <div>
+          <p class="text-[10px] tracking-widest uppercase text-gray-600 mb-1">Artist Manager</p>
+          <p class="font-bold text-white">SKY</p>
+        </div>
+        <div class="w-px bg-white/10"></div>
+        <div>
+          <p class="text-[10px] tracking-widest uppercase text-gray-600 mb-1">Artist Manager</p>
+          <p class="font-bold text-white">Ava</p>
+        </div>
+      </div>
+      <a href="mailto:karbonxgaiaxartist@gmail.com"
+        class="text-sm text-gray-400 hover:text-white transition-colors underline underline-offset-4 tracking-wide">
+        karbonxgaiaxartist@gmail.com
+      </a>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-6 text-xs font-bold tracking-widest uppercase mb-16">
+      <a href="https://www.youtube.com/@KAYONSTUDIO_TW" target="_blank" rel="noopener"
+        class="hover:opacity-60 transition-opacity">Studio YT</a>
+      <a href="https://www.youtube.com/@KARBONXGAIA_ENT" target="_blank" rel="noopener"
+        class="hover:opacity-60 transition-opacity">Ent YT</a>
+      <a href="https://www.instagram.com/kayonstudio_official/" target="_blank" rel="noopener"
+        class="hover:opacity-60 transition-opacity">Instagram</a>
+      <a href="https://lin.ee/NjQVcYu" target="_blank" rel="noopener"
+        class="hover:opacity-60 transition-opacity">LINE@</a>
+    </div>
+
+    <p class="text-xs text-gray-600 tracking-widest">
+      © 2026 KARBØN X GAIA ENTERTAINMENT · KAYON STUDIO. All Rights Reserved.
+    </p>
+
+  </div>
+</section>
+
+<script>
+
+/* HAMBURGER MENU */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+// Close mobile menu when a link is clicked
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+/* TALENTS GRID */
+const talentsData = [
+  { name:"劉揚安",   img:"talents/luyangan.webp" },
+  { name:"NØVEX",    img:"talents/novex.webp" },
+  { name:"NÄXER",    img:"talents/naxer.webp" },
+  { name:"LILITHIUM",img:"talents/lilithium.webp" },
+  { name:"EUNA",     img:"talents/euna.webp" },
+  { name:"JOAH",     img:"talents/joah.webp" },
+  { name:"GAIALYRA", img:"talents/gaialyra.webp" },
+  { name:"RÆNE",     img:"talents/raene.webp" },
+  { name:"RAUN",     img:"talents/raun.webp" },
+  { name:"VRAISY",   img:"talents/vraisy.webp" }
+];
+
+const grid = document.getElementById('talents-grid');
+const fragment = document.createDocumentFragment();
+talentsData.forEach(t => {
+  const div = document.createElement('div');
+  div.className = 'talent-card cursor-pointer';
+  div.innerHTML = `
+    <img src="${t.img}" loading="lazy" alt="${t.name}" class="w-full object-cover rounded-lg">
+    <h3 class="mt-3 font-bold text-sm tracking-wider">${t.name}</h3>
+  `;
+  fragment.appendChild(div);
+});
+grid.appendChild(fragment);
+
+/* HERO BANNER CAROUSEL */
+const bannerList = [
+  { name:"劉揚安",   img:"images/luyanganhero-banner.jpg",  pos:"center 18%" },
+  { name:"NØVEX",   img:"images/novexhero-banner.jpg",      pos:"center 28%" },
+  { name:"NÄXER",   img:"images/naxerhero-banner.jpg",      pos:"center 32%" },
+  { name:"EUNA",    img:"images/eunahero-banner.jpg",       pos:"center 12%" },
+  { name:"JOAH",    img:"images/joahhero-banner.jpg",       pos:"center 18%" },
+  { name:"LILITHIUM",img:"images/lilithiumhero-banner.png", pos:"center 22%" },
+  { name:"GAIALYRA",img:"images/gaialyrahero-banner.jpg",   pos:"center 18%" },
+  { name:"RAUN",    img:"images/raunhero-banner.jpg",       pos:"center 12%" },
+  { name:"VRAISY",  img:"images/vraisyhero-banner.jpg",     pos:"center 22%" },
+  { name:"RÆNE",    img:"images/raenehero-banner.jpg",      pos:"center 28%" }
+];
+
+let cur = 0;
+const carouselImg = document.getElementById('carousel-img');
+const artistName  = document.getElementById('artist-name');
+
+function show(i) {
+  carouselImg.style.opacity = '0';
+  setTimeout(() => {
+    const b = bannerList[i];
+    carouselImg.src = b.img;
+    carouselImg.alt = b.name;
+    carouselImg.style.objectPosition = b.pos; /* 保留每張圖原始位置，電腦手機皆適用 */
+    artistName.textContent = b.name;
+    carouselImg.style.opacity = '1';
+  }, 500);
+}
+
+show(0);
+setInterval(() => {
+  cur = (cur + 1) % bannerList.length;
+  show(cur);
+}, 4000);
+
+/* PAYPAL */
+window.addEventListener('load', () => {
+  if (typeof paypal !== 'undefined') {
+    paypal.HostedButtons({ hostedButtonId:"58WXWYM5QN98S" })
+      .render("#paypal-container");
+  }
+});
+
+</script>
+
+</body>
+</html>
