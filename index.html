@@ -75,6 +75,22 @@ body { font-family:'Inter','Noto Sans TC',sans-serif; margin:0; background:#fff;
   color: #e5e7eb;
   line-height: 1;
 }
+
+/* Storytrace */
+.storytrace-tag {
+  display: inline-block;
+  padding: .3rem .8rem;
+  border: 1px solid rgba(240,235,224,0.15);
+  border-radius: 9999px;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: rgba(240,235,224,0.5);
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
 </style>
 </head>
 
@@ -103,6 +119,9 @@ body { font-family:'Inter','Noto Sans TC',sans-serif; margin:0; background:#fff;
     <a href="#process" class="hover:opacity-50 transition-opacity">Process</a>
     <a href="#contact" class="hover:opacity-50 transition-opacity">Contact</a>
     <a href="artists.html" class="hover:opacity-50 transition-opacity">Artists</a>
+    <a href="https://storytrace.karbonxgaiaentertainment.com/storytrace-需求表.html"
+      target="_blank" rel="noopener"
+      class="hover:opacity-50 transition-opacity" style="color:#C9A84C; font-weight:900;">✨ Storytrace</a>
     <a href="https://lin.ee/NjQVcYu" target="_blank" rel="noopener"
       class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">
       Booking Now
@@ -124,6 +143,9 @@ body { font-family:'Inter','Noto Sans TC',sans-serif; margin:0; background:#fff;
   <a href="#process" class="text-sm font-bold uppercase py-1">Process</a>
   <a href="#contact" class="text-sm font-bold uppercase py-1">Contact</a>
   <a href="artists.html" class="text-sm font-bold uppercase py-1">Artists</a>
+  <a href="https://storytrace.karbonxgaiaentertainment.com/storytrace-需求表.html"
+    target="_blank" rel="noopener"
+    class="text-sm font-bold uppercase py-1" style="color:#C9A84C;">✨ Storytrace</a>
   <a href="https://lin.ee/NjQVcYu" target="_blank" rel="noopener"
     class="bg-black text-white px-4 py-2 rounded-full text-sm font-bold text-center">
     Booking Now
@@ -215,6 +237,53 @@ body { font-family:'Inter','Noto Sans TC',sans-serif; margin:0; background:#fff;
       <a href="#contact" class="text-xs font-bold uppercase tracking-widest border-b border-black pb-0.5 hover:opacity-50 transition-opacity">
         洽談製作 →
       </a>
+    </div>
+
+    <!-- Storytrace 活動企劃 — 橫跨兩欄 -->
+    <div class="service-card md:col-span-2" style="background:#0D0D0D; border-color:#0D0D0D; color:#F0EBE0;">
+      <div class="flex flex-col md:flex-row md:items-center gap-8">
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="text-4xl">✨</div>
+            <div>
+              <div class="text-[10px] font-bold tracking-widest uppercase mb-1" style="color:#C9A84C;">NEW · 活動企劃</div>
+              <h3 class="text-xl font-black">Storytrace 互動燈光體驗</h3>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed mb-6" style="color:rgba(240,235,224,0.6);">
+            婚禮、企業年會、演唱會、派對——讓全場賓客的手機同步化身互動燈海。無需 App 安裝，掃碼即用，配合現場場景切換、即時抽獎、品牌色客製，打造難忘的沉浸式互動體驗。
+          </p>
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="storytrace-tag">💍 婚禮</span>
+            <span class="storytrace-tag">🏢 企業年會</span>
+            <span class="storytrace-tag">🎤 演唱會</span>
+            <span class="storytrace-tag">🎉 派對慶典</span>
+            <span class="storytrace-tag">🎰 即時抽獎</span>
+            <span class="storytrace-tag">🎨 品牌色客製</span>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <a href="https://storytrace.karbonxgaiaentertainment.com/storytrace-需求表.html"
+              target="_blank" rel="noopener"
+              class="inline-block px-6 py-2.5 rounded-full font-bold text-sm text-black transition-colors"
+              style="background:#C9A84C;">
+              填寫活動需求表 →
+            </a>
+            <a href="https://storytrace.karbonxgaiaentertainment.com/wedding-guest.html?event=wedding&room=demo"
+              target="_blank" rel="noopener"
+              class="inline-block px-6 py-2.5 rounded-full font-bold text-sm border transition-colors hover:bg-white hover:text-black"
+              style="border-color:rgba(240,235,224,0.3); color:#F0EBE0;">
+              體驗 Demo →
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:flex flex-col items-center gap-2 flex-shrink-0">
+          <div style="width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,hsl(340,100%,50%),hsl(270,100%,55%),hsl(45,100%,50%));display:flex;align-items:center;justify-content:center;font-size:48px;animation:spin-slow 8s linear infinite;">
+            ✨
+          </div>
+          <p class="text-xs font-bold tracking-widest uppercase mt-3" style="color:#C9A84C;">STORYTRACE</p>
+          <p class="text-xs" style="color:rgba(240,235,224,0.3);">掃碼即亮燈</p>
+        </div>
+      </div>
     </div>
 
   </div>
