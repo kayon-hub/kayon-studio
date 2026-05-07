@@ -24,7 +24,7 @@
 <meta name="twitter:image" content="images/hero.jpg">
 
 <!-- Preload hero banner -->
-<link rel="preload" as="image" href="images/luyanganhero-banner.jpg">
+<link rel="preload" as="image" href="images/novexhero-banner.jpg">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;900&display=swap" rel="stylesheet">
@@ -143,7 +143,7 @@ body { font-family:'Inter','Noto Sans TC',sans-serif; margin:0; background:#fff;
 
   <div class="relative">
     <img id="carousel-img"
-      src="images/luyanganhero-banner.jpg"
+      src="images/novexhero-banner.jpg"
       alt="KAYON STUDIO 藝人輪播"
       class="w-full block">
 
@@ -157,10 +157,10 @@ body { font-family:'Inter','Noto Sans TC',sans-serif; margin:0; background:#fff;
         From Frequencies to Soul
       </h2>
       <h1 id="artist-name" class="text-3xl md:text-8xl font-black italic mb-3">
-        劉揚安
+        NØVEX
       </h1>
       <p class="text-xs md:text-base tracking-[0.2em]">
-        從頻率中提取情感，在數據中灌溉靈魂
+        引領潮流的先鋒
       </p>
     </div>
   </div>
@@ -319,11 +319,6 @@ body { font-family:'Inter','Noto Sans TC',sans-serif; margin:0; background:#fff;
       <div class="flex justify-center gap-8 mb-6">
         <div>
           <p class="text-[10px] tracking-widest uppercase text-gray-600 mb-1">Artist Manager</p>
-          <p class="font-bold text-white">SKY</p>
-        </div>
-        <div class="w-px bg-white/10"></div>
-        <div>
-          <p class="text-[10px] tracking-widest uppercase text-gray-600 mb-1">Artist Manager</p>
           <p class="font-bold text-white">Ava</p>
         </div>
       </div>
@@ -364,9 +359,8 @@ mobileMenu.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => mobileMenu.classList.remove('open'));
 });
 
-/* TALENTS GRID */
+/* TALENTS GRID - 已移除 劉揚安 */
 const talentsData = [
-  { name:"劉揚安",   img:"talents/luyangan.webp" },
   { name:"NØVEX",    img:"talents/novex.webp" },
   { name:"NÄXER",    img:"talents/naxer.webp" },
   { name:"LILITHIUM",img:"talents/lilithium.webp" },
@@ -391,9 +385,8 @@ talentsData.forEach(t => {
 });
 grid.appendChild(fragment);
 
-/* HERO BANNER CAROUSEL */
+/* HERO BANNER CAROUSEL - 已移除 劉揚安 */
 const bannerList = [
-  { name:"劉揚安",   img:"images/luyanganhero-banner.jpg",  pos:"center 18%" },
   { name:"NØVEX",   img:"images/novexhero-banner.jpg",      pos:"center 28%" },
   { name:"NÄXER",   img:"images/naxerhero-banner.jpg",      pos:"center 32%" },
   { name:"EUNA",    img:"images/eunahero-banner.jpg",       pos:"center 12%" },
