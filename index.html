@@ -34,7 +34,7 @@
       width:100%;
       height:100vh;
 
-      background-image:url("web_index.webp");
+      background-image:url("webindex.webp");
 
       background-size:cover;
       background-position:center;
@@ -43,82 +43,130 @@
       overflow:hidden;
     }
 
-    /* 手機版背景 */
+    /* 手機背景 */
 
     @media(max-width:768px){
 
       .hero{
-        background-image:url("mobile_index.webp");
+        background-image:url("mobileindex.webp");
       }
 
     }
 
-    /* 可點擊區域 */
+    /* 點擊區 */
 
-    .portal-hitbox{
+    .portal-btn{
       position:absolute;
 
-      display:block;
+      width:240px;
+      height:64px;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      text-decoration:none;
+
+      border:1px solid rgba(255,215,140,0.35);
+
+      background:rgba(0,0,0,0.28);
+
+      backdrop-filter:blur(8px);
+
+      color:#f6d78c;
+
+      font-size:14px;
+      letter-spacing:4px;
+      font-weight:500;
+
+      border-radius:999px;
+
+      transition:0.35s ease;
+
+      z-index:10;
+    }
+
+    .portal-btn:hover{
+
+      transform:translateY(-2px);
+
+      border-color:rgba(255,220,160,0.8);
+
+      box-shadow:
+      0 0 24px rgba(255,215,120,0.18);
+
+      background:rgba(20,20,20,0.45);
+    }
+
+    /* 左邊 */
+
+    .studio-btn{
+      left:15%;
+      top:67%;
+    }
+
+    /* 右邊 */
+
+    .universe-btn{
+      right:15%;
+      top:67%;
+    }
+
+    /* Footer */
+
+    .footer{
+      position:absolute;
+
+      bottom:28px;
+      left:50%;
+
+      transform:translateX(-50%);
+
+      color:rgba(255,220,170,0.7);
+
+      font-size:11px;
+      letter-spacing:2px;
 
       z-index:10;
 
-      border-radius:28px;
-
-      transition:0.3s ease;
-    }
-
-    /* Hover 光感 */
-
-    .portal-hitbox:hover{
-
-      box-shadow:
-      0 0 40px rgba(255,215,120,0.25);
-
-      backdrop-filter:blur(2px);
-    }
-
-    /* 左邊 STUDIO */
-
-    .studio-hitbox{
-
-      width:32%;
-      height:16%;
-
-      left:6%;
-      top:48%;
-    }
-
-    /* 右邊 UNIVERSE */
-
-    .universe-hitbox{
-
-      width:32%;
-      height:16%;
-
-      right:6%;
-      top:48%;
+      white-space:nowrap;
     }
 
     /* 手機版 */
 
     @media(max-width:768px){
 
-      .studio-hitbox{
+      .portal-btn{
 
         width:78%;
-        height:10%;
+        height:58px;
 
-        left:11%;
-        top:63%;
+        font-size:12px;
+        letter-spacing:3px;
       }
 
-      .universe-hitbox{
-
-        width:78%;
-        height:10%;
-
+      .studio-btn{
         left:11%;
-        top:76%;
+        top:72%;
+      }
+
+      .universe-btn{
+        left:11%;
+        top:82%;
+      }
+
+      .footer{
+
+        width:90%;
+
+        text-align:center;
+
+        font-size:9px;
+        line-height:1.6;
+
+        white-space:normal;
+
+        bottom:18px;
       }
 
     }
@@ -135,17 +183,25 @@
 
     <a
       href="kayon-studio.html"
-      class="portal-hitbox studio-hitbox"
-      aria-label="ENTER STUDIO"
-    ></a>
+      class="portal-btn studio-btn"
+    >
+      ENTER STUDIO
+    </a>
 
     <!-- UNIVERSE -->
 
     <a
       href="kxgent-artist.html"
-      class="portal-hitbox universe-hitbox"
-      aria-label="EXPLORE THE UNIVERSE"
-    ></a>
+      class="portal-btn universe-btn"
+    >
+      EXPLORE UNIVERSE
+    </a>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+      © 2026 KARBØN X GAIA ENTERTAINMENT · KAYON STUDIO. All Rights Reserved.
+    </div>
 
   </section>
 
