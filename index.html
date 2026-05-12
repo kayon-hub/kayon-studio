@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>KARBØN X GAIA</title>
-
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- 建議字體 -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
 
@@ -26,316 +20,135 @@
       height:100vh;
       overflow:hidden;
       background:#000;
-      font-family:'Orbitron','Noto Sans TC',sans-serif;
+      font-family:
+      "Orbitron",
+      "Noto Sans TC",
+      sans-serif;
     }
 
-    /* 主背景圖 */
-.hero{
-  position:relative;
-  width:100%;
-  height:100vh;
+    /* 主背景 */
 
-  background:
-  linear-gradient(
-    rgba(0,0,0,0.45),
-    rgba(0,0,0,0.65)
-  ),
-  url("portal-home-desktop.webp");
-
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* 手機版 */
-@media(max-width:768px){
-
-  .hero{
-
-    background:
-    linear-gradient(
-      rgba(0,0,0,0.45),
-      rgba(0,0,0,0.65)
-    ),
-    url("portal-home-mobile.webp");
-
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-  }
-
-}
-
-    /* 中央內容 */
-    .portal-container{
-      width:100%;
-      max-width:1400px;
-
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-
-      padding:0 8%;
-      gap:80px;
-    }
-
-    /* 左右區塊 */
-    .portal-card{
-      flex:1;
-
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-
-      text-align:center;
-
-      animation:fadeUp 1.2s ease;
-    }
-
-    /* LOGO */
-    .portal-logo{
-      width:100%;
-      max-width:320px;
-
-      margin-bottom:40px;
-
-      filter:
-      drop-shadow(0 0 20px rgba(255,215,120,0.15));
-    }
-
-    /* 按鈕 */
-    .portal-button{
+    .hero{
       position:relative;
 
       width:100%;
-      max-width:420px;
+      height:100vh;
 
-      padding:24px 32px;
+      background-image:url("web_index.webp");
 
-      border:1px solid rgba(255,210,120,0.45);
-      border-radius:18px;
-
-      background:rgba(0,0,0,0.28);
-      backdrop-filter:blur(10px);
-
-      color:#f7e4b2;
-      text-decoration:none;
-
-      transition:0.4s ease;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
 
       overflow:hidden;
     }
 
-    .portal-button:hover{
-      transform:translateY(-4px);
+    /* 手機版背景 */
 
-      border-color:#f4d38a;
+    @media(max-width:768px){
+
+      .hero{
+        background-image:url("mobile_index.webp");
+      }
+
+    }
+
+    /* 可點擊區域 */
+
+    .portal-hitbox{
+      position:absolute;
+
+      display:block;
+
+      z-index:10;
+
+      border-radius:28px;
+
+      transition:0.3s ease;
+    }
+
+    /* Hover 光感 */
+
+    .portal-hitbox:hover{
 
       box-shadow:
-      0 0 30px rgba(255,210,120,0.22);
+      0 0 40px rgba(255,215,120,0.25);
+
+      backdrop-filter:blur(2px);
     }
 
-    .portal-button::before{
-      content:"";
+    /* 左邊 STUDIO */
 
-      position:absolute;
-      top:0;
-      left:-120%;
+    .studio-hitbox{
 
-      width:100%;
-      height:100%;
+      width:32%;
+      height:16%;
 
-      background:linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.12),
-        transparent
-      );
-
-      transition:0.8s;
+      left:6%;
+      top:48%;
     }
 
-    .portal-button:hover::before{
-      left:120%;
-    }
+    /* 右邊 UNIVERSE */
 
-    /* 主文字 */
-    .button-title{
-      font-size:28px;
-      letter-spacing:6px;
-      font-weight:500;
+    .universe-hitbox{
 
-      margin-bottom:10px;
-    }
+      width:32%;
+      height:16%;
 
-    /* 小字 */
-    .button-sub{
-      font-size:11px;
-      letter-spacing:4px;
-
-      color:rgba(255,230,180,0.72);
-    }
-
-    /* 底部 */
-    .footer{
-      position:absolute;
-      bottom:28px;
-      left:50%;
-
-      transform:translateX(-50%);
-
-      font-size:11px;
-      letter-spacing:3px;
-
-      color:rgba(255,255,255,0.5);
-
-      text-align:center;
-    }
-
-    /* 中央光線 */
-    .center-light{
-      position:absolute;
-      top:0;
-      left:50%;
-
-      transform:translateX(-50%);
-
-      width:2px;
-      height:100%;
-
-      background:linear-gradient(
-        to bottom,
-        transparent,
-        rgba(255,215,120,0.95),
-        transparent
-      );
-
-      box-shadow:
-      0 0 30px rgba(255,215,120,0.45);
-
-      animation:pulse 4s infinite ease-in-out;
-    }
-
-    /* 動畫 */
-    @keyframes pulse{
-      0%{
-        opacity:0.5;
-      }
-
-      50%{
-        opacity:1;
-      }
-
-      100%{
-        opacity:0.5;
-      }
-    }
-
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(40px);
-      }
-
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
+      right:6%;
+      top:48%;
     }
 
     /* 手機版 */
-    @media(max-width:960px){
 
-      body{
-        overflow:auto;
+    @media(max-width:768px){
+
+      .studio-hitbox{
+
+        width:78%;
+        height:10%;
+
+        left:11%;
+        top:63%;
       }
 
-      .hero{
-        height:auto;
-        min-height:100vh;
+      .universe-hitbox{
 
-        padding:80px 0;
-      }
+        width:78%;
+        height:10%;
 
-      .portal-container{
-        flex-direction:column;
-        gap:60px;
-      }
-
-      .center-light{
-        display:none;
-      }
-
-      .button-title{
-        font-size:22px;
+        left:11%;
+        top:76%;
       }
 
     }
 
   </style>
+
 </head>
 
 <body>
 
   <section class="hero">
 
-    <!-- 中央光 -->
-    <div class="center-light"></div>
+    <!-- STUDIO -->
 
-    <div class="portal-container">
+    <a
+      href="kayon-studio.html"
+      class="portal-hitbox studio-hitbox"
+      aria-label="ENTER STUDIO"
+    ></a>
 
-      <!-- 左邊 -->
-      <div class="portal-card">
+    <!-- UNIVERSE -->
 
-    
-
-        <a
-          href="kayon-studio.html"
-          class="portal-button"
-        >
-          <div class="button-title">
-            ENTER STUDIO
-          </div>
-
-          <div class="button-sub">
-            MUSIC PRODUCTION · BOOKING
-          </div>
-        </a>
-
-      </div>
-
-      <!-- 右邊 -->
-      <div class="portal-card">
-
-      
-
-        <a
-          href="kxgent-artist.html"
-          class="portal-button"
-        >
-          <div class="button-title">
-            EXPLORE THE UNIVERSE
-          </div>
-
-          <div class="button-sub">
-            ARTISTS · PROJECTS · WORLD
-          </div>
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      © 2026 KARBØN X GAIA ENTERTAINMENT · ALL RIGHTS RESERVED.
-    </div>
+    <a
+      href="kxgent-artist.html"
+      class="portal-hitbox universe-hitbox"
+      aria-label="EXPLORE THE UNIVERSE"
+    ></a>
 
   </section>
 
 </body>
+
 </html>
