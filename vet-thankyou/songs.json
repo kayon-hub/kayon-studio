@@ -1,52 +1,100 @@
-[
-  {
-    "title": "不完美的快樂 EP",
-    "subtitle": "Some nights still ask us to hold on.",
-    "platforms": {
-      "Apple Music": "#",
-      "Spotify": "#",
-      "KKBOX": "#",
-      "YouTube Music": "#"
-    }
-  },
-  {
-    "title": "WAIT FOR ME",
-    "subtitle": "A pause between breath and goodbye.",
-    "platforms": {
-      "Apple Music": "#",
-      "Spotify": "#",
-      "KKBOX": "#",
-      "YouTube Music": "#"
-    }
-  },
-  {
-    "title": "你不在的時候",
-    "subtitle": "The hallway keeps your silence gently.",
-    "platforms": {
-      "Apple Music": "#",
-      "Spotify": "#",
-      "KKBOX": "#",
-      "YouTube Music": "#"
-    }
-  },
-  {
-    "title": "放手的重量 2026 Remastered Version",
-    "subtitle": "Learning love can also mean letting go.",
-    "platforms": {
-      "Apple Music": "#",
-      "Spotify": "#",
-      "KKBOX": "#",
-      "YouTube Music": "#"
-    }
-  },
-  {
-    "title": "我很好 feat. KAYON",
-    "subtitle": "A quiet answer to those who still worry.",
-    "platforms": {
-      "Apple Music": "#",
-      "Spotify": "#",
-      "KKBOX": "#",
-      "YouTube Music": "#"
-    }
-  }
-]
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/vet-thankyou/songs.json b/vet-thankyou/songs.json
+index 32edad2c6a556e9bf4555bba4725f6fadef08c0f..591cdfbd6220ad1457888dc989a04b5d4503b623 100644
+--- a/vet-thankyou/songs.json
++++ b/vet-thankyou/songs.json
+@@ -1,52 +1,69 @@
+ [
+   {
+-    "title": "不完美的快樂 EP",
++    "title": "不完美的快樂 (2026 Remastered Version) Mini Album",
++    "featured": true,
+     "subtitle": "Some nights still ask us to hold on.",
+     "platforms": {
+-      "Apple Music": "#",
+-      "Spotify": "#",
+-      "KKBOX": "#",
+-      "YouTube Music": "#"
++      "Apple Music": "https://is.gd/ec6R3Q",
++      "Spotify": "https://open.spotify.com/album/4rxVJhUSasV4dtwMVBsQ3H?si=dJkUIPAyTrWoja6PSplASA",
++      "KKBOX": "https://www.kkbox.com/tw/tc/album/DXKBzcIPYpMkg8zIUr",
++      "YouTube Music": "https://music.youtube.com/playlist?list=OLAK5uy_mjhgI-rnwovVQD-68s8KzRZHCsU5YpNvQ",
++      "LINE MUSIC": "https://music-tw.line.me/album/7941443"
+     }
+   },
+   {
+-    "title": "WAIT FOR ME",
++    "title": "WAIT FOR ME EP",
+     "subtitle": "A pause between breath and goodbye.",
+     "platforms": {
+-      "Apple Music": "#",
+-      "Spotify": "#",
+-      "KKBOX": "#",
+-      "YouTube Music": "#"
++      "Apple Music": "https://music.apple.com/tw/album/wait-for-me-single/1872379566",
++      "Spotify": "https://open.spotify.com/album/3fMqdwXuY0xVTkdzfeM9RV?si=A4Z9WovSRGqr4s2am1_cdg",
++      "KKBOX": "https://kkbox.fm/YaJwlv",
++      "LINE MUSIC": "https://music-tw.line.me/album/7877386",
++      "YouTube Music": "https://music.youtube.com/playlist?list=OLAK5uy_loRD8sfhP_1otNtvnw-kbuouEgo7B1WL0&si=SAHWjPQpX7nPa0Cs"
+     }
+   },
+   {
+     "title": "你不在的時候",
+     "subtitle": "The hallway keeps your silence gently.",
+     "platforms": {
+-      "Apple Music": "#",
+-      "Spotify": "#",
+-      "KKBOX": "#",
+-      "YouTube Music": "#"
++      "Apple Music": "https://music.apple.com/tw/album/%E4%BD%A0%E4%B8%8D%E5%9C%A8%E7%9A%84%E6%99%82%E5%80%99/1875298284?i=1875298589",
++      "Spotify": "https://open.spotify.com/track/4CGG2KmvgqRuPRp9RfUT4W?si=725efe64a9c9421c",
++      "KKBOX": "https://kkbox.fm/Wp1oNUs",
++      "LINE MUSIC": "https://music-tw.line.me/track/7891770001",
++      "YouTube Music": "https://music.youtube.com/watch?v=Oj79bGiyPn8&si=FMyRG0Wukekb3pN7"
+     }
+   },
+   {
+     "title": "放手的重量 2026 Remastered Version",
+     "subtitle": "Learning love can also mean letting go.",
+     "platforms": {
+-      "Apple Music": "#",
+-      "Spotify": "#",
+-      "KKBOX": "#",
+-      "YouTube Music": "#"
++      "Apple Music": "https://music.apple.com/tw/album/%E6%94%BE%E6%89%8B%E7%9A%84%E9%87%8D%E9%87%8F-2026-remastered-version-single/1876513606",
++      "Spotify": "https://open.spotify.com/album/5Rjj8L6CUJnEp4qMb7jcOQ?si=1J7Ld_StR12dGja94MfzHA",
++      "KKBOX": "https://kkbox.fm/baJqP6",
++      "LINE MUSIC": "https://music-tw.line.me/album/7894972",
++      "YouTube Music": "https://music.youtube.com/playlist?list=OLAK5uy_kc2rZHQw5_nu6pvz1sAeWm1q-kbeutP-s&si=GiZVFG4pb7IspYw3"
+     }
+   },
+   {
+     "title": "我很好 feat. KAYON",
+     "subtitle": "A quiet answer to those who still worry.",
+     "platforms": {
+-      "Apple Music": "#",
+-      "Spotify": "#",
+-      "KKBOX": "#",
+-      "YouTube Music": "#"
++      "Apple Music": "https://music.apple.com/tw/album/%E6%88%91%E5%BE%88%E5%A5%BD-feat-kayon/1886120117?i=1886120119",
++      "Spotify": "https://open.spotify.com/track/5d3LHrRPt8zIDKEgl4HLBs?si=f55435986e3e47a3",
++      "KKBOX": "https://kkbox.fm/Ww13fMs",
++      "LINE MUSIC": "",
++      "YouTube Music": "https://music.youtube.com/watch?v=NwMU0cd_weY&si=NRBHWUDf1f5xUwbx"
++    }
++  },
++  {
++    "title": "在我身邊",
++    "subtitle": "",
++    "platforms": {
++      "Apple Music": "",
++      "Spotify": "https://open.spotify.com/track/04FVxKOT3pKLMK4DAlWRvJ?si=fa3214ba5cec43bf",
++      "KKBOX": "https://kkbox.fm/W51zbns",
++      "LINE MUSIC": "https://music-tw.line.me/track/7917274001",
++      "YouTube Music": "https://music.youtube.com/watch?v=1z7IgzwNB9A&si=Jah3rDxtoMJM32q4"
+     }
+   }
+ ]
+ 
+EOF
+)
