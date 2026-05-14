@@ -15,39 +15,52 @@
     "title": "WAIT FOR ME EP",
     "subtitle": "A pause between breath and goodbye.",
     "platforms": {
-      "Spotify": "https://open.spotify.com/album/3fMqdwXuY0xVTkdzfeM9RV",
+      "Apple Music": "https://music.apple.com/tw/album/wait-for-me-single/1872379566",
+      "Spotify": "https://open.spotify.com/album/3fMqdwXuY0xVTkdzfeM9RV?si=A4Z9WovSRGqr4s2am1_cdg",
       "KKBOX": "https://kkbox.fm/YaJwlv",
       "LINE MUSIC": "https://music-tw.line.me/album/7877386",
-      "YouTube Music": "https://music.youtube.com/playlist?list=OLAK5uy_loRD8sfhP_1otNtvnw-kbuouEgo7B1WL0"
+      "YouTube Music": "https://music.youtube.com/playlist?list=OLAK5uy_loRD8sfhP_1otNtvnw-kbuouEgo7B1WL0&si=SAHWjPQpX7nPa0Cs"
     }
   },
   {
     "title": "你不在的時候",
     "subtitle": "The hallway keeps your silence gently.",
     "platforms": {
-      "Spotify": "https://open.spotify.com/track/4CGG2KmvgqRuPRp9RfUT4W",
+      "Apple Music": "https://music.apple.com/tw/album/%E4%BD%A0%E4%B8%8D%E5%9C%A8%E7%9A%84%E6%99%82%E5%80%99/1875298284?i=1875298589",
+      "Spotify": "https://open.spotify.com/track/4CGG2KmvgqRuPRp9RfUT4W?si=725efe64a9c9421c",
       "KKBOX": "https://kkbox.fm/Wp1oNUs",
       "LINE MUSIC": "https://music-tw.line.me/track/7891770001",
-      "YouTube Music": "https://music.youtube.com/watch?v=Oj79bGiyPn8"
+      "YouTube Music": "https://music.youtube.com/watch?v=Oj79bGiyPn8&si=FMyRG0Wukekb3pN7"
     }
   },
   {
     "title": "放手的重量 EP",
     "subtitle": "Learning love can also mean letting go.",
     "platforms": {
-      "Spotify": "https://open.spotify.com/album/5Rjj8L6CUJnEp4qMb7jcOQ",
+      "Apple Music": "https://music.apple.com/tw/album/%E6%94%BE%E6%89%8B%E7%9A%84%E9%87%8D%E9%87%8F-ep/1875298701",
+      "Spotify": "https://open.spotify.com/album/5Rjj8L6CUJnEp4qMb7jcOQ?si=1J7Ld_StR12dGja94MfzHA",
       "KKBOX": "https://kkbox.fm/baJqP6",
       "LINE MUSIC": "https://music-tw.line.me/album/7894972",
-      "YouTube Music": "https://music.youtube.com/playlist?list=OLAK5uy_kc2rZHQw5_nu6pvz1sAeWm1q-kbeutP-s"
+      "YouTube Music": "https://music.youtube.com/playlist?list=OLAK5uy_kc2rZHQw5_nu6pvz1sAeWm1q-kbeutP-s&si=GiZVFG4pb7IspYw3"
     }
   },
   {
     "title": "我很好 feat. KAYON",
     "subtitle": "A quiet answer to those who still worry.",
     "platforms": {
-      "Spotify": "https://open.spotify.com/track/5d3LHrRPt8zIDKEgl4HLBs",
+      "Spotify": "https://open.spotify.com/track/5d3LHrRPt8zIDKEgl4HLBs?si=f55435986e3e47a3",
       "KKBOX": "https://kkbox.fm/Ww13fMs",
-      "YouTube Music": "https://music.youtube.com/watch?v=NwMU0cd_weY"
+      "YouTube Music": "https://music.youtube.com/watch?v=NwMU0cd_weY&si=NRBHWUDf1f5xUwbx"
+    }
+  },
+  {
+    "title": "在我身邊",
+    "subtitle": "Even silence still sits beside me.",
+    "platforms": {
+      "Spotify": "https://open.spotify.com/track/04FVxKOT3pKLMK4DAlWRvJ?si=fa3214ba5cec43bf",
+      "KKBOX": "https://kkbox.fm/W51zbns",
+      "LINE MUSIC": "https://music-tw.line.me/track/7917274001",
+      "YouTube Music": "https://music.youtube.com/watch?v=1z7IgzwNB9A&si=Jah3rDxtoMJM32q4"
     }
   }
 ]
