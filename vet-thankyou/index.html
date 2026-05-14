@@ -1,555 +1,597 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KAYON</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet">
-
-<style>
-body {
-  margin: 0;
-  background: black;
-  overflow: hidden;
-  color: #EDEDED;
-  font-family: 'Caveat', cursive;
-}
-
-/* 星空 */
-.stars {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(white 1px, transparent 1px);
-  background-size: 3px 3px;
-  opacity: 0.12;
-  z-index: 0;
-}
-
-/* 地球 */
-.earth {
-  position: absolute;
-  bottom: -180px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 320px;
-  opacity: 0;
-  animation: earthRise 6s ease forwards;
-  z-index: 1;
-}
-
-/* 標題 */
-.title {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  opacity: 0;
-  animation: fadeIn 3s ease forwards;
-  animation-delay: 3s;
-  transition: opacity 2s ease;
-  z-index: 2;
-}
-
-.title-zh {
-  font-family: 'Caveat', cursive;
-  font-size: 32px;
-  white-space: nowrap;
-  color: #EDEDED;
-}
-
-.title-zh .gap {
-  display: inline-block;
-  width: 2.4em;
-}
-
-.title-en {
-  margin-top: 16px;
-  font-family: 'Inter', sans-serif;
-  font-size: 10.5px;
-  font-weight: 300;
-  text-transform: lowercase;
-  letter-spacing: 0.42em;
-  color: #B8B8B8;
-  padding-left: 0.42em;
-  opacity: 0.9;
-}
-
-/* 專輯 */
-.album {
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  opacity: 0;
-  transition: opacity 2s ease;
-  z-index: 2;
-}
-
-/* 文字 */
-.text {
-  position: absolute;
-  top: 42%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  text-align: center;
-  opacity: 0;
-  z-index: 2;
-}
-
-.line {
-  opacity: 0;
-  margin: 8px 0;
-  font-size: 22px;
-}
-
-.show .line:nth-child(1){animation: fadeUp 0.8s forwards 0s;}
-.show .line:nth-child(2){animation: fadeUp 0.8s forwards 1s;}
-.show .line:nth-child(3){animation: fadeUp 0.8s forwards 2s;}
-.show .line:nth-child(4){animation: fadeUp 0.8s forwards 3s;}
-.show .line:nth-child(5){animation: fadeUp 0.8s forwards 4s;}
-.show .line:nth-child(6){animation: fadeUp 0.8s forwards 5s;}
-.show .line:nth-child(7){animation: fadeUp 0.8s forwards 6s;}
-
-@keyframes earthRise {
-  0% { bottom: -240px; opacity: 0; }
-  100% { bottom: -180px; opacity: 0.4; }
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 簽名 */
-.sign {
-  display: block;
-  margin: 30px auto 0;
-  width: 220px;
-  opacity: 0;
-  transition: opacity 2s ease;
-  filter: brightness(1.2);
-}
-
-/* ===== 歐巴信封頁 ===== */
-.page-oba {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1.8s ease;
-  z-index: 500;
-  overflow: hidden;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.page-oba.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* 星點浮動裝飾 */
-.oba-stars {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.oba-star {
-  position: absolute;
-  border-radius: 50%;
-  background: white;
-  animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.4); }
-}
-
-/* 歐巴靜態照片（信封上方） */
-.oba-portrait {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center top;
-  border: 1.5px solid rgba(200, 220, 255, 0.35);
-  box-shadow:
-    0 0 18px rgba(180, 215, 255, 0.25),
-    0 0 40px rgba(180, 215, 255, 0.10);
-  opacity: 0;
-  transform: translateY(10px) scale(0.92);
-  transition: opacity 1.4s ease, transform 1.4s ease;
-  margin-bottom: 16px;
-  filter: brightness(1.05) saturate(0.9);
-}
-
-.oba-portrait.appear {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* 歐巴吃吃動圖（hw5 之後） */
-.oba-video-wrap {
-  margin-top: 14px;
-  max-width: 220px;
-  width: 90%;
-  opacity: 0;
-  transform: scale(0.94);
-  transition: opacity 1.2s ease, transform 1.2s ease;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow:
-    0 0 20px rgba(180, 215, 255, 0.2),
-    0 0 50px rgba(180, 215, 255, 0.07);
-  border: 1px solid rgba(200, 220, 255, 0.2);
-}
-
-.oba-video-wrap.appear {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.oba-video-wrap video {
-  width: 100%;
-  display: block;
-  border-radius: 12px;
-}
-
-/* 信封容器 */
-.envelope-wrap {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  max-width: 380px;
-  width: 100%;
-}
-
-/* 光暈背景 */
-.envelope-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 340px;
-  height: 260px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(200, 220, 255, 0.18) 0%, rgba(180, 210, 255, 0.07) 50%, transparent 75%);
-  animation: glowPulse 3s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.06); }
-}
-
-/* 信封 SVG 區 */
-.envelope-svg-wrap {
-  position: relative;
-  width: 260px;
-  height: 180px;
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  transition: opacity 1.4s ease, transform 1.4s ease;
-}
-
-.envelope-svg-wrap.appear {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* 閃光粒子 */
-.sparkle {
-  position: absolute;
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 0 6px 2px rgba(180,220,255,0.9);
-  animation: sparkleFly var(--sd, 2.5s) ease-in-out infinite var(--ss, 0s);
-  opacity: 0;
-}
-
-@keyframes sparkleFly {
-  0% { opacity: 0; transform: translate(0,0) scale(0.5); }
-  30% { opacity: 1; }
-  70% { opacity: 0.8; }
-  100% { opacity: 0; transform: translate(var(--sx,10px), var(--sy,-20px)) scale(0); }
-}
-
-/* 信封標籤文字 */
-.oba-label {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 13px;
-  color: rgba(200, 220, 255, 0.75);
-  letter-spacing: 0.15em;
-  text-align: center;
-  margin-top: 18px;
-  opacity: 0;
-  transition: opacity 1.4s ease 0.6s;
-  line-height: 1.8;
-}
-
-.oba-label.appear { opacity: 1; }
-
-/* 手寫文字區 */
-.oba-letter {
-  margin-top: 28px;
-  max-width: 340px;
-  width: 100%;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 1.6s ease;
-}
-
-.oba-letter.appear { opacity: 1; }
-
-.handwrite-line {
-  font-family: 'Caveat', cursive;
-  font-size: 18px;
-  color: #E8EFF8;
-  line-height: 1.9;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-}
-
-.handwrite-line.in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.oba-songs {
-  margin-top: 22px;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 1.4s ease;
-}
-
-.oba-songs.appear { opacity: 1; }
-
-.song-name {
-  font-family: 'Caveat', cursive;
-  font-size: 16px;
-  color: rgba(180, 210, 255, 0.85);
-  letter-spacing: 0.08em;
-  line-height: 2;
-}
-
-/* 繼續箭頭 */
-.oba-continue {
-  margin-top: 36px;
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  color: rgba(255,255,255,0.35);
-  text-transform: lowercase;
-  opacity: 0;
-  transition: opacity 1.4s ease;
-  animation: breathe 2.5s ease-in-out infinite;
-}
-
-.oba-continue.appear { opacity: 1; }
-
-@keyframes breathe {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.65; }
-}
-
-/* ===== 串流頁 ===== */
-.page2 {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1.5s ease;
-  z-index: 999;
-  font-family: 'Inter', sans-serif;
-  overflow-y: auto;
-  padding: 40px 0;
-  box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
-}
-
-.page2.show {
-  opacity: 1;
-  pointer-events: auto;
-  overflow-y: auto;
-}
-
-.studio-logo {
-  width: 110px;
-  opacity: 0.85;
-  margin-bottom: 28px;
-}
-
-.cover {
-  width: 160px;
-  margin-bottom: 24px;
-}
-
-.page2-intro {
-  font-size: 14px;
-  color: #CFCFCF;
-  letter-spacing: 1px;
-  margin: 0 0 28px;
-  text-align: center;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.buttons img {
-  width: 40px; height: 40px;
-  object-fit: contain;
-  opacity: 0.9;
-  transition: all 0.25s ease;
-}
-
-.buttons img:hover {
-  transform: scale(1.12);
-  opacity: 1;
-}
-
-.page2-outro {
-  margin-top: 40px;
-  text-align: center;
-  color: #BDBDBD;
-  font-size: 13px;
-  line-height: 1.8;
-  letter-spacing: 0.5px;
-  padding: 0 20px;
-}
-
-.page2-outro .wish {
-  color: #EDEDED;
-  font-size: 14px;
-  margin-bottom: 18px;
-}
-
-.page2-outro .follow {
-  margin-bottom: 6px;
-  opacity: 0.85;
-}
-
-.page2-outro .socials a {
-  color: #EDEDED;
-  text-decoration: none;
-  opacity: 0.9;
-  transition: opacity 0.2s ease;
-}
-
-.page2-outro .socials a:hover { opacity: 1; text-decoration: underline; }
-
-.page2-outro .socials .sep {
-  margin: 0 10px;
-  opacity: 0.5;
-}
-
-.footer {
-  margin-top: 48px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 80%;
-  max-width: 420px;
-}
-
-.footer-logo {
-  width: 140px;
-  opacity: 0.7;
-  margin-bottom: 14px;
-}
-
-.footer-copy {
-  text-align: center;
-  color: #888;
-  font-size: 11px;
-  line-height: 1.7;
-  letter-spacing: 0.5px;
-  margin: 0;
-}
-
-.footer-copy .produced {
-  opacity: 0.75;
-  font-size: 10.5px;
-  margin-top: 4px;
-}
-
-@media (max-width:600px){
-  .earth { width: 240px; bottom: -160px; }
-  .title-zh { font-size: 22px; }
-  .title-zh .gap { width: 1.8em; }
-  .title-en { font-size: 9px; letter-spacing: 0.38em; margin-top: 12px; }
-  .album { width: 140px; top: 55%; }
-  .text { width: 85%; top: 40%; }
-  .line { font-size: 18px; }
-  .sign { width: 180px; }
-  .buttons img { width: 34px; height: 34px; }
-  .page2-intro { font-size: 13px; }
-  .page2-outro { font-size: 12px; margin-top: 32px; }
-  .page2-outro .wish { font-size: 13px; }
-  .studio-logo { width: 90px; margin-bottom: 22px; }
-  .footer { margin-top: 36px; padding-top: 20px; width: 85%; }
-  .footer-logo { width: 120px; }
-  .footer-copy { font-size: 10px; }
-  .footer-copy .produced { font-size: 9.5px; }
-  .envelope-svg-wrap { width: 200px; height: 140px; }
-  .handwrite-line { font-size: 16px; }
-  .oba-label { font-size: 12px; }
-  .oba-continue { font-size: 10px; }
-  .oba-portrait { width: 80px; height: 80px; }
-  .oba-video-wrap { max-width: 180px; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0F1720" />
+  <title>for oba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+  /* ─── Reset ─── */
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: #000;
+    color: #EDEDED;
+    font-family: 'Caveat', cursive;
+    overflow: hidden;
+  }
+
+  /* ══════════════════════════════
+     INTRO SCENES (歌迷版動畫)
+  ══════════════════════════════ */
+
+  .stars {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(white 1px, transparent 1px);
+    background-size: 3px 3px;
+    opacity: 0.12;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .earth {
+    position: fixed;
+    bottom: -180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    opacity: 0;
+    animation: earthRise 6s ease forwards;
+    z-index: 1;
+  }
+
+  /* 標題 */
+  .scene-title {
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 3s ease forwards 3s;
+    transition: opacity 2s ease;
+    z-index: 2;
+  }
+
+  .title-zh {
+    font-family: 'Caveat', cursive;
+    font-size: 32px;
+    white-space: nowrap;
+    color: #EDEDED;
+  }
+
+  .title-zh .gap { display: inline-block; width: 2.4em; }
+
+  .title-en {
+    margin-top: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    font-weight: 300;
+    text-transform: lowercase;
+    letter-spacing: 0.42em;
+    color: #B8B8B8;
+    padding-left: 0.42em;
+    opacity: 0.9;
+  }
+
+  /* 專輯封面 */
+  .scene-album {
+    position: fixed;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    opacity: 0;
+    transition: opacity 2s ease;
+    z-index: 2;
+  }
+
+  /* KAYON 文字 */
+  .scene-text {
+    position: fixed;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  .line {
+    opacity: 0;
+    margin: 8px 0;
+    font-size: 22px;
+  }
+
+  .show .line:nth-child(1) { animation: fadeUp 0.8s forwards 0s; }
+  .show .line:nth-child(2) { animation: fadeUp 0.8s forwards 1s; }
+  .show .line:nth-child(3) { animation: fadeUp 0.8s forwards 2s; }
+  .show .line:nth-child(4) { animation: fadeUp 0.8s forwards 3s; }
+  .show .line:nth-child(5) { animation: fadeUp 0.8s forwards 4s; }
+  .show .line:nth-child(6) { animation: fadeUp 0.8s forwards 5s; }
+  .show .line:nth-child(7) { animation: fadeUp 0.8s forwards 6s; }
+
+  /* 簽名 */
+  .sign {
+    display: block;
+    margin: 30px auto 0;
+    width: 220px;
+    opacity: 0;
+    transition: opacity 2s ease;
+    filter: brightness(1.2);
+  }
+
+  /* ══════════════════════════════
+     歐巴信封頁
+  ══════════════════════════════ */
+
+  .page-oba {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.8s ease;
+    z-index: 500;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 40px 20px 60px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page-oba.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* 星點背景 */
+  .oba-stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .oba-star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.08; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.4); }
+  }
+
+  /* 歐巴照片 */
+  .oba-portrait {
+    position: relative;
+    z-index: 1;
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 1.5px solid rgba(200,220,255,0.35);
+    box-shadow: 0 0 18px rgba(180,215,255,0.25), 0 0 40px rgba(180,215,255,0.10);
+    opacity: 0;
+    transform: scale(0.88);
+    transition: opacity 1.4s ease, transform 1.4s ease;
+    margin-bottom: 14px;
+    filter: brightness(1.05) saturate(0.85);
+  }
+
+  .oba-portrait.appear {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* 信封容器 */
+  .envelope-wrap {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .envelope-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(200,220,255,0.15) 0%, transparent 70%);
+    animation: glowPulse 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%,-50%) scale(1.08); }
+  }
+
+  .envelope-svg-wrap {
+    position: relative;
+    width: 240px;
+    height: 166px;
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+    transition: opacity 1.4s ease, transform 1.4s ease;
+  }
+
+  .envelope-svg-wrap.appear {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* 閃光粒子 */
+  .sparkle {
+    position: absolute;
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 5px 2px rgba(180,220,255,0.9);
+    animation: sparkleFly var(--sd,2.5s) ease-in-out infinite var(--ss,0s);
+    opacity: 0;
+  }
+
+  @keyframes sparkleFly {
+    0% { opacity:0; transform:translate(0,0) scale(0.5); }
+    30% { opacity:1; }
+    70% { opacity:0.8; }
+    100% { opacity:0; transform:translate(var(--sx,10px),var(--sy,-20px)) scale(0); }
+  }
+
+  /* 信封閃爍 */
+  @keyframes envShimmer {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+
+  .env-s1 { animation: envShimmer 2.2s ease-in-out infinite 0s; }
+  .env-s2 { animation: envShimmer 2.2s ease-in-out infinite 0.7s; }
+  .env-s3 { animation: envShimmer 2.2s ease-in-out infinite 1.4s; }
+
+  /* 標籤 */
+  .oba-label {
+    position: relative;
+    z-index: 1;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 13px;
+    color: rgba(200,220,255,0.75);
+    letter-spacing: 0.12em;
+    text-align: center;
+    margin-top: 14px;
+    opacity: 0;
+    transition: opacity 1.4s ease 0.6s;
+    line-height: 1.8;
+  }
+
+  .oba-label.appear { opacity: 1; }
+
+  /* 手寫文字 */
+  .oba-letter {
+    position: relative;
+    z-index: 1;
+    margin-top: 22px;
+    max-width: 320px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hw {
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    color: #E8EFF8;
+    line-height: 1.9;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .hw.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hw.small {
+    font-size: 15px;
+    color: rgba(200,215,240,0.85);
+  }
+
+  /* 吃吃動圖 */
+  .oba-video-wrap {
+    position: relative;
+    z-index: 1;
+    margin: 12px auto 0;
+    max-width: 200px;
+    width: 90%;
+    opacity: 0;
+    transform: scale(0.94);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(200,220,255,0.2);
+    box-shadow: 0 0 20px rgba(180,215,255,0.15);
+  }
+
+  .oba-video-wrap.appear {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .oba-video-wrap video { width: 100%; display: block; }
+
+  /* 歌名 */
+  .oba-songs {
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1.4s ease;
+  }
+
+  .oba-songs.appear { opacity: 1; }
+
+  .song-name {
+    font-family: 'Caveat', cursive;
+    font-size: 16px;
+    color: rgba(180,210,255,0.85);
+    letter-spacing: 0.06em;
+    line-height: 2;
+  }
+
+  /* 繼續提示 */
+  .oba-continue {
+    position: relative;
+    z-index: 1;
+    margin-top: 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.35);
+    text-transform: lowercase;
+    opacity: 0;
+    transition: opacity 1.4s ease;
+    animation: breathe 2.5s ease-in-out infinite;
+  }
+
+  .oba-continue.appear { opacity: 1; }
+
+  @keyframes breathe {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 0.6; }
+  }
+
+  /* ══════════════════════════════
+     for oba 歌曲列表頁
+  ══════════════════════════════ */
+
+  .page-final {
+    position: fixed;
+    inset: 0;
+    background: #0f1720;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease;
+    z-index: 999;
+    overflow-y: auto;
+    padding: 40px 0 60px;
+    -webkit-overflow-scrolling: touch;
+    font-family: 'Noto Serif TC', serif;
+  }
+
+  .page-final.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .final-logo {
+    width: 11rem;
+    opacity: 0.9;
+    margin-bottom: 16px;
+  }
+
+  .final-eyebrow {
+    margin: 0 0 6px;
+    color: #aab4c0;
+    letter-spacing: 0.05em;
+    text-transform: lowercase;
+    font-size: 0.78rem;
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+  }
+
+  .final-h1 {
+    margin: 0 0 8px;
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 5vw, 1.9rem);
+    line-height: 1.35;
+    color: #f5f1ea;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .final-h2 {
+    margin: 0 0 1.4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    color: #aab4c0;
+    font-size: clamp(1rem, 3.5vw, 1.25rem);
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  /* 歌曲列表 */
+  .song-list {
+    display: grid;
+    gap: 0.9rem;
+    width: min(42rem, 92vw);
+  }
+
+  .song-card {
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.03);
+    border-radius: 0.6rem;
+    overflow: clip;
+    transition: border-color 0.8s ease, background 0.8s ease;
+  }
+
+  .song-card:hover {
+    border-color: rgba(143,163,184,0.7);
+    background: rgba(255,255,255,0.045);
+  }
+
+  .song-toggle {
+    width: 100%;
+    padding: 1rem;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    color: #f5f1ea;
+    display: grid;
+    gap: 0.2rem;
+    cursor: pointer;
+  }
+
+  .song-title-label {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.1rem;
+  }
+
+  .song-subtitle-label {
+    color: #aab4c0;
+    font-size: 0.88rem;
+  }
+
+  .song-links {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.8s ease, opacity 0.8s ease;
+  }
+
+  .song-links.open {
+    max-height: 20rem;
+    opacity: 1;
+  }
+
+  .link-grid {
+    display: grid;
+    gap: 0.6rem;
+    padding: 0 1rem 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .link-btn {
+    display: inline-flex;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 0.3rem;
+    color: #f5f1ea;
+    text-decoration: none;
+    font-size: 0.78rem;
+    padding: 0.45rem 0.5rem;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 0.6s ease, border-color 0.6s ease;
+  }
+
+  .link-btn:hover, .link-btn:focus-visible {
+    opacity: 0.85;
+    border-color: #8fa3b8;
+  }
+
+  /* 結尾 */
+  .final-closing {
+    margin-top: 2.5rem;
+    color: #aab4c0;
+    text-align: center;
+    font-size: 0.92rem;
+    padding: 0 20px;
+  }
+
+  /* 결尾簽名 */
+  .final-sign {
+    display: block;
+    margin: 24px auto 0;
+    width: 180px;
+    opacity: 0.75;
+    filter: brightness(1.2);
+  }
+
+  /* ─── Keyframes ─── */
+  @keyframes earthRise {
+    0%   { bottom: -240px; opacity: 0; }
+    100% { bottom: -180px; opacity: 0.4; }
+  }
+
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── Mobile ─── */
+  @media (max-width: 600px) {
+    .earth { width: 240px; bottom: -160px; }
+    .title-zh { font-size: 22px; }
+    .title-zh .gap { width: 1.8em; }
+    .title-en { font-size: 9px; letter-spacing: 0.38em; margin-top: 12px; }
+    .scene-album { width: 140px; top: 55%; }
+    .scene-text { width: 85%; top: 40%; }
+    .line { font-size: 18px; }
+    .sign { width: 180px; }
+    .hw { font-size: 16px; }
+    .hw.small { font-size: 14px; }
+    .oba-portrait { width: 72px; height: 72px; }
+    .oba-video-wrap { max-width: 170px; }
+    .envelope-svg-wrap { width: 200px; height: 138px; }
+    .final-sign { width: 150px; }
+  }
+  </style>
 </head>
 
 <body>
 
+<!-- ── 星空 ── -->
 <div class="stars"></div>
-<img src="https://pngimg.com/uploads/earth/earth_PNG39.png" class="earth">
+<img src="https://pngimg.com/uploads/earth/earth_PNG39.png" class="earth" alt="">
 
-<div class="title" id="title">
+<!-- ── Scene 1：標題 ── -->
+<div class="scene-title" id="sceneTitle">
   <div class="title-zh">不<span class="gap"></span>完美的快樂</div>
   <div class="title-en">imperfect happiness</div>
 </div>
 
-<img src="album.png" class="album" id="album">
+<!-- ── Scene 2：專輯封面 ── -->
+<img src="album.png" class="scene-album" id="sceneAlbum" alt="不完美的快樂"
+     onerror="this.style.display='none'">
 
-<div class="text" id="text">
+<!-- ── Scene 3：KAYON 文字 + 簽名 ── -->
+<div class="scene-text" id="sceneText">
   <div class="line">Hi, 我是 KAYON</div>
   <div class="line">如果你看到這裡</div>
   <div class="line">這張限量 NFC 專輯應該在你手上</div>
@@ -557,283 +599,266 @@ body {
   <div class="line">當這個世界對你不太溫柔的時候</div>
   <div class="line">希望這張專輯</div>
   <div class="line">可以剛好陪著你</div>
-  <img src="signature.png" class="sign" id="sign">
+  <img src="signature.png" class="sign" id="sign" alt="KAYON 簽名"
+       onerror="this.style.display='none'">
 </div>
 
-<!-- ===== 歐巴信封頁 ===== -->
+<!-- ── 歐巴信封頁 ── -->
 <div class="page-oba" id="pageOba">
-
-  <!-- 星點背景 -->
   <div class="oba-stars" id="obaStars"></div>
 
-  <!-- 歐巴靜態照（瞇眼微笑） -->
-  <img src="oba.jpg" class="oba-portrait" id="obaPortrait" alt="歐巴">
+  <!-- 歐巴照片 -->
+  <img src="oba.jpg" class="oba-portrait" id="obaPortrait" alt="歐巴"
+       onerror="this.style.display='none'">
 
+  <!-- 信封 -->
   <div class="envelope-wrap">
     <div class="envelope-glow"></div>
 
-    <!-- 信封 SVG -->
     <div class="envelope-svg-wrap" id="envelopeSvg">
-
       <!-- 閃光粒子 -->
-      <div class="sparkle" style="top:10%;left:15%;--sd:2.8s;--ss:0s;--sx:-8px;--sy:-22px;"></div>
-      <div class="sparkle" style="top:20%;left:80%;--sd:2.2s;--ss:0.5s;--sx:10px;--sy:-18px;"></div>
-      <div class="sparkle" style="top:60%;left:5%;--sd:3.1s;--ss:1s;--sx:-12px;--sy:-14px;"></div>
-      <div class="sparkle" style="top:75%;left:88%;--sd:2.5s;--ss:0.3s;--sx:8px;--sy:-20px;"></div>
-      <div class="sparkle" style="top:40%;left:92%;--sd:2.0s;--ss:0.8s;--sx:6px;--sy:-16px;"></div>
-      <div class="sparkle" style="top:5%;left:55%;--sd:3.3s;--ss:1.2s;--sx:-4px;--sy:-24px;"></div>
-      <div class="sparkle" style="top:85%;left:30%;--sd:2.7s;--ss:0.2s;--sx:-10px;--sy:-10px;"></div>
-      <div class="sparkle" style="top:50%;left:50%;--sd:2.4s;--ss:1.5s;--sx:14px;--sy:-12px;"></div>
+      <div class="sparkle" style="top:8%;left:12%;--sd:2.8s;--ss:0s;--sx:-8px;--sy:-20px;"></div>
+      <div class="sparkle" style="top:18%;left:82%;--sd:2.2s;--ss:0.5s;--sx:10px;--sy:-16px;"></div>
+      <div class="sparkle" style="top:65%;left:4%;--sd:3.1s;--ss:1s;--sx:-10px;--sy:-12px;"></div>
+      <div class="sparkle" style="top:78%;left:90%;--sd:2.5s;--ss:0.3s;--sx:8px;--sy:-18px;"></div>
+      <div class="sparkle" style="top:42%;left:94%;--sd:2.0s;--ss:0.8s;--sx:6px;--sy:-14px;"></div>
+      <div class="sparkle" style="top:4%;left:52%;--sd:3.3s;--ss:1.2s;--sx:-4px;--sy:-22px;"></div>
 
-      <svg viewBox="0 0 260 180" fill="none" xmlns="http://www.w3.org/2000/svg"
+      <svg viewBox="0 0 240 166" fill="none" xmlns="http://www.w3.org/2000/svg"
            style="width:100%;height:100%;position:absolute;top:0;left:0;">
         <defs>
-          <!-- 玻璃質感漸層 -->
-          <linearGradient id="envGrad" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="eg" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
             <stop offset="50%" stop-color="rgba(200,220,255,0.10)"/>
             <stop offset="100%" stop-color="rgba(180,210,255,0.18)"/>
           </linearGradient>
-          <!-- 邊緣高光 -->
-          <linearGradient id="envEdge" x1="0" y1="0" x2="1" y2="0">
+          <linearGradient id="ee" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
             <stop offset="50%" stop-color="rgba(255,255,255,0.1)"/>
             <stop offset="100%" stop-color="rgba(255,255,255,0.4)"/>
           </linearGradient>
-          <!-- 封口高光 -->
-          <linearGradient id="flapGrad" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id="ef" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="rgba(255,255,255,0.28)"/>
             <stop offset="100%" stop-color="rgba(200,220,255,0.06)"/>
           </linearGradient>
-          <!-- 內部光暈 -->
-          <radialGradient id="innerGlow" cx="50%" cy="50%">
+          <radialGradient id="ei" cx="50%" cy="50%">
             <stop offset="0%" stop-color="rgba(200,225,255,0.15)"/>
             <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
           </radialGradient>
-          <!-- 模糊濾鏡 -->
-          <filter id="softGlow">
-            <feGaussianBlur stdDeviation="3" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-          <filter id="glowOnly">
-            <feGaussianBlur stdDeviation="5"/>
-          </filter>
-          <clipPath id="envClip">
-            <rect x="10" y="30" width="240" height="140" rx="10"/>
-          </clipPath>
+          <filter id="sg"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="go"><feGaussianBlur stdDeviation="5"/></filter>
+          <clipPath id="ec"><rect x="8" y="28" width="224" height="130" rx="9"/></clipPath>
         </defs>
-
-        <!-- 外層光暈 -->
-        <rect x="10" y="30" width="240" height="140" rx="10"
-              fill="rgba(180,215,255,0.07)" filter="url(#glowOnly)"/>
-
-        <!-- 信封主體 -->
-        <rect x="10" y="30" width="240" height="140" rx="10"
-              fill="url(#envGrad)"
-              stroke="url(#envEdge)" stroke-width="1.2"/>
-
-        <!-- 內部光 -->
-        <rect x="10" y="30" width="240" height="140" rx="10"
-              fill="url(#innerGlow)" clip-path="url(#envClip)"/>
-
-        <!-- V 字折線（信封內底） -->
-        <line x1="10" y1="170" x2="130" y2="100"
-              stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-        <line x1="250" y1="170" x2="130" y2="100"
-              stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-
-        <!-- 封口三角 -->
-        <path d="M10 30 L130 108 L250 30"
-              fill="url(#flapGrad)"
-              stroke="rgba(255,255,255,0.25)" stroke-width="1"
-              filter="url(#softGlow)"/>
-
-        <!-- 高光橫條（玻璃反光） -->
-        <rect x="10" y="30" width="240" height="28" rx="10"
-              fill="rgba(255,255,255,0.07)" clip-path="url(#envClip)"/>
-
-        <!-- 右上角反光點 -->
-        <ellipse cx="228" cy="42" rx="12" ry="5"
-                 fill="rgba(255,255,255,0.18)" transform="rotate(-20 228 42)"/>
-
-        <!-- 愛心印記 -->
-        <path d="M122 125 C122 121 128 118 130 123 C132 118 138 121 138 125 C138 130 130 136 130 136 C130 136 122 130 122 125Z"
-              fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
-
-        <!-- 邊框發光 -->
-        <rect x="10" y="30" width="240" height="140" rx="10"
-              fill="none" stroke="rgba(180,215,255,0.35)" stroke-width="0.6"
-              filter="url(#softGlow)"/>
+        <rect x="8" y="28" width="224" height="130" rx="9" fill="rgba(180,215,255,0.06)" filter="url(#go)"/>
+        <rect x="8" y="28" width="224" height="130" rx="9" fill="url(#eg)" stroke="url(#ee)" stroke-width="1.2"/>
+        <rect x="8" y="28" width="224" height="130" rx="9" fill="url(#ei)" clip-path="url(#ec)"/>
+        <line x1="8" y1="158" x2="120" y2="92" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+        <line x1="232" y1="158" x2="120" y2="92" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+        <path d="M8 28 L120 100 L232 28" fill="url(#ef)" stroke="rgba(255,255,255,0.22)" stroke-width="1" filter="url(#sg)"/>
+        <rect x="8" y="28" width="224" height="26" rx="9" fill="rgba(255,255,255,0.06)" clip-path="url(#ec)"/>
+        <ellipse cx="212" cy="39" rx="11" ry="5" fill="rgba(255,255,255,0.16)" transform="rotate(-20 212 39)"/>
+        <path d="M113 116 C113 112 119 109 121 114 C123 109 129 112 129 116 C129 121 121 127 121 127 C121 127 113 121 113 116Z" fill="rgba(255,255,255,0.20)" stroke="rgba(255,255,255,0.38)" stroke-width="0.8"/>
+        <!-- 邊框 -->
+        <rect x="8" y="28" width="224" height="130" rx="9" fill="none" stroke="rgba(180,215,255,0.32)" stroke-width="0.6" filter="url(#sg)"/>
+        <!-- 閃爍 -->
+        <rect class="env-s1" x="8" y="28" width="224" height="130" rx="9" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1" filter="url(#sg)"/>
+        <ellipse class="env-s2" cx="120" cy="93" rx="75" ry="28" fill="rgba(200,225,255,0.06)" filter="url(#sg)"/>
+        <rect class="env-s3" x="28" y="37" width="70" height="2.5" rx="1.5" fill="rgba(255,255,255,0.28)" filter="url(#sg)"/>
       </svg>
     </div>
 
-    <!-- 信封標籤 -->
+    <!-- 標籤 -->
     <div class="oba-label" id="obaLabel">
-      ✦ &nbsp; 這是來自太空柴犬歐巴的話 &nbsp; ✦<br>
-      <span style="font-size:11px;opacity:0.6;letter-spacing:0.1em;">a letter from oba, the shiba in the stars</span>
+      ✦ &nbsp;這是來自太空柴犬歐巴的話&nbsp; ✦<br>
+      <span style="font-size:11px;opacity:0.55;letter-spacing:0.08em;">a letter from oba, the shiba in the stars</span>
     </div>
   </div>
 
-  <!-- 手寫信內容 -->
-  <div class="oba-letter" id="obaLetter">
-    <div class="handwrite-line" id="hw1">謝謝醫生叔叔姊姊，</div>
-    <div class="handwrite-line" id="hw2">雖然那時候我很痛不小心咬了你們，</div>
-    <div class="handwrite-line" id="hw3">我不是故意的 🐾</div>
-    <div class="handwrite-line" id="hw4" style="margin-top:16px;font-size:15px;color:rgba(200,215,240,0.8);">
-      我已經 2 月 4 號就到彩虹橋跑跑了，
-    </div>
-    <div class="handwrite-line" id="hw5" style="font-size:15px;color:rgba(200,215,240,0.8);">
-      這裡很多吃的，有很多 A5 厚切牛排吃到飽 🥩
-    </div>
+  <!-- 手寫信 -->
+  <div class="oba-letter">
+    <div class="hw" id="hw1">謝謝醫生叔叔姊姊，</div>
+    <div class="hw" id="hw2">雖然那時候我很痛不小心咬了你們，</div>
+    <div class="hw" id="hw3">我不是故意的 🐾</div>
+    <div class="hw small" id="hw4" style="margin-top:14px;">我已經 2 月 4 號就到彩虹橋跑跑了，</div>
+    <div class="hw small" id="hw5">這裡很多吃的，有很多 A5 厚切牛排吃到飽 🥩</div>
 
-    <!-- 歐巴吃吃動圖 -->
+    <!-- 吃吃動圖 -->
     <div class="oba-video-wrap" id="obaVideo">
-      <video src="oba.mp4" autoplay loop muted playsinline></video>
+      <video src="oba.mp4" autoplay loop muted playsinline
+             onerror="this.parentElement.style.display='none'"></video>
     </div>
-    <div class="handwrite-line" id="hw6" style="font-size:15px;color:rgba(200,215,240,0.8);">
-      爸爸在我離開的這段時間寫了很多歌，
-    </div>
-    <div class="handwrite-line" id="hw7" style="font-size:15px;color:rgba(200,215,240,0.8);">
-      我最喜歡聽爸爸唱歌 🎵
-    </div>
+
+    <div class="hw small" id="hw6">爸爸在我離開的這段時間寫了很多歌，</div>
+    <div class="hw small" id="hw7">我最喜歡聽爸爸唱歌 🎵</div>
   </div>
 
-  <!-- 歌曲名稱 -->
+  <!-- 歌名 -->
   <div class="oba-songs" id="obaSongs">
     <div class="song-name">爸爸說他做了兩首歌要送給你們</div>
-    <div class="song-name" style="margin-top:6px;">
-      〈 最後一次心跳 〉&nbsp;·&nbsp;〈 我學會的溫柔 〉
-    </div>
-    <div class="song-name" style="font-size:14px;margin-top:10px;color:rgba(180,210,255,0.65);">
-      希望你們都要好好的，健康的 ☁️
-    </div>
+    <div class="song-name" style="margin-top:4px;">〈 最後一次心跳 〉·〈 我學會的溫柔 〉</div>
+    <div class="song-name" style="font-size:14px;margin-top:8px;color:rgba(180,210,255,0.6);">希望你們都要好好的，健康的 ☁️</div>
   </div>
 
   <div class="oba-continue" id="obaContinue">— 繼續 —</div>
-
 </div>
 
-<!-- 串流頁 -->
-<div class="page2" id="page2">
-  <img src="kayon-studio-logo.png" class="studio-logo" alt="KAYON STUDIO">
-  <img src="album.png" class="cover">
-  <p class="page2-intro">選擇你常用的平台即可收聽</p>
-  <div class="buttons">
-    <a href="https://is.gd/ec6R3Q" target="_blank"><img src="apple music.png"></a>
-    <a href="https://open.spotify.com/album/4rxVJhUSasV4dtwMVBsQ3H?si=dJkUIPAyTrWoja6PSplASA" target="_blank"><img src="spotify.png"></a>
-    <a href="https://music.youtube.com/playlist?list=OLAK5uy_mjhgI-rnwovVQD-68s8KzRZHCsU5YpNvQ" target="_blank"><img src="youtube music.png"></a>
-    <a href="https://www.kkbox.com/tw/tc/album/DXKBzcIPYpMkg8zIUr" target="_blank"><img src="kkbox.png"></a>
-    <a href="https://music-tw.line.me/album/7941443" target="_blank"><img src="line.png"></a>
-  </div>
-  <div class="page2-outro">
-    <p class="wish">希望接下來會有《完美的快樂》陪著你</p>
-    <p class="follow">更多 KAYON 的消息請關注官方</p>
-    <p class="socials">
-      <a href="https://www.instagram.com/kayonstudio_official/" target="_blank">Instagram</a>
-      <span class="sep">|</span>
-      <a href="https://www.youtube.com/@KARBONXGAIA_ENT" target="_blank">YouTube</a>
-    </p>
-  </div>
-  <div class="footer">
-    <img src="karbonxgaia-logo.png" class="footer-logo" alt="KARBØN X GAIA ENTERTAINMENT">
-    <p class="footer-copy">
-      ℗ &amp; © 2026 KARBØN X GAIA ENTERTAINMENT. All Rights Reserved.
-      <span class="produced" style="display:block;">Produced by KAYON STUDIO.</span>
-    </p>
-  </div>
+<!-- ── for oba 歌曲列表頁 ── -->
+<div class="page-final" id="pageFinal">
+  <img src="assets/logo.svg" class="final-logo" alt="for oba">
+  <p class="final-eyebrow">for the people who stayed beside oba</p>
+  <h1 class="final-h1">謝謝你們曾經拼命想把牠留下來</h1>
+  <h2 class="final-h2">紀錄每一段還想努力的瞬間</h2>
+
+  <div id="song-list" class="song-list" role="list"></div>
+
+  <footer class="final-closing">
+    <p>「謝謝每一位曾經照顧歐巴的人」</p>
+    <img src="signature.png" class="final-sign" alt="KAYON 簽名"
+         onerror="this.style.display='none'">
+  </footer>
 </div>
 
 <script>
-// ─── 第一頁時間軸（維持原版不動）───
+// ══════════════════════════════
+// Intro 時間軸
+// ══════════════════════════════
+const $ = id => document.getElementById(id);
+
+// 9s：標題淡出 → 專輯封面
 setTimeout(() => {
-  document.getElementById('title').style.opacity = '0';
+  $('sceneTitle').style.opacity = '0';
   setTimeout(() => {
-    document.getElementById('title').style.display = 'none';
-    document.getElementById('album').style.opacity = '1';
+    $('sceneTitle').style.display = 'none';
+    $('sceneAlbum').style.opacity = '1';
   }, 2000);
 }, 9000);
 
+// 13s：封面消失 → KAYON 文字
 setTimeout(() => {
-  document.getElementById('album').style.opacity = '0';
-  const text = document.getElementById('text');
-  text.style.opacity = '1';
-  text.classList.add('show');
+  $('sceneAlbum').style.opacity = '0';
+  const t = $('sceneText');
+  t.style.opacity = '1';
+  t.classList.add('show');
 }, 13000);
 
+// 20s：簽名出現
 setTimeout(() => {
-  document.getElementById('sign').style.opacity = '1';
+  $('sign').style.opacity = '1';
 }, 20000);
 
-// ─── 歐巴信封頁（24s 進入）───
+// ══════════════════════════════
+// 歐巴信封頁（24s 進入）
+// ══════════════════════════════
 setTimeout(() => {
-  const obaPage = document.getElementById('pageOba');
-  obaPage.classList.add('show');
+  $('pageOba').classList.add('show');
   generateObaStars();
 
-  // 信封 + 歐巴照片浮現
+  // 歐巴照 + 信封 + 標籤
   setTimeout(() => {
-    document.getElementById('envelopeSvg').classList.add('appear');
-    document.getElementById('obaLabel').classList.add('appear');
-    document.getElementById('obaPortrait').classList.add('appear');
+    $('envelopeSvg').classList.add('appear');
+    $('obaLabel').classList.add('appear');
+    $('obaPortrait').classList.add('appear');
   }, 800);
 
-  // 手寫文字逐行出現（每行間隔 3200ms，讓人讀完再繼續）
+  // 手寫文字（每行 3200ms）
   const STEP = 3200;
-  const hwLines = ['hw1','hw2','hw3','hw4','hw5'];
-  hwLines.forEach((id, i) => {
-    setTimeout(() => {
-      document.getElementById(id).classList.add('in');
-    }, 2400 + i * STEP);
+  ['hw1','hw2','hw3','hw4','hw5'].forEach((id, i) => {
+    setTimeout(() => $(id).classList.add('in'), 2400 + i * STEP);
   });
 
-  // hw5 出現 2s 後，顯示吃吃動圖（hw5 = 2400 + 4*3200 = 15200ms）
-  setTimeout(() => {
-    document.getElementById('obaVideo').classList.add('appear');
-  }, 2400 + 4 * STEP + 2000);
+  // hw5 後 2s：吃吃動圖（hw5 = 2400+4*3200 = 15200ms）
+  setTimeout(() => $('obaVideo').classList.add('appear'), 2400 + 4*STEP + 2000);
 
-  // 動圖出現 3s 後繼續文字
-  setTimeout(() => {
-    document.getElementById('hw6').classList.add('in');
-  }, 2400 + 4 * STEP + 5000);
+  // 動圖後繼續文字
+  setTimeout(() => $('hw6').classList.add('in'), 2400 + 4*STEP + 5000);
+  setTimeout(() => $('hw7').classList.add('in'), 2400 + 4*STEP + 8200);
 
-  setTimeout(() => {
-    document.getElementById('hw7').classList.add('in');
-  }, 2400 + 4 * STEP + 8200);
-
-  // 歌名
-  const songDelay = 2400 + 4 * STEP + 11400;
-  setTimeout(() => {
-    document.getElementById('obaSongs').classList.add('appear');
-  }, songDelay);
-
-  // 繼續提示
-  setTimeout(() => {
-    document.getElementById('obaContinue').classList.add('appear');
-  }, songDelay + 2500);
+  // 歌名 + 繼續
+  const songT = 2400 + 4*STEP + 11400;
+  setTimeout(() => $('obaSongs').classList.add('appear'), songT);
+  setTimeout(() => $('obaContinue').classList.add('appear'), songT + 2500);
 
 }, 24000);
 
-// ─── 串流頁（歐巴場景結束後進入）───
-// 歐巴場景從 24s 開始，內部最後事件約 39s（songDelay+2500）→ 總計 24+39 = 63s
+// ══════════════════════════════
+// for oba 歌曲列表（約 65s）
+// ══════════════════════════════
 setTimeout(() => {
-  document.getElementById('page2').classList.add('show');
+  $('pageFinal').classList.add('show');
+  renderSongs();
 }, 65000);
 
-// ─── 星點生成 ───
+// ── 星點生成 ──
 function generateObaStars() {
-  const container = document.getElementById('obaStars');
+  const c = $('obaStars');
   for (let i = 0; i < 40; i++) {
     const s = document.createElement('div');
     s.className = 'oba-star';
-    const size = Math.random() * 2.5 + 0.8;
-    s.style.cssText = `
-      width:${size}px;height:${size}px;
-      top:${Math.random()*100}%;
-      left:${Math.random()*100}%;
-      --dur:${(Math.random()*3+2).toFixed(1)}s;
-      --delay:${(Math.random()*3).toFixed(1)}s;
-    `;
-    container.appendChild(s);
+    const sz = Math.random() * 2.2 + 0.7;
+    s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--dur:${(Math.random()*3+2).toFixed(1)}s;--delay:${(Math.random()*3).toFixed(1)}s;`;
+    c.appendChild(s);
+  }
+}
+
+// ── Songs ──
+function createCard(song) {
+  const art = document.createElement('article');
+  art.className = 'song-card';
+
+  const btn = document.createElement('button');
+  btn.className = 'song-toggle';
+  btn.setAttribute('aria-expanded', 'false');
+
+  const t = document.createElement('span');
+  t.className = 'song-title-label';
+  t.textContent = song.title;
+
+  const s = document.createElement('span');
+  s.className = 'song-subtitle-label';
+  s.textContent = song.subtitle || '';
+
+  const wrap = document.createElement('div');
+  wrap.className = 'song-links';
+
+  const grid = document.createElement('div');
+  grid.className = 'link-grid';
+
+  if (song.platforms) {
+    Object.entries(song.platforms).forEach(([name, href]) => {
+      if (!href || href === '#') return;
+      const a = document.createElement('a');
+      a.className = 'link-btn';
+      a.href = href;
+      a.textContent = name;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      grid.appendChild(a);
+    });
+  }
+
+  btn.addEventListener('click', () => {
+    const open = wrap.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+
+  btn.appendChild(t);
+  btn.appendChild(s);
+  wrap.appendChild(grid);
+  art.appendChild(btn);
+  art.appendChild(wrap);
+  return art;
+}
+
+async function renderSongs() {
+  const list = document.getElementById('song-list');
+  try {
+    const res = await fetch(`./songs.json?v=${Date.now()}`);
+    if (!res.ok) throw new Error('load failed');
+    const songs = await res.json();
+    list.innerHTML = '';
+    songs.forEach(s => list.appendChild(createCard(s)));
+  } catch(e) {
+    list.innerHTML = '<p style="color:#aab4c0;text-align:center;padding:20px;">Songs unavailable right now.</p>';
   }
 }
 </script>
