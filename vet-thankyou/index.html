@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0F1720" />
+  <meta name="theme-color" content="#000000" />
   <title>for oba</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
-  /* ─── Reset ─── */
   *, *::before, *::after { box-sizing: border-box; }
 
   body {
@@ -21,20 +20,18 @@
     overflow: hidden;
   }
 
-  /* ══════════════════════════════
-     INTRO SCENES (歌迷版動畫)
-  ══════════════════════════════ */
-
+  /* ══ 星空 ══ */
   .stars {
     position: fixed;
     inset: 0;
     background: radial-gradient(white 1px, transparent 1px);
     background-size: 3px 3px;
-    opacity: 0.12;
+    opacity: 0.13;
     z-index: 0;
     pointer-events: none;
   }
 
+  /* ══ SCENE 1：地球 + 標題 ══ */
   .earth {
     position: fixed;
     bottom: -180px;
@@ -46,7 +43,6 @@
     z-index: 1;
   }
 
-  /* 標題 */
   .scene-title {
     position: fixed;
     top: 45%;
@@ -80,19 +76,22 @@
     opacity: 0.9;
   }
 
-  /* 專輯封面 */
+  /* ══ SCENE 2：專輯封面 ══ */
   .scene-album {
     position: fixed;
-    top: 52%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 200px;
+    height: 200px;
+    object-fit: cover;
     opacity: 0;
     transition: opacity 2s ease;
     z-index: 2;
+    border-radius: 4px;
   }
 
-  /* KAYON 文字 */
+  /* ══ SCENE 3：KAYON 文字 ══ */
   .scene-text {
     position: fixed;
     top: 42%;
@@ -118,20 +117,16 @@
   .show .line:nth-child(6) { animation: fadeUp 0.8s forwards 5s; }
   .show .line:nth-child(7) { animation: fadeUp 0.8s forwards 6s; }
 
-  /* 簽名 */
   .sign {
     display: block;
-    margin: 30px auto 0;
-    width: 220px;
+    margin: 28px auto 0;
+    width: 200px;
     opacity: 0;
     transition: opacity 2s ease;
     filter: brightness(1.2);
   }
 
-  /* ══════════════════════════════
-     歐巴信封頁
-  ══════════════════════════════ */
-
+  /* ══ 歐巴信封頁 A ══ */
   .page-oba {
     position: fixed;
     inset: 0;
@@ -146,16 +141,12 @@
     z-index: 500;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 40px 20px 60px;
+    padding: 36px 20px 60px;
     -webkit-overflow-scrolling: touch;
   }
 
-  .page-oba.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  .page-oba.show { opacity: 1; pointer-events: auto; }
 
-  /* 星點背景 */
   .oba-stars {
     position: fixed;
     inset: 0;
@@ -167,117 +158,72 @@
     position: absolute;
     border-radius: 50%;
     background: white;
-    animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+    animation: twinkle var(--dur,3s) ease-in-out infinite var(--delay,0s);
   }
 
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.08; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.4); }
-  }
-
-  /* 歐巴照片 */
   .oba-portrait {
-    position: relative;
-    z-index: 1;
-    width: 86px;
-    height: 86px;
+    position: relative; z-index: 1;
+    width: 90px; height: 90px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
     border: 1.5px solid rgba(200,220,255,0.35);
-    box-shadow: 0 0 18px rgba(180,215,255,0.25), 0 0 40px rgba(180,215,255,0.10);
+    box-shadow: 0 0 18px rgba(180,215,255,0.3), 0 0 40px rgba(180,215,255,0.12);
     opacity: 0;
     transform: scale(0.88);
     transition: opacity 1.4s ease, transform 1.4s ease;
     margin-bottom: 14px;
-    filter: brightness(1.05) saturate(0.85);
   }
 
-  .oba-portrait.appear {
-    opacity: 1;
-    transform: scale(1);
-  }
+  .oba-portrait.appear { opacity: 1; transform: scale(1); }
 
-  /* 信封容器 */
   .envelope-wrap {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 320px;
-    width: 100%;
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center;
+    max-width: 300px; width: 100%;
   }
 
   .envelope-glow {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 320px;
-    height: 240px;
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 300px; height: 220px;
     border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(200,220,255,0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(200,220,255,0.14) 0%, transparent 70%);
     animation: glowPulse 3s ease-in-out infinite;
     pointer-events: none;
   }
 
-  @keyframes glowPulse {
-    0%, 100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
-    50% { opacity: 1; transform: translate(-50%,-50%) scale(1.08); }
-  }
-
   .envelope-svg-wrap {
     position: relative;
-    width: 240px;
-    height: 166px;
+    width: 230px; height: 159px;
     opacity: 0;
-    transform: translateY(16px) scale(0.95);
+    transform: translateY(14px) scale(0.95);
     transition: opacity 1.4s ease, transform 1.4s ease;
   }
 
-  .envelope-svg-wrap.appear {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  .envelope-svg-wrap.appear { opacity: 1; transform: translateY(0) scale(1); }
 
-  /* 閃光粒子 */
   .sparkle {
-    position: absolute;
-    width: 3px; height: 3px;
-    border-radius: 50%;
-    background: white;
+    position: absolute; width: 3px; height: 3px;
+    border-radius: 50%; background: white;
     box-shadow: 0 0 5px 2px rgba(180,220,255,0.9);
     animation: sparkleFly var(--sd,2.5s) ease-in-out infinite var(--ss,0s);
     opacity: 0;
   }
 
-  @keyframes sparkleFly {
-    0% { opacity:0; transform:translate(0,0) scale(0.5); }
-    30% { opacity:1; }
-    70% { opacity:0.8; }
-    100% { opacity:0; transform:translate(var(--sx,10px),var(--sy,-20px)) scale(0); }
-  }
-
-  /* 信封閃爍 */
-  @keyframes envShimmer {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
-  }
-
+  @keyframes envShimmer { 0%,100%{opacity:0} 50%{opacity:1} }
   .env-s1 { animation: envShimmer 2.2s ease-in-out infinite 0s; }
-  .env-s2 { animation: envShimmer 2.2s ease-in-out infinite 0.7s; }
-  .env-s3 { animation: envShimmer 2.2s ease-in-out infinite 1.4s; }
+  .env-s2 { animation: envShimmer 2.2s ease-in-out infinite 0.73s; }
+  .env-s3 { animation: envShimmer 2.2s ease-in-out infinite 1.46s; }
 
-  /* 標籤 */
   .oba-label {
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
     font-family: 'Noto Serif TC', serif;
     font-size: 13px;
     color: rgba(200,220,255,0.75);
     letter-spacing: 0.12em;
     text-align: center;
-    margin-top: 14px;
+    margin-top: 12px;
     opacity: 0;
     transition: opacity 1.4s ease 0.6s;
     line-height: 1.8;
@@ -285,83 +231,28 @@
 
   .oba-label.appear { opacity: 1; }
 
-  /* 手寫文字 */
-  .oba-letter {
-    position: relative;
-    z-index: 1;
-    margin-top: 22px;
-    max-width: 320px;
-    width: 100%;
+  .oba-letter-a {
+    position: relative; z-index: 1;
+    margin-top: 20px;
+    max-width: 300px; width: 100%;
     text-align: center;
   }
 
   .hw {
     font-family: 'Caveat', cursive;
-    font-size: 18px;
+    font-size: 22px;
     color: #E8EFF8;
-    line-height: 1.9;
+    line-height: 2;
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 0.9s ease, transform 0.9s ease;
   }
 
-  .hw.in {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .hw.in { opacity: 1; transform: translateY(0); }
+  .hw.small { font-size: 18px; color: rgba(200,215,240,0.88); }
 
-  .hw.small {
-    font-size: 15px;
-    color: rgba(200,215,240,0.85);
-  }
-
-  /* 吃吃動圖 */
-  .oba-video-wrap {
-    position: relative;
-    z-index: 1;
-    margin: 12px auto 0;
-    max-width: 200px;
-    width: 90%;
-    opacity: 0;
-    transform: scale(0.94);
-    transition: opacity 1.2s ease, transform 1.2s ease;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(200,220,255,0.2);
-    box-shadow: 0 0 20px rgba(180,215,255,0.15);
-  }
-
-  .oba-video-wrap.appear {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .oba-video-wrap video { width: 100%; display: block; }
-
-  /* 歌名 */
-  .oba-songs {
-    position: relative;
-    z-index: 1;
-    margin-top: 20px;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 1.4s ease;
-  }
-
-  .oba-songs.appear { opacity: 1; }
-
-  .song-name {
-    font-family: 'Caveat', cursive;
-    font-size: 16px;
-    color: rgba(180,210,255,0.85);
-    letter-spacing: 0.06em;
-    line-height: 2;
-  }
-
-  /* 繼續提示 */
   .oba-continue {
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
     margin-top: 28px;
     font-family: 'Inter', sans-serif;
     font-size: 11px;
@@ -375,19 +266,78 @@
 
   .oba-continue.appear { opacity: 1; }
 
-  @keyframes breathe {
-    0%, 100% { opacity: 0.25; }
-    50% { opacity: 0.6; }
+  /* ══ 歐巴頁 B（動圖）══ */
+  .page-oba-b {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.8s ease;
+    z-index: 501;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 48px 20px 60px;
+    -webkit-overflow-scrolling: touch;
   }
 
-  /* ══════════════════════════════
-     for oba 歌曲列表頁
-  ══════════════════════════════ */
+  .page-oba-b.show { opacity: 1; pointer-events: auto; }
 
+  .oba-video-wrap {
+    position: relative; z-index: 1;
+    width: min(280px, 85vw);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(200,220,255,0.22);
+    box-shadow: 0 0 24px rgba(180,215,255,0.18);
+    margin-bottom: 28px;
+  }
+
+  .oba-video-wrap video { width: 100%; display: block; }
+
+  .hw-b {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: rgba(200,215,240,0.9);
+    line-height: 2;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+    position: relative; z-index: 1;
+    max-width: 300px; width: 100%;
+  }
+
+  .hw-b.in { opacity: 1; transform: translateY(0); }
+
+  .oba-songs {
+    position: relative; z-index: 1;
+    margin-top: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1.4s ease;
+    max-width: 300px; width: 100%;
+  }
+
+  .oba-songs.appear { opacity: 1; }
+
+  .song-name-oba {
+    font-family: 'Caveat', cursive;
+    font-size: 18px;
+    color: rgba(180,210,255,0.88);
+    letter-spacing: 0.06em;
+    line-height: 2;
+  }
+
+  /* ══ for oba 歌曲列表頁 ══ */
   .page-final {
     position: fixed;
     inset: 0;
-    background: #0f1720;
+    background: #080c12;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -402,32 +352,43 @@
     font-family: 'Noto Serif TC', serif;
   }
 
-  .page-final.show {
-    opacity: 1;
-    pointer-events: auto;
+  .page-final.show { opacity: 1; pointer-events: auto; }
+
+  /* 星空覆蓋在最終頁 */
+  .final-stars {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(white 1px, transparent 1px);
+    background-size: 3px 3px;
+    opacity: 0.09;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .final-logo {
-    width: 11rem;
+    position: relative; z-index: 1;
+    width: 10rem;
     opacity: 0.9;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .final-eyebrow {
+    position: relative; z-index: 1;
     margin: 0 0 6px;
-    color: #aab4c0;
+    color: #8fa3b8;
     letter-spacing: 0.05em;
     text-transform: lowercase;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-family: 'Cormorant Garamond', serif;
     text-align: center;
   }
 
   .final-h1 {
-    margin: 0 0 8px;
+    position: relative; z-index: 1;
+    margin: 0 0 6px;
     font-family: 'Instrument Serif', serif;
     font-weight: 400;
-    font-size: clamp(1.3rem, 5vw, 1.9rem);
+    font-size: clamp(1.4rem, 5vw, 2rem);
     line-height: 1.35;
     color: #f5f1ea;
     text-align: center;
@@ -435,38 +396,39 @@
   }
 
   .final-h2 {
+    position: relative; z-index: 1;
     margin: 0 0 1.4rem;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
-    color: #aab4c0;
-    font-size: clamp(1rem, 3.5vw, 1.25rem);
+    color: #8fa3b8;
+    font-size: clamp(0.95rem, 3.5vw, 1.2rem);
     text-align: center;
     padding: 0 20px;
   }
 
-  /* 歌曲列表 */
   .song-list {
+    position: relative; z-index: 1;
     display: grid;
-    gap: 0.9rem;
+    gap: 0.85rem;
     width: min(42rem, 92vw);
   }
 
   .song-card {
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.025);
     border-radius: 0.6rem;
     overflow: clip;
-    transition: border-color 0.8s ease, background 0.8s ease;
+    transition: border-color 0.6s ease, background 0.6s ease;
   }
 
   .song-card:hover {
-    border-color: rgba(143,163,184,0.7);
-    background: rgba(255,255,255,0.045);
+    border-color: rgba(143,163,184,0.6);
+    background: rgba(255,255,255,0.04);
   }
 
   .song-toggle {
     width: 100%;
-    padding: 1rem;
+    padding: 0.9rem 1rem;
     text-align: left;
     background: transparent;
     border: 0;
@@ -478,12 +440,16 @@
 
   .song-title-label {
     font-family: 'Instrument Serif', serif;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
 
   .song-subtitle-label {
-    color: #aab4c0;
-    font-size: 0.88rem;
+    color: #8fa3b8;
+    font-size: 0.84rem;
+    font-family: 'Inter', sans-serif;
   }
 
   .song-links {
@@ -493,14 +459,11 @@
     transition: max-height 0.8s ease, opacity 0.8s ease;
   }
 
-  .song-links.open {
-    max-height: 20rem;
-    opacity: 1;
-  }
+  .song-links.open { max-height: 20rem; opacity: 1; }
 
   .link-grid {
     display: grid;
-    gap: 0.6rem;
+    gap: 0.55rem;
     padding: 0 1rem 1rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -508,14 +471,14 @@
   .link-btn {
     display: inline-flex;
     justify-content: center;
-    border: 1px solid rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.10);
     border-radius: 0.3rem;
     color: #f5f1ea;
     text-decoration: none;
-    font-size: 0.78rem;
-    padding: 0.45rem 0.5rem;
+    font-size: 0.76rem;
+    padding: 0.4rem 0.5rem;
     font-family: 'Inter', sans-serif;
-    transition: opacity 0.6s ease, border-color 0.6s ease;
+    transition: opacity 0.5s ease, border-color 0.5s ease;
   }
 
   .link-btn:hover, .link-btn:focus-visible {
@@ -523,74 +486,87 @@
     border-color: #8fa3b8;
   }
 
-  /* 結尾 */
   .final-closing {
+    position: relative; z-index: 1;
     margin-top: 2.5rem;
-    color: #aab4c0;
+    color: #8fa3b8;
     text-align: center;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     padding: 0 20px;
   }
 
-  /* 결尾簽名 */
   .final-sign {
     display: block;
-    margin: 24px auto 0;
+    margin: 20px auto 0;
     width: 180px;
     opacity: 0.75;
     filter: brightness(1.2);
   }
 
-  /* ─── Keyframes ─── */
+  /* ══ Keyframes ══ */
   @keyframes earthRise {
     0%   { bottom: -240px; opacity: 0; }
     100% { bottom: -180px; opacity: 0.4; }
   }
-
   @keyframes fadeIn { to { opacity: 1; } }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
   }
+  @keyframes twinkle {
+    0%,100% { opacity: 0.07; transform: scale(1); }
+    50%     { opacity: 0.55; transform: scale(1.4); }
+  }
+  @keyframes glowPulse {
+    0%,100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
+    50%     { opacity: 1;   transform: translate(-50%,-50%) scale(1.08); }
+  }
+  @keyframes sparkleFly {
+    0%   { opacity:0; transform:translate(0,0) scale(0.5); }
+    30%  { opacity:1; }
+    70%  { opacity:0.8; }
+    100% { opacity:0; transform:translate(var(--sx,10px),var(--sy,-20px)) scale(0); }
+  }
+  @keyframes breathe {
+    0%,100% { opacity: 0.22; }
+    50%     { opacity: 0.55; }
+  }
 
-  /* ─── Mobile ─── */
+  /* ══ Mobile ══ */
   @media (max-width: 600px) {
     .earth { width: 240px; bottom: -160px; }
     .title-zh { font-size: 22px; }
     .title-zh .gap { width: 1.8em; }
     .title-en { font-size: 9px; letter-spacing: 0.38em; margin-top: 12px; }
-    .scene-album { width: 140px; top: 55%; }
+    .scene-album { width: 150px; height: 150px; }
     .scene-text { width: 85%; top: 40%; }
     .line { font-size: 18px; }
-    .sign { width: 180px; }
-    .hw { font-size: 16px; }
-    .hw.small { font-size: 14px; }
-    .oba-portrait { width: 72px; height: 72px; }
-    .oba-video-wrap { max-width: 170px; }
-    .envelope-svg-wrap { width: 200px; height: 138px; }
+    .sign { width: 165px; }
+    .oba-portrait { width: 76px; height: 76px; }
+    .hw { font-size: 19px; }
+    .hw.small { font-size: 16px; }
+    .hw-b { font-size: 19px; }
+    .oba-video-wrap { width: min(240px, 85vw); }
     .final-sign { width: 150px; }
   }
   </style>
 </head>
-
 <body>
 
-<!-- ── 星空 ── -->
+<!-- 星空 -->
 <div class="stars"></div>
 <img src="https://pngimg.com/uploads/earth/earth_PNG39.png" class="earth" alt="">
 
-<!-- ── Scene 1：標題 ── -->
+<!-- SCENE 1：標題 -->
 <div class="scene-title" id="sceneTitle">
   <div class="title-zh">不<span class="gap"></span>完美的快樂</div>
   <div class="title-en">imperfect happiness</div>
 </div>
 
-<!-- ── Scene 2：專輯封面 ── -->
-<img src="album.png" class="scene-album" id="sceneAlbum" alt="不完美的快樂"
-     onerror="this.style.display='none'">
+<!-- SCENE 2：專輯封面 -->
+<img src="album.png" class="scene-album" id="sceneAlbum" alt="不完美的快樂">
 
-<!-- ── Scene 3：KAYON 文字 + 簽名 ── -->
+<!-- SCENE 3：KAYON 文字 + 簽名 -->
 <div class="scene-text" id="sceneText">
   <div class="line">Hi, 我是 KAYON</div>
   <div class="line">如果你看到這裡</div>
@@ -599,111 +575,107 @@
   <div class="line">當這個世界對你不太溫柔的時候</div>
   <div class="line">希望這張專輯</div>
   <div class="line">可以剛好陪著你</div>
-  <img src="signature.png" class="sign" id="sign" alt="KAYON 簽名"
-       onerror="this.style.display='none'">
+  <img src="signature.png" class="sign" id="sign" alt="KAYON 簽名">
 </div>
 
-<!-- ── 歐巴信封頁 ── -->
+<!-- ══ 歐巴頁 A：信封 + 謝謝醫生 ══ -->
 <div class="page-oba" id="pageOba">
   <div class="oba-stars" id="obaStars"></div>
 
-  <!-- 歐巴照片 -->
-  <img src="oba.jpg" class="oba-portrait" id="obaPortrait" alt="歐巴"
-       onerror="this.style.display='none'">
+  <img src="oba.jpg" class="oba-portrait" id="obaPortrait" alt="歐巴">
 
-  <!-- 信封 -->
   <div class="envelope-wrap">
     <div class="envelope-glow"></div>
-
     <div class="envelope-svg-wrap" id="envelopeSvg">
-      <!-- 閃光粒子 -->
       <div class="sparkle" style="top:8%;left:12%;--sd:2.8s;--ss:0s;--sx:-8px;--sy:-20px;"></div>
       <div class="sparkle" style="top:18%;left:82%;--sd:2.2s;--ss:0.5s;--sx:10px;--sy:-16px;"></div>
       <div class="sparkle" style="top:65%;left:4%;--sd:3.1s;--ss:1s;--sx:-10px;--sy:-12px;"></div>
       <div class="sparkle" style="top:78%;left:90%;--sd:2.5s;--ss:0.3s;--sx:8px;--sy:-18px;"></div>
-      <div class="sparkle" style="top:42%;left:94%;--sd:2.0s;--ss:0.8s;--sx:6px;--sy:-14px;"></div>
       <div class="sparkle" style="top:4%;left:52%;--sd:3.3s;--ss:1.2s;--sx:-4px;--sy:-22px;"></div>
 
-      <svg viewBox="0 0 240 166" fill="none" xmlns="http://www.w3.org/2000/svg"
+      <svg viewBox="0 0 230 159" fill="none" xmlns="http://www.w3.org/2000/svg"
            style="width:100%;height:100%;position:absolute;top:0;left:0;">
         <defs>
           <linearGradient id="eg" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
-            <stop offset="50%" stop-color="rgba(200,220,255,0.10)"/>
-            <stop offset="100%" stop-color="rgba(180,210,255,0.18)"/>
+            <stop offset="55%" stop-color="rgba(200,220,255,0.09)"/>
+            <stop offset="100%" stop-color="rgba(180,210,255,0.17)"/>
           </linearGradient>
           <linearGradient id="ee" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
-            <stop offset="50%" stop-color="rgba(255,255,255,0.1)"/>
-            <stop offset="100%" stop-color="rgba(255,255,255,0.4)"/>
+            <stop offset="0%" stop-color="rgba(255,255,255,0.48)"/>
+            <stop offset="50%" stop-color="rgba(255,255,255,0.09)"/>
+            <stop offset="100%" stop-color="rgba(255,255,255,0.38)"/>
           </linearGradient>
           <linearGradient id="ef" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="rgba(255,255,255,0.28)"/>
-            <stop offset="100%" stop-color="rgba(200,220,255,0.06)"/>
+            <stop offset="0%" stop-color="rgba(255,255,255,0.26)"/>
+            <stop offset="100%" stop-color="rgba(200,220,255,0.05)"/>
           </linearGradient>
           <radialGradient id="ei" cx="50%" cy="50%">
-            <stop offset="0%" stop-color="rgba(200,225,255,0.15)"/>
+            <stop offset="0%" stop-color="rgba(200,225,255,0.14)"/>
             <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
           </radialGradient>
           <filter id="sg"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           <filter id="go"><feGaussianBlur stdDeviation="5"/></filter>
-          <clipPath id="ec"><rect x="8" y="28" width="224" height="130" rx="9"/></clipPath>
+          <clipPath id="ec"><rect x="7" y="26" width="216" height="126" rx="9"/></clipPath>
         </defs>
-        <rect x="8" y="28" width="224" height="130" rx="9" fill="rgba(180,215,255,0.06)" filter="url(#go)"/>
-        <rect x="8" y="28" width="224" height="130" rx="9" fill="url(#eg)" stroke="url(#ee)" stroke-width="1.2"/>
-        <rect x="8" y="28" width="224" height="130" rx="9" fill="url(#ei)" clip-path="url(#ec)"/>
-        <line x1="8" y1="158" x2="120" y2="92" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
-        <line x1="232" y1="158" x2="120" y2="92" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
-        <path d="M8 28 L120 100 L232 28" fill="url(#ef)" stroke="rgba(255,255,255,0.22)" stroke-width="1" filter="url(#sg)"/>
-        <rect x="8" y="28" width="224" height="26" rx="9" fill="rgba(255,255,255,0.06)" clip-path="url(#ec)"/>
-        <ellipse cx="212" cy="39" rx="11" ry="5" fill="rgba(255,255,255,0.16)" transform="rotate(-20 212 39)"/>
-        <path d="M113 116 C113 112 119 109 121 114 C123 109 129 112 129 116 C129 121 121 127 121 127 C121 127 113 121 113 116Z" fill="rgba(255,255,255,0.20)" stroke="rgba(255,255,255,0.38)" stroke-width="0.8"/>
-        <!-- 邊框 -->
-        <rect x="8" y="28" width="224" height="130" rx="9" fill="none" stroke="rgba(180,215,255,0.32)" stroke-width="0.6" filter="url(#sg)"/>
-        <!-- 閃爍 -->
-        <rect class="env-s1" x="8" y="28" width="224" height="130" rx="9" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1" filter="url(#sg)"/>
-        <ellipse class="env-s2" cx="120" cy="93" rx="75" ry="28" fill="rgba(200,225,255,0.06)" filter="url(#sg)"/>
-        <rect class="env-s3" x="28" y="37" width="70" height="2.5" rx="1.5" fill="rgba(255,255,255,0.28)" filter="url(#sg)"/>
+        <rect x="7" y="26" width="216" height="126" rx="9" fill="rgba(180,215,255,0.05)" filter="url(#go)"/>
+        <rect x="7" y="26" width="216" height="126" rx="9" fill="url(#eg)" stroke="url(#ee)" stroke-width="1.1"/>
+        <rect x="7" y="26" width="216" height="126" rx="9" fill="url(#ei)" clip-path="url(#ec)"/>
+        <line x1="7" y1="152" x2="115" y2="88" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+        <line x1="223" y1="152" x2="115" y2="88" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+        <path d="M7 26 L115 96 L223 26" fill="url(#ef)" stroke="rgba(255,255,255,0.20)" stroke-width="0.9" filter="url(#sg)"/>
+        <rect x="7" y="26" width="216" height="24" rx="9" fill="rgba(255,255,255,0.055)" clip-path="url(#ec)"/>
+        <ellipse cx="204" cy="37" rx="10" ry="4.5" fill="rgba(255,255,255,0.15)" transform="rotate(-20 204 37)"/>
+        <path d="M108 112 C108 108 114 105 116 110 C118 105 124 108 124 112 C124 117 116 123 116 123 C116 123 108 117 108 112Z" fill="rgba(255,255,255,0.19)" stroke="rgba(255,255,255,0.36)" stroke-width="0.8"/>
+        <rect x="7" y="26" width="216" height="126" rx="9" fill="none" stroke="rgba(180,215,255,0.30)" stroke-width="0.6" filter="url(#sg)"/>
+        <rect class="env-s1" x="7" y="26" width="216" height="126" rx="9" fill="none" stroke="rgba(255,255,255,0.48)" stroke-width="0.9" filter="url(#sg)"/>
+        <ellipse class="env-s2" cx="115" cy="89" rx="70" ry="26" fill="rgba(200,225,255,0.055)" filter="url(#sg)"/>
+        <rect class="env-s3" x="26" y="35" width="65" height="2" rx="1.5" fill="rgba(255,255,255,0.26)" filter="url(#sg)"/>
       </svg>
     </div>
 
-    <!-- 標籤 -->
     <div class="oba-label" id="obaLabel">
       ✦ &nbsp;這是來自太空柴犬歐巴的話&nbsp; ✦<br>
-      <span style="font-size:11px;opacity:0.55;letter-spacing:0.08em;">a letter from oba, the shiba in the stars</span>
+      <span style="font-size:11px;opacity:0.52;letter-spacing:0.08em;">a letter from oba, the shiba in the stars</span>
     </div>
   </div>
 
-  <!-- 手寫信 -->
-  <div class="oba-letter">
+  <div class="oba-letter-a">
     <div class="hw" id="hw1">謝謝醫生叔叔姊姊，</div>
     <div class="hw" id="hw2">雖然那時候我很痛不小心咬了你們，</div>
     <div class="hw" id="hw3">我不是故意的 🐾</div>
-    <div class="hw small" id="hw4" style="margin-top:14px;">我已經 2 月 4 號就到彩虹橋跑跑了，</div>
+    <div class="hw small" id="hw4" style="margin-top:12px;">我已經 2 月 4 號就到彩虹橋跑跑了，</div>
     <div class="hw small" id="hw5">這裡很多吃的，有很多 A5 厚切牛排吃到飽 🥩</div>
-
-    <!-- 吃吃動圖 -->
-    <div class="oba-video-wrap" id="obaVideo">
-      <video src="oba.mp4" autoplay loop muted playsinline
-             onerror="this.parentElement.style.display='none'"></video>
-    </div>
-
-    <div class="hw small" id="hw6">爸爸在我離開的這段時間寫了很多歌，</div>
-    <div class="hw small" id="hw7">我最喜歡聽爸爸唱歌 🎵</div>
   </div>
 
-  <!-- 歌名 -->
-  <div class="oba-songs" id="obaSongs">
-    <div class="song-name">爸爸說他做了兩首歌要送給你們</div>
-    <div class="song-name" style="margin-top:4px;">〈 最後一次心跳 〉·〈 我學會的溫柔 〉</div>
-    <div class="song-name" style="font-size:14px;margin-top:8px;color:rgba(180,210,255,0.6);">希望你們都要好好的，健康的 ☁️</div>
-  </div>
-
-  <div class="oba-continue" id="obaContinue">— 繼續 —</div>
+  <div class="oba-continue" id="obaContA">— 繼續 —</div>
 </div>
 
-<!-- ── for oba 歌曲列表頁 ── -->
+<!-- ══ 歐巴頁 B：動圖 + 後半 ══ -->
+<div class="page-oba-b" id="pageObaB">
+  <div class="oba-stars" id="obaStarsB"></div>
+
+  <div class="oba-video-wrap">
+    <video src="oba.mp4" autoplay loop muted playsinline
+           onerror="this.parentElement.style.display='none'"></video>
+  </div>
+
+  <div class="hw-b" id="hwb6">爸爸在我離開的這段時間寫了很多歌，</div>
+  <div class="hw-b" id="hwb7">我最喜歡聽爸爸唱歌 🎵</div>
+
+  <div class="oba-songs" id="obaSongs">
+    <div class="song-name-oba">爸爸說他做了兩首歌要送給你們</div>
+    <div class="song-name-oba" style="margin-top:4px;">〈 最後一次心跳 〉·〈 我學會的溫柔 〉</div>
+    <div class="song-name-oba" style="font-size:15px;margin-top:8px;color:rgba(180,210,255,0.6);">希望你們都要好好的，健康的 ☁️</div>
+  </div>
+
+  <div class="oba-continue" id="obaContB" style="margin-top:32px;">— 繼續 —</div>
+</div>
+
+<!-- ══ for oba 歌曲列表頁 ══ -->
 <div class="page-final" id="pageFinal">
+  <div class="final-stars"></div>
+
   <img src="assets/logo.svg" class="final-logo" alt="for oba">
   <p class="final-eyebrow">for the people who stayed beside oba</p>
   <h1 class="final-h1">謝謝你們曾經拼命想把牠留下來</h1>
@@ -713,18 +685,14 @@
 
   <footer class="final-closing">
     <p>「謝謝每一位曾經照顧歐巴的人」</p>
-    <img src="signature.png" class="final-sign" alt="KAYON 簽名"
-         onerror="this.style.display='none'">
+    <img src="signature.png" class="final-sign" alt="KAYON 簽名">
   </footer>
 </div>
 
 <script>
-// ══════════════════════════════
-// Intro 時間軸
-// ══════════════════════════════
 const $ = id => document.getElementById(id);
 
-// 9s：標題淡出 → 專輯封面
+/* ══ Intro ══ */
 setTimeout(() => {
   $('sceneTitle').style.opacity = '0';
   setTimeout(() => {
@@ -733,7 +701,6 @@ setTimeout(() => {
   }, 2000);
 }, 9000);
 
-// 13s：封面消失 → KAYON 文字
 setTimeout(() => {
   $('sceneAlbum').style.opacity = '0';
   const t = $('sceneText');
@@ -741,66 +708,59 @@ setTimeout(() => {
   t.classList.add('show');
 }, 13000);
 
-// 20s：簽名出現
-setTimeout(() => {
-  $('sign').style.opacity = '1';
-}, 20000);
+setTimeout(() => { $('sign').style.opacity = '1'; }, 20000);
 
-// ══════════════════════════════
-// 歐巴信封頁（24s 進入）
-// ══════════════════════════════
+/* ══ 歐巴頁 A（24s）══ */
 setTimeout(() => {
   $('pageOba').classList.add('show');
-  generateObaStars();
+  generateStars('obaStars');
 
-  // 歐巴照 + 信封 + 標籤
   setTimeout(() => {
     $('envelopeSvg').classList.add('appear');
     $('obaLabel').classList.add('appear');
     $('obaPortrait').classList.add('appear');
   }, 800);
 
-  // 手寫文字（每行 3200ms）
   const STEP = 3200;
   ['hw1','hw2','hw3','hw4','hw5'].forEach((id, i) => {
     setTimeout(() => $(id).classList.add('in'), 2400 + i * STEP);
   });
 
-  // hw5 後 2s：吃吃動圖（hw5 = 2400+4*3200 = 15200ms）
-  setTimeout(() => $('obaVideo').classList.add('appear'), 2400 + 4*STEP + 2000);
-
-  // 動圖後繼續文字
-  setTimeout(() => $('hw6').classList.add('in'), 2400 + 4*STEP + 5000);
-  setTimeout(() => $('hw7').classList.add('in'), 2400 + 4*STEP + 8200);
-
-  // 歌名 + 繼續
-  const songT = 2400 + 4*STEP + 11400;
-  setTimeout(() => $('obaSongs').classList.add('appear'), songT);
-  setTimeout(() => $('obaContinue').classList.add('appear'), songT + 2500);
-
+  // 繼續提示（hw5 後 3s）= 2400+4*3200+3000 = 18200ms
+  setTimeout(() => $('obaContA').classList.add('appear'), 2400 + 4*STEP + 3000);
 }, 24000);
 
-// ══════════════════════════════
-// for oba 歌曲列表（約 65s）
-// ══════════════════════════════
+/* ══ 歐巴頁 B（24 + 18.2 + 2 緩衝 ≈ 44s）══ */
+setTimeout(() => {
+  $('pageObaB').classList.add('show');
+  generateStars('obaStarsB');
+
+  setTimeout(() => $('hwb6').classList.add('in'), 2000);
+  setTimeout(() => $('hwb7').classList.add('in'), 5200);
+  setTimeout(() => $('obaSongs').classList.add('appear'), 8400);
+  setTimeout(() => $('obaContB').classList.add('appear'), 11000);
+}, 44000);
+
+/* ══ 歌曲列表（44 + 13 = 57s）══ */
 setTimeout(() => {
   $('pageFinal').classList.add('show');
   renderSongs();
-}, 65000);
+}, 57000);
 
-// ── 星點生成 ──
-function generateObaStars() {
-  const c = $('obaStars');
-  for (let i = 0; i < 40; i++) {
+/* ══ 星點 ══ */
+function generateStars(id) {
+  const c = $(id);
+  if (!c) return;
+  for (let i = 0; i < 38; i++) {
     const s = document.createElement('div');
     s.className = 'oba-star';
-    const sz = Math.random() * 2.2 + 0.7;
+    const sz = Math.random() * 2.2 + 0.6;
     s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--dur:${(Math.random()*3+2).toFixed(1)}s;--delay:${(Math.random()*3).toFixed(1)}s;`;
     c.appendChild(s);
   }
 }
 
-// ── Songs ──
+/* ══ Songs ══ */
 function createCard(song) {
   const art = document.createElement('article');
   art.className = 'song-card';
@@ -809,13 +769,18 @@ function createCard(song) {
   btn.className = 'song-toggle';
   btn.setAttribute('aria-expanded', 'false');
 
-  const t = document.createElement('span');
-  t.className = 'song-title-label';
-  t.textContent = song.title;
+  const titleEl = document.createElement('span');
+  titleEl.className = 'song-title-label';
+  // 放手的重量 EP 加 🐾 代表歐巴認證
+  if (song.title.includes('放手的重量')) {
+    titleEl.innerHTML = `${song.title} <span>🐾</span>`;
+  } else {
+    titleEl.textContent = song.title;
+  }
 
-  const s = document.createElement('span');
-  s.className = 'song-subtitle-label';
-  s.textContent = song.subtitle || '';
+  const subEl = document.createElement('span');
+  subEl.className = 'song-subtitle-label';
+  subEl.textContent = song.subtitle || '';
 
   const wrap = document.createElement('div');
   wrap.className = 'song-links';
@@ -841,8 +806,8 @@ function createCard(song) {
     btn.setAttribute('aria-expanded', String(open));
   });
 
-  btn.appendChild(t);
-  btn.appendChild(s);
+  btn.appendChild(titleEl);
+  btn.appendChild(subEl);
   wrap.appendChild(grid);
   art.appendChild(btn);
   art.appendChild(wrap);
@@ -850,18 +815,17 @@ function createCard(song) {
 }
 
 async function renderSongs() {
-  const list = document.getElementById('song-list');
+  const list = $('song-list');
   try {
     const res = await fetch(`./songs.json?v=${Date.now()}`);
-    if (!res.ok) throw new Error('load failed');
+    if (!res.ok) throw new Error('failed');
     const songs = await res.json();
     list.innerHTML = '';
     songs.forEach(s => list.appendChild(createCard(s)));
   } catch(e) {
-    list.innerHTML = '<p style="color:#aab4c0;text-align:center;padding:20px;">Songs unavailable right now.</p>';
+    list.innerHTML = '<p style="color:#8fa3b8;text-align:center;padding:20px 0;">Songs unavailable right now.</p>';
   }
 }
 </script>
-
 </body>
 </html>
