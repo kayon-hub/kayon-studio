@@ -28,6 +28,7 @@ body {
   padding: 2.5rem 0 3rem;
 }
 
+/* ✅ fade-in 初始狀態：隱藏 */
 .fade-in {
   opacity: 0;
   filter: blur(10px);
@@ -35,10 +36,20 @@ body {
   transition: opacity 1.2s ease, filter 1.2s ease, transform 1.2s ease;
 }
 
+/* ✅ JS 加上 .visible 後才顯示 */
 .fade-in.visible {
   opacity: 1;
   filter: blur(0);
   transform: translateY(0);
+}
+
+/* 讓不同 section 有錯開感 */
+.songs.fade-in {
+  transition-delay: 0.3s;
+}
+
+.closing.fade-in {
+  transition-delay: 0.5s;
 }
 
 .hero {
@@ -124,8 +135,9 @@ h2 {
   transition: max-height 0.8s ease, opacity 0.8s ease;
 }
 
+/* ✅ 修復：從 12rem 加大到 20rem，避免五個平台連結被截斷 */
 .song-links.open {
-  max-height: 12rem;
+  max-height: 20rem;
   opacity: 1;
 }
 
@@ -140,6 +152,7 @@ h2 {
   display: inline-flex;
   justify-content: center;
   border: 1px solid var(--border);
+  border-radius: 0.3rem; /* ✅ 修復：與 song-card 視覺一致 */
   color: var(--text-primary);
   text-decoration: none;
   font-size: 0.78rem;

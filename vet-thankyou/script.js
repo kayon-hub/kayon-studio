@@ -6,6 +6,7 @@ const createCard = (song) => {
 
   const button = document.createElement("button");
   button.className = "song-toggle";
+  button.setAttribute("aria-expanded", "false");
 
   const title = document.createElement("span");
   title.className = "song-title";
@@ -37,7 +38,8 @@ const createCard = (song) => {
   }
 
   button.addEventListener("click", () => {
-    linksWrap.classList.toggle("open");
+    const isOpen = linksWrap.classList.toggle("open");
+    button.setAttribute("aria-expanded", String(isOpen));
   });
 
   button.appendChild(title);
@@ -53,7 +55,7 @@ const createCard = (song) => {
 
 async function renderSongs() {
   try {
-    const response = await fetch("./songs.json?v=999");
+    const response = await fetch(`./songs.json?v=${Date.now()}`);
 
     if (!response.ok) {
       throw new Error("songs.json load failed");
@@ -78,4 +80,32 @@ async function renderSongs() {
   }
 }
 
-renderSongs();
+// ✅ 修復：fade-in 動畫觸發邏輯（原版缺失導致頁面空白）
+function initFadeIn() {
+  const fadeEls = document.querySelectorAll(".fade-in");
+
+  if (!("IntersectionObserver" in window)) {
+    // 舊瀏覽器 fallback：直接顯示
+    fadeEls.forEach((el) => el.classList.add("visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08 }
+  );
+
+  fadeEls.forEach((el) => observer.observe(el));
+}
+
+// 先渲染歌曲，再啟動動畫觀察
+renderSongs().then(() => {
+  initFadeIn();
+});
