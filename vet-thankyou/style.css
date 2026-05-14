@@ -24,12 +24,13 @@ main{position:relative;z-index:2;padding:3rem 1rem 5rem}
 .songs-list{display:grid;gap:1rem}
 .song-card{border:1px solid rgba(214,228,240,.14);background:rgba(27,38,52,.48);backdrop-filter:blur(4px);transition:all .6s ease}
 .song-card:hover{border-color:rgba(214,228,240,.3);background:rgba(29,42,58,.58)}
+.song-card.featured{border-color:rgba(214,228,240,.28);box-shadow:0 0 0 1px rgba(214,228,240,.06) inset}
 .song-toggle{all:unset;display:grid;grid-template-columns:66px 1fr auto;gap:.9rem;align-items:center;cursor:pointer;padding:.9rem;width:100%}
 .cover{width:66px;height:66px;border:1px solid rgba(214,228,240,.16);display:grid;place-items:center;color:var(--sub);font-size:.7rem;letter-spacing:.08em}
 .title{margin:0;font:500 1rem/1.2 "Cormorant Garamond",serif}.subtitle{margin:.2rem 0 0;color:var(--sub);font-size:.84rem}.state{color:var(--icon);font-size:.78rem}
 .platforms{max-height:0;overflow:hidden;opacity:0;transition:max-height .8s ease,opacity .8s ease;padding:0 .9rem}
 .song-card.open .platforms{max-height:220px;opacity:1;padding:0 .9rem .55rem}
-.platforms a{display:block;color:var(--icon);text-decoration:none;padding:.6rem 0;border-top:1px solid rgba(214,228,240,.12);font-size:.86rem}
+.platforms{display:grid;grid-template-columns:1fr;gap:.45rem}.platforms a{display:flex;align-items:center;justify-content:center;color:var(--icon);text-decoration:none;padding:.58rem .7rem;border:1px solid rgba(214,228,240,.12);font-size:.82rem;letter-spacing:.01em;text-align:center;min-height:36px}
 .platforms a:hover{color:var(--hover)}
 
 footer{position:relative;z-index:2;text-align:center;color:var(--sub);padding:0 1rem 3rem}
@@ -37,3 +38,5 @@ footer{position:relative;z-index:2;text-align:center;color:var(--sub);padding:0 
 .songs{animation-delay:.2s} footer{animation-delay:.35s}
 @keyframes fade{to{opacity:1;filter:blur(0);transform:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media (min-width:560px){.platforms{grid-template-columns:repeat(2,minmax(0,1fr))}}

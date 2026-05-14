@@ -4,6 +4,8 @@ const platformLabels = [
   ['apple', 'Listen on Apple Music'],
   ['spotify', 'Listen on Spotify'],
   ['kkbox', 'Listen on KKBOX'],
+  ['lineMusic', 'Listen on LINE MUSIC'],
+  ['youtubeMusic', 'Listen on YouTube Music'],
   ['youtube', 'Listen on YouTube Music']
 ];
 
@@ -13,7 +15,7 @@ async function initSongs() {
 
   songs.forEach((song, idx) => {
     const card = document.createElement('article');
-    card.className = 'song-card';
+    card.className = song.featured ? 'song-card featured' : 'song-card';
 
     const toggle = document.createElement('button');
     toggle.className = 'song-toggle';
@@ -33,8 +35,10 @@ async function initSongs() {
     platforms.className = 'platforms';
     platforms.id = `platforms-${idx}`;
 
+    const added = new Set();
     platformLabels.forEach(([key, label]) => {
-      if (!song[key]) return;
+      if (!song[key] || added.has(label)) return;
+      added.add(label);
       const a = document.createElement('a');
       a.href = song[key];
       a.target = '_blank';

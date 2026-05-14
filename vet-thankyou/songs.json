@@ -1,47 +1,69 @@
 [
   {
-    "title": "不完美的快樂 EP",
+    "title": "不完美的快樂 (2026 Remastered Version) Mini Album",
     "subtitle": "有些快樂，不必完美也值得被記得。",
     "cover": "",
     "apple": "",
     "spotify": "",
     "kkbox": "",
-    "youtube": ""
+    "youtube": "",
+    "lineMusic": "",
+    "youtubeMusic": "",
+    "featured": true
   },
   {
-    "title": "WAIT FOR ME",
+    "title": "WAIT FOR ME EP",
     "subtitle": "如果還有路，我們都還想再走一段。",
     "cover": "",
     "apple": "",
-    "spotify": "",
-    "kkbox": "",
-    "youtube": ""
+    "spotify": "https://open.spotify.com/album/3fMqdwXuY0xVTkdzfeM9RV?si=A4Z9WovSRGqr4s2am1_cdg",
+    "kkbox": "https://kkbox.fm/YaJwlv",
+    "youtube": "",
+    "lineMusic": "https://music-tw.line.me/album/7877386",
+    "youtubeMusic": "https://music.youtube.com/playlist?list=OLAK5uy_loRD8sfhP_1otNtvnw-kbuouEgo7B1WL0&si=SAHWjPQpX7nPa0Cs"
   },
   {
     "title": "你不在的時候",
     "subtitle": "安靜落下來的地方，總有你的影子。",
     "cover": "",
     "apple": "",
-    "spotify": "",
-    "kkbox": "",
-    "youtube": ""
+    "spotify": "https://open.spotify.com/track/4CGG2KmvgqRuPRp9RfUT4W?si=725efe64a9c9421c",
+    "kkbox": "https://kkbox.fm/Wp1oNUs",
+    "youtube": "",
+    "lineMusic": "https://music-tw.line.me/track/7891770001",
+    "youtubeMusic": "https://music.youtube.com/watch?v=Oj79bGiyPn8&si=FMyRG0Wukekb3pN7"
   },
   {
-    "title": "放手的重量 2026 Remastered Version",
+    "title": "放手的重量 EP",
     "subtitle": "放手很重，但你們曾一起扛過。",
     "cover": "",
     "apple": "",
-    "spotify": "",
-    "kkbox": "",
-    "youtube": ""
+    "spotify": "https://open.spotify.com/album/5Rjj8L6CUJnEp4qMb7jcOQ?si=1J7Ld_StR12dGja94MfzHA",
+    "kkbox": "https://kkbox.fm/baJqP6",
+    "youtube": "",
+    "lineMusic": "https://music-tw.line.me/album/7894972",
+    "youtubeMusic": "https://music.youtube.com/playlist?list=OLAK5uy_kc2rZHQw5_nu6pvz1sAeWm1q-kbeutP-s&si=GiZVFG4pb7IspYw3"
   },
   {
     "title": "我很好 feat. KAYON",
     "subtitle": "謝謝你們，讓最後的陪伴那麼溫柔。",
     "cover": "",
     "apple": "",
-    "spotify": "",
-    "kkbox": "",
-    "youtube": ""
+    "spotify": "https://open.spotify.com/track/5d3LHrRPt8zIDKEgl4HLBs?si=f55435986e3e47a3",
+    "kkbox": "https://kkbox.fm/Ww13fMs",
+    "youtube": "",
+    "lineMusic": "",
+    "youtubeMusic": "https://music.youtube.com/watch?v=NwMU0cd_weY&si=NRBHWUDf1f5xUwbx"
+  },
+  {
+    "title": "在我身邊",
+    "subtitle": "在還能聽見彼此心跳的距離裡，慢慢陪著。",
+    "cover": "",
+    "apple": "",
+    "spotify": "https://open.spotify.com/track/04FVxKOT3pKLMK4DAlWRvJ?si=fa3214ba5cec43bf",
+    "kkbox": "https://kkbox.fm/W51zbns",
+    "youtube": "",
+    "lineMusic": "https://music-tw.line.me/track/7917274001",
+    "youtubeMusic": "https://music.youtube.com/watch?v=1z7IgzwNB9A&si=Jah3rDxtoMJM32q4"
   }
 ]
