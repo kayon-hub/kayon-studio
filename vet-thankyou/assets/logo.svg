@@ -1,0 +1,8 @@
+<svg width="320" height="120" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">for oba logo</title>
+  <desc id="desc">A memorial serif wordmark with subtle heartbeat line.</desc>
+  <rect width="320" height="120" fill="transparent"/>
+  <text x="8" y="54" fill="#F5F1EA" font-family="Cormorant Garamond, Noto Serif TC, serif" font-size="40" letter-spacing="1">for oba</text>
+  <text x="10" y="78" fill="#AAB4C0" font-family="Noto Serif TC, serif" font-size="13" letter-spacing="0.8">thank you for trying</text>
+  <path d="M192 67H215L220 59L225 73L230 52L236 67H266" stroke="#8FA3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+</svg>
