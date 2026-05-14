@@ -1,0 +1,39 @@
+:root {
+  --bg: #0F1720;
+  --text: #F5F1EA;
+  --sub: #AAB4C0;
+  --icon: #8FA3B8;
+  --hover: #D6E4F0;
+}
+*{box-sizing:border-box} html,body{margin:0;padding:0}
+body{background:radial-gradient(circle at 20% 0%, #1c2735 0%, var(--bg) 42%, #0a1018 100%);color:var(--text);font-family:"Noto Serif TC",serif;line-height:1.7}
+
+.grain,.vignette{position:fixed;inset:0;pointer-events:none}
+.grain{opacity:.09;background-image:radial-gradient(rgba(255,255,255,.13) 0.65px, transparent 0.7px);background-size:3px 3px;mix-blend-mode:soft-light}
+.vignette{box-shadow:inset 0 0 180px rgba(0,0,0,.62)}
+
+.hero{position:relative;z-index:2;min-height:100svh;display:grid;place-content:center;text-align:center;padding:2rem 1rem}
+.logo{width:min(320px,80vw);justify-self:center;margin-bottom:1rem}
+.hero h1{margin:0;font:400 clamp(1.8rem,8vw,3.2rem)/1.2 "Instrument Serif","Cormorant Garamond",serif;letter-spacing:.02em}
+.hero p{margin:.7rem 0 1.8rem;color:var(--sub);letter-spacing:.08em;font-size:.94rem}
+.enter{justify-self:center;text-decoration:none;color:var(--icon);border:1px solid rgba(214,228,240,.22);padding:.68rem 1.26rem;letter-spacing:.15em;font-size:.8rem;transition:all .6s ease}
+.enter:hover{color:var(--hover);border-color:rgba(214,228,240,.46);background:rgba(214,228,240,.06)}
+
+main{position:relative;z-index:2;padding:3rem 1rem 5rem}
+.songs{max-width:900px;margin:0 auto}.songs h2{margin:0 0 1rem;color:var(--sub);font:400 1rem/1 "Cormorant Garamond",serif;letter-spacing:.18em;text-transform:lowercase}
+.songs-list{display:grid;gap:1rem}
+.song-card{border:1px solid rgba(214,228,240,.14);background:rgba(27,38,52,.48);backdrop-filter:blur(4px);transition:all .6s ease}
+.song-card:hover{border-color:rgba(214,228,240,.3);background:rgba(29,42,58,.58)}
+.song-toggle{all:unset;display:grid;grid-template-columns:66px 1fr auto;gap:.9rem;align-items:center;cursor:pointer;padding:.9rem;width:100%}
+.cover{width:66px;height:66px;border:1px solid rgba(214,228,240,.16);display:grid;place-items:center;color:var(--sub);font-size:.7rem;letter-spacing:.08em}
+.title{margin:0;font:500 1rem/1.2 "Cormorant Garamond",serif}.subtitle{margin:.2rem 0 0;color:var(--sub);font-size:.84rem}.state{color:var(--icon);font-size:.78rem}
+.platforms{max-height:0;overflow:hidden;opacity:0;transition:max-height .8s ease,opacity .8s ease;padding:0 .9rem}
+.song-card.open .platforms{max-height:220px;opacity:1;padding:0 .9rem .55rem}
+.platforms a{display:block;color:var(--icon);text-decoration:none;padding:.6rem 0;border-top:1px solid rgba(214,228,240,.12);font-size:.86rem}
+.platforms a:hover{color:var(--hover)}
+
+footer{position:relative;z-index:2;text-align:center;color:var(--sub);padding:0 1rem 3rem}
+.hero,.songs,footer{opacity:0;filter:blur(4px);transform:translateY(8px);animation:fade 1.4s ease forwards}
+.songs{animation-delay:.2s} footer{animation-delay:.35s}
+@keyframes fade{to{opacity:1;filter:blur(0);transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
