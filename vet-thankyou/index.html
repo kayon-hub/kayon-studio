@@ -505,21 +505,23 @@
     filter: brightness(1.3);
   }
 
-  /* 底部雙 LOGO */
+  /* 底部雙 LOGO 左右並排 */
   .final-logo-bar {
     position: relative; z-index: 1;
-    margin-top: 48px;
-    padding: 28px 24px 40px;
+    margin-top: 40px;
+    padding: 24px 16px 40px;
     border-top: 1px solid rgba(255,255,255,0.07);
     width: min(42rem, 92vw);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
-    gap: 32px;
+    gap: 16px;
   }
 
   .final-logo-bar img {
-    width: min(260px, 68vw);
+    width: 44%;
+    max-width: 200px;
     height: auto;
     object-fit: contain;
     opacity: 0.88;
@@ -527,8 +529,8 @@
 
   @media (max-width: 600px) {
     .final-sign { width: min(380px, 88vw); }
-    .final-logo-bar img { width: min(220px, 72vw); }
-    .final-logo-bar { gap: 26px; padding-bottom: 36px; }
+    .final-logo-bar img { width: 46%; }
+    .final-logo-bar { padding: 20px 12px 36px; gap: 12px; }
   }
 
   /* ══ Keyframes ══ */
@@ -669,11 +671,11 @@
   </div>
 
   <div class="oba-letter-a">
-    <div class="hw" id="hw1">謝謝醫生叔叔姊姊，</div>
-    <div class="hw" id="hw2">雖然那時候我很痛不小心咬了你們，</div>
-    <div class="hw" id="hw3">我不是故意的 🐾</div>
+    <div class="hw" id="hw1">謝謝醫生叔叔姊姊</div>
+    <div class="hw" id="hw2">那時候我很痛不小心咬了你們，對不起</div>
+    <div class="hw" id="hw3">我不是故意的 你們辛苦了🐾</div>
     <div class="hw small" id="hw4" style="margin-top:12px;">我已經 2 月 4 號就到彩虹橋跑跑了，</div>
-    <div class="hw small" id="hw5">這裡很多吃的，有很多 A5 厚切牛排吃到飽 🥩</div>
+    <div class="hw small" id="hw5">這裡很多吃的有很多 A5 厚切牛排吃到飽 🥩</div>
   </div>
 
   <div class="oba-continue" id="obaContA">— 繼續 —</div>
@@ -693,7 +695,7 @@
 
   <div class="oba-songs" id="obaSongs">
     <div class="song-name-oba">爸爸說他做了兩首歌要送給你們</div>
-    <div class="song-name-oba" style="margin-top:4px;">〈 最後一次心跳 〉·〈 我學會的溫柔 〉</div>
+    <div class="song-name-oba" style="margin-top:4px;">〈 最後一次心跳 〉〈 我學會的溫柔 〉</div>
     <div class="song-name-oba" style="font-size:15px;margin-top:8px;color:rgba(180,210,255,0.6);">希望你們都要好好的，健康的 ☁️</div>
   </div>
 
@@ -713,7 +715,7 @@
 
   <footer class="final-closing">
     <p>「謝謝每一位曾經照顧歐巴的人」</p>
-    <img src="signature.png" class="final-sign" alt="KAYON 簽名">
+    <img src="singaturenew.png" class="final-sign" alt="KAYON 簽名">
   </footer>
 
   <!-- 底部雙 LOGO -->
