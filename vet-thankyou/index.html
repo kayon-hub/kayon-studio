@@ -527,10 +527,51 @@
     opacity: 0.88;
   }
 
+  /* 下滑提示 */
+  .scroll-hint {
+    margin: 14px 0 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: rgba(255,255,255,0.28);
+    text-transform: lowercase;
+    animation: scrollBreathe 2.8s ease-in-out infinite;
+  }
+
+  @keyframes scrollBreathe {
+    0%, 100% { opacity: 0.18; filter: blur(0.5px); }
+    50%       { opacity: 0.55; filter: blur(0px); }
+  }
+
+  /* 社群 + 版權 */
+  .final-copyright {
+    position: relative; z-index: 1;
+    margin-top: 20px;
+    padding-bottom: 40px;
+    text-align: center;
+    width: min(42rem, 92vw);
+  }
+
+  .final-social {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(200,215,240,0.65);
+    letter-spacing: 0.06em;
+    margin: 0 0 10px;
+  }
+
+  .final-copy {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+    margin: 0;
+  }
+
   @media (max-width: 600px) {
-    .final-sign { width: min(380px, 88vw); }
-    .final-logo-bar { margin-top: 20px; padding: 16px 12px 20px; gap: 8px; }
-    .final-logo-bar img { width: 46%; }
+    .final-social { font-size: 11px; }
+    .final-copy { font-size: 9.5px; }
   }
 
   /* ══ Keyframes ══ */
@@ -716,6 +757,7 @@
 
   <footer class="final-closing">
     <p>「謝謝每一位曾經照顧歐巴的人」</p>
+    <p class="scroll-hint">— 下滑 —</p>
     <img src="singaturenew.png" class="final-sign" alt="KAYON 簽名">
   </footer>
 
@@ -723,6 +765,12 @@
   <div class="final-logo-bar">
     <img src="kayon-studio-logo.png" alt="KAYON STUDIO">
     <img src="karbonxgaia-logo.png" alt="KARBØN X GAIA ENTERTAINMENT">
+  </div>
+
+  <!-- 社群 + 版權 -->
+  <div class="final-copyright">
+    <p class="final-social">更多 KAYON 消息請關注官方網站及 IG</p>
+    <p class="final-copy">© 2026 KARBØN X GAIA ENTERTAINMENT · KAYON STUDIO. All Rights Reserved.</p>
   </div>
 </div>
 
