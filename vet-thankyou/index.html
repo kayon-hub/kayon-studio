@@ -815,8 +815,14 @@ setTimeout(() => {
   setTimeout(() => $('obaContA').classList.add('appear'), 2400 + 4*STEP + 3000);
 }, 24000);
 
-/* ══ 歐巴頁 B（24 + 18.2 + 2 緩衝 ≈ 44s）══ */
+/* ══ 歐巴頁 B（44s）══ */
 setTimeout(() => {
+  // 先把歐巴頁A淡出
+  const obaA = $('pageOba');
+  obaA.style.transition = 'opacity 0.8s ease';
+  obaA.style.opacity = '0';
+  setTimeout(() => { obaA.style.pointerEvents = 'none'; }, 800);
+
   $('pageObaB').classList.add('show');
   generateStars('obaStarsB');
 
@@ -828,6 +834,14 @@ setTimeout(() => {
 
 /* ══ 歌曲列表（44 + 13 = 57s）══ */
 setTimeout(() => {
+  // 先把歐巴頁B淡出，避免閃過
+  const obaB = $('pageObaB');
+  obaB.style.transition = 'opacity 0.8s ease';
+  obaB.style.opacity = '0';
+  setTimeout(() => {
+    obaB.style.pointerEvents = 'none';
+  }, 800);
+
   $('pageFinal').classList.add('show');
   renderSongs();
 }, 57000);
